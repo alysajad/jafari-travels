@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Serif+Display&family=Playfair+Display:wght@700;800&family=Source+Sans+Pro:wght@400;600;700;900&family=Space+Grotesk:wght@600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-kashmir-cream font-sans text-kashmir-charcoal antialiased;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
+
+@layer components {
+  .section-wrap {
+    @apply mx-auto w-[min(1120px,calc(100%_-_44px))] py-12;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kashmir-gold;
+  }
+}
