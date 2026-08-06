@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, ChevronDown, Landmark } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronDown, Landmark, Star, MapPin } from "lucide-react";
 import { umrahPackages } from "../data/site";
 import { whatsappLink } from "../lib/whatsapp";
 
@@ -9,7 +9,50 @@ const hajjFaqs = [
   { q: "Do you provide female guides for women traveling without a Mahram?", a: "Yes, under the new regulations, women can travel in groups without a Mahram. We provide dedicated female Qafila leaders for guidance and support." }
 ];
 
-const hotels = ["Swissotel Al Maqam", "Pullman Zamzam", "Hilton Suites", "Concorde Al Madinah", "Movenpick Anwar Al Madinah", "Manarat Misk"];
+const hotels = [
+  {
+    name: "Swissotel Al Maqam",
+    location: "Makkah",
+    distance: "Clock Tower - ~100m to Haram",
+    rating: "4.8",
+    image: "/images/swissotel_maqam.png"
+  },
+  {
+    name: "Pullman Zamzam",
+    location: "Makkah",
+    distance: "Clock Tower - ~150m to Haram",
+    rating: "4.7",
+    image: "/images/pullman_zamzam.png"
+  },
+  {
+    name: "Hilton Suites",
+    location: "Makkah",
+    distance: "Jabal Omar - ~200m to Haram",
+    rating: "4.7",
+    image: "/images/hilton_suites.png"
+  },
+  {
+    name: "Concorde Al Madinah",
+    location: "Madinah",
+    distance: "~300m to Prophet's Mosque",
+    rating: "3.5",
+    image: "/images/concorde_madinah.png"
+  },
+  {
+    name: "Movenpick Anwar Al Madinah",
+    location: "Madinah",
+    distance: "Adjacent to Prophet's Mosque",
+    rating: "4.6",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    name: "Manarat Al Misk",
+    location: "Makkah",
+    distance: "Ajyad - ~700m to Haram",
+    rating: "3.5",
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  }
+];
 
 export function HajjUmrahPage() {
   return (
@@ -137,11 +180,26 @@ export function HajjUmrahPage() {
 
       <section className="max-w-7xl mx-auto px-4 pb-20">
         <h2 className="mb-6 font-extrabold text-2xl text-slate-800">Affiliate partner hotels</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {hotels.map((hotel) => (
-            <div className="rounded-2xl bg-white border border-slate-200 p-4 transition-shadow hover:shadow-lg" key={hotel}>
-              <strong className="block text-base text-slate-800">{hotel}</strong>
-              <span className="mt-1 block text-xs font-semibold text-slate-500">Makkah / Madinah stay support</span>
+            <div className="group rounded-3xl bg-white border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" key={hotel.name}>
+              <div className="relative h-48 overflow-hidden">
+                <img alt={hotel.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={hotel.image} />
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur text-black text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider">{hotel.location}</div>
+              </div>
+              <div className="p-6">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h3 className="font-extrabold text-lg text-slate-900 leading-tight">{hotel.name}</h3>
+                  <div className="flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-lg">
+                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                    <span className="text-xs font-bold text-amber-900">{hotel.rating}</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 text-slate-500 mt-3">
+                  <MapPin className="w-4 h-4" />
+                  <span className="text-xs font-semibold">{hotel.distance}</span>
+                </div>
+              </div>
             </div>
           ))}
         </div>

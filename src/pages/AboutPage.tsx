@@ -1,65 +1,128 @@
-import { CheckCircle2 } from "lucide-react";
 import { PageHero } from "../components/PageHero";
-import { serviceCards } from "../data/site";
-
-const values = ["Trust", "Transparency", "Personalisation", "24/7 Care", "Community"];
+import { Link } from "react-router-dom";
 
 export function AboutPage() {
   return (
     <main>
       <PageHero
-        eyebrow="Kashmir's trusted travel partner"
+        title="About Us"
+        text="Crafting Journeys of a Lifetime"
         image="/images/about-page.jpg"
-        text="Built for travelers and pilgrims who need honest guidance, clear pricing and local care."
-        title="About Jaffari Sky Travels"
+        eyebrow="Jaffari Sky Travels"
       />
-      <section className="section-wrap grid gap-8 lg:grid-cols-[.9fr_1.1fr]">
-        <div>
-          <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-kashmir-teal">Our story</p>
-          <h2 className="font-serif text-5xl leading-none text-kashmir-blue">Journeys planned from Kashmir, with care.</h2>
-        </div>
-        <div className="rounded-2xl bg-white p-7 shadow-travel">
-          <p className="font-semibold leading-8 text-kashmir-slate">
-            Founded by Adil Hussain Sofi, Jaffari Sky Travels was born from a passion for sharing Kashmir's unmatched beauty with travelers from across India and the world. From our base in Kashmir, we focus on honest pricing, attentive service and deeply personal travel experiences.
-          </p>
-        </div>
-      </section>
-      <section className="section-wrap pt-0">
-        <h2 className="mb-6 font-serif text-4xl text-kashmir-blue">What we do</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {serviceCards.slice(0, 4).map((service) => (
-            <div className="rounded-2xl bg-white p-5 shadow-lg shadow-kashmir-blue/10" key={service.title}>
-              <service.icon className="mb-4 h-9 w-9 rounded-xl bg-kashmir-teal p-2 text-white" />
-              <h3 className="font-black text-kashmir-blue">{service.title}</h3>
-              <p className="mt-2 text-sm font-semibold leading-6 text-kashmir-slate">{service.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="section-wrap pt-0 grid gap-8 lg:grid-cols-2">
-        <div className="rounded-2xl bg-white p-7 shadow-travel">
-          <h2 className="font-serif text-4xl text-kashmir-blue">Why choose us</h2>
-          {["Local Kashmir expertise", "Transparent pricing", "Kashmiri-speaking group leaders", "24/7 WhatsApp support", "All-inclusive planning"].map((item) => (
-            <p className="mt-4 flex items-center gap-3 font-bold text-slate-700" key={item}>
-              <CheckCircle2 className="h-5 w-5 text-kashmir-green" />
-              {item}
+      
+      <section className="py-24 bg-slate-50">
+        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          
+          <div>
+            <h2 className="font-serif text-4xl md:text-5xl text-primary mb-8 leading-tight">Crafting Journeys <br/>of a Lifetime</h2>
+            <p className="text-slate-600 text-lg leading-relaxed mb-8">
+              Founded with the mission to bridge the gap between spiritual longing and physical travel, Jaffari Sky Travels provides more than just a booking service—we provide peace of mind.
             </p>
-          ))}
-        </div>
-        <div className="rounded-2xl bg-kashmir-blue p-7 text-white shadow-travel">
-          <h2 className="font-serif text-4xl">Our values</h2>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {values.map((value) => (
-              <span className="rounded-full bg-white/10 px-4 py-2 text-sm font-black text-kashmir-gold" key={value}>{value}</span>
-            ))}
+            
+            <div className="grid grid-cols-2 gap-8 mb-10">
+              <div className="p-6 bg-white rounded-lg border border-slate-200 shadow-sm">
+                <span className="material-icons-outlined text-primary text-4xl mb-4">history_edu</span>
+                <h4 className="font-bold text-primary mb-2">Est. 2012</h4>
+                <p className="text-sm text-slate-500">Years of excellence in hospitality.</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg border border-slate-200 shadow-sm">
+                <span className="material-icons-outlined text-primary text-4xl mb-4">star</span>
+                <h4 className="font-bold text-primary mb-2">4.8★ Rating</h4>
+                <p className="text-sm text-slate-500">Trusted by thousands of travelers.</p>
+              </div>
+            </div>
+            
+            <div id="contact" className="p-8 bg-white rounded-xl border border-blue-100 shadow-lg mt-8">
+              <h3 className="font-serif text-2xl text-primary mb-6 flex items-center gap-2">
+                <span className="material-icons-outlined text-secondary">contact_support</span> Contact Us
+              </h3>
+              <div className="flex flex-col gap-5">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                    <span className="material-icons-outlined text-primary">call</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-slate-800 mb-1">Phone</p>
+                    <div className="flex flex-col gap-1 text-slate-600 text-sm">
+                      <a href="tel:+917051693767" className="hover:text-primary transition-colors">+91 7051693767</a>
+                      <a href="tel:+919906123456" className="hover:text-primary transition-colors">+91 9906-123456</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                    <span className="material-icons-outlined text-primary">mail</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-slate-800 mb-0.5">Email</p>
+                    <a href="mailto:jaffariskytravels@gmail.com" className="text-slate-600 text-sm hover:text-primary transition-colors">jaffariskytravels@gmail.com</a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center shrink-0">
+                    <span className="material-icons-outlined text-green-600">chat</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-slate-800 mb-0.5">WhatsApp</p>
+                    <a href="https://wa.me/917051693767" target="_blank" rel="noopener noreferrer" className="text-slate-600 text-sm hover:text-green-600 transition-colors">+91 7051693767</a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4 mt-2 pt-4 border-t border-slate-100">
+                  <p className="text-sm font-bold text-slate-800">Follow Us:</p>
+                  <div className="flex gap-4">
+                    <a href="#" className="text-slate-500 hover:text-primary transition-colors">
+                      <span className="material-icons-outlined">facebook</span>
+                    </a>
+                    <a href="#" className="text-slate-500 hover:text-primary transition-colors">
+                      <span className="material-icons-outlined">camera_alt</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
-          <div className="mt-8 grid grid-cols-2 gap-4">
-            {["5,000+ Happy Travelers", "8+ Package Styles", "24/7 Support", "One Trusted Team"].map((stat) => (
-              <strong className="rounded-2xl bg-white/10 p-4 text-lg" key={stat}>{stat}</strong>
-            ))}
+          
+          <div className="relative">
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl relative z-10 bg-gradient-to-br from-white to-slate-50 flex flex-col items-center justify-center p-12 border border-slate-200">
+              <img alt="JAffari Sky Travels Logo" className="w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700" src="/logo.png" />
+            </div>
+            <div className="absolute -bottom-10 -right-10 w-2/3 aspect-square bg-blue-100 rounded-2xl -z-0 opacity-50"></div>
+            <div className="absolute -top-10 -left-10 w-1/3 aspect-square border-2 border-primary/20 rounded-2xl -z-0"></div>
+          </div>
+          
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl text-primary mb-4">Meet Our Team</h2>
+            <div className="w-24 h-1 bg-secondary mx-auto opacity-30 mt-4 mb-4"></div>
+            <p className="text-slate-500">The passionate individuals behind your unforgettable journeys.</p>
+          </div>
+          
+          <div className="max-w-sm mx-auto">
+            <div className="group rounded-2xl overflow-hidden bg-white shadow-xl border border-slate-100 text-center">
+              <div className="aspect-square overflow-hidden bg-slate-100">
+                <img alt="Adil Hussain Sofi" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" src="https://ui-avatars.com/api/?name=Adil+Hussain&size=400&background=0D8ABC&color=fff" />
+              </div>
+              <div className="p-8">
+                <h3 className="font-serif text-2xl text-primary mb-1">Adil Hussain Sofi</h3>
+                <p className="text-sm font-bold text-secondary uppercase tracking-widest mb-4">CEO & Founder</p>
+                <p className="text-slate-600 text-sm">
+                  With a deep passion for Kashmir's beauty and a commitment to exceptional service, Adil leads our mission to provide the best travel experiences.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+      
     </main>
   );
 }

@@ -26,7 +26,7 @@ export const navItems = [
   { label: "Visa", href: "/visa-services" },
   { label: "Gallery", href: "/gallery" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/aboutus#contact" },
 ];
 
 export const trustItems = [
@@ -57,7 +57,7 @@ export const destinations: Destination[] = [
     price: "₹8,999",
     rating: "4.8 (2.4k)",
     discount: "-30%",
-    image: "/images/destination-srinagar.jpg",
+    image: "/images/dal_lake_destination.jpg",
     subtitle: "THE JEWEL IN THE CROWN",
     distance: "0 km (Capital City)",
     time: "N/A",
@@ -76,7 +76,7 @@ export const destinations: Destination[] = [
     price: "₹15,999",
     rating: "4.9 (1.8k)",
     discount: "-25%",
-    image: "/images/destination-gulmarg.jpg",
+    image: "/images/gulamrg_destination_ski_resort.jpg",
     subtitle: "THE MEADOW OF FLOWERS",
     distance: "51 km from Srinagar",
     time: "Approx. 1.5 Hours",
@@ -95,7 +95,7 @@ export const destinations: Destination[] = [
     price: "₹8,999",
     rating: "4.7 (1.2k)",
     discount: "-20%",
-    image: "/images/destination-pahalgam.jpg",
+    image: "/images/betaab_valley_destination.jpg",
     subtitle: "VALLEY OF SHEPHERDS",
     distance: "90 km from Srinagar",
     time: "Approx. 2.5 Hours",
@@ -114,7 +114,7 @@ export const destinations: Destination[] = [
     price: "₹14,999",
     rating: "5.0 (950)",
     discount: "-18%",
-    image: "/images/destination-sonamarg.jpg",
+    image: "/images/sonamarg_destination.jpg",
     subtitle: "MEADOW OF GOLD",
     distance: "80 km from Srinagar",
     time: "Approx. 2.5 Hours",
@@ -129,42 +129,42 @@ export const destinations: Destination[] = [
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26391.134599180736!2d75.27553199672852!3d34.30325126300185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e235a9097782b1%3A0xe541c4fce45c7eb3!2sSonamarg!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
   },
   {
-    name: "Dal Lake",
-    price: "₹7,999",
-    rating: "4.9 (1.5k)",
-    discount: "-22%",
-    image: "/images/destination-dal-lake.jpg",
-    subtitle: "SERENE WATERS",
-    distance: "In Srinagar",
-    time: "N/A",
-    description: "Experience the iconic shikara rides and floating markets on the tranquil waters of Dal Lake. Stay in a traditional houseboat for a complete Kashmiri experience.",
+    name: "Gurez Valley",
+    price: "₹11,999",
+    rating: "4.9 (850)",
+    discount: "-15%",
+    image: "/images/gurez_destination.jpg",
+    subtitle: "THE HIDDEN GEM",
+    distance: "123 km from Srinagar",
+    time: "Approx. 6 Hours",
+    description: "A beautiful hidden valley in the high Himalayas, known for its stunning landscapes, traditional log houses, and the pristine Kishanganga River.",
     attractions: [
-      "Floating Post Office",
-      "Meena Bazaar",
-      "Nehru Park",
-      "Floating Gardens",
-      "Char Chinar"
+      "Habba Khatoon Peak",
+      "Kishanganga River",
+      "Dawar Village",
+      "Tulail Valley",
+      "Razdan Pass"
     ],
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26428.18247073155!2d74.84587841559868!3d34.11603502847683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1858a74e2d3df%3A0xeab50d2e5b922736!2sDal%20Lake!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d210515.68884914107!2d74.65485429999999!3d34.62263889999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e15cba332b7bc5%3A0x6bbaea3f7ccb5e40!2sGurez%20Valley!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
   },
   {
-    name: "Betaab Valley",
-    price: "₹12,499",
-    rating: "4.7 (890)",
-    discount: "-15%",
-    image: "/images/destination-betaab.jpg",
-    subtitle: "CINEMATIC PARADISE",
-    distance: "15 km from Pahalgam",
-    time: "Approx. 30 Mins",
-    description: "Famous for its role in Bollywood movies, Betaab Valley is surrounded by lush green meadows, snow-clad mountains, and dense pine and deodar forests.",
+    name: "Doodhpathri",
+    price: "₹9,999",
+    rating: "4.8 (1.1k)",
+    discount: "-20%",
+    image: "/images/doodhpathri_destination.jpg",
+    subtitle: "VALLEY OF MILK",
+    distance: "42 km from Srinagar",
+    time: "Approx. 1.5 Hours",
+    description: "Known as the 'Valley of Milk', Doodhpathri is a beautiful alpine meadow surrounded by snow-clad mountains and forests of pine, fir, and deodar. The river flowing through the meadows looks like milk from a distance.",
     attractions: [
-      "Baisaran",
-      "Lidder River Walks",
-      "Pony Rides",
-      "Photography Points",
-      "Local Handicrafts"
+      "Tangnar",
+      "Mujpathri",
+      "Palmaidan",
+      "Dishkal",
+      "Shaliganga River"
     ],
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13264.839841315574!2d75.34091761559869!3d34.0205215281488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e21baeb15b3e6d%3A0xeab50d2e5b922736!2sBetaab%20Valley!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26543.151978252273!2d74.525283!3d33.916053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1a17afcb7beeb%3A0x8673a9f02919318b!2sDoodhpathri!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
   }
 ];
 
@@ -178,8 +178,15 @@ export const packages = [
     originalPrice: "Rs 11,999",
     badge: "Best Seller",
     type: "Family",
-    image: "/images/package-classic.jpg",
+    image: "/images/package-classic.png",
     inclusions: ["Hotel stay", "Breakfast and dinner", "Private vehicle", "Shikara ride"],
+    itinerary: [
+      { day: 1, title: "Arrival in Srinagar & Houseboat", details: "Arrive at Srinagar airport. Meet our representative and transfer to a premium houseboat on Dal Lake. Evening enjoy a relaxing 1-hour Shikara ride." },
+      { day: 2, title: "Day trip to Gulmarg", details: "After breakfast, drive to Gulmarg (Meadow of Flowers). Enjoy the scenic Gondola cable car ride to Apharwat peak. Evening return to Srinagar." },
+      { day: 3, title: "Day trip to Pahalgam", details: "Drive to Pahalgam (Valley of Shepherds) via saffron fields. Visit Betaab Valley and Aru Valley. Enjoy the serene Lidder river. Return to Srinagar." },
+      { day: 4, title: "Srinagar Sightseeing", details: "Visit the famous Mughal Gardens (Shalimar & Nishat Bagh), Hazratbal Shrine, and Shankaracharya Temple. Evening shopping at Lal Chowk." },
+      { day: 5, title: "Departure", details: "Morning breakfast. Transfer to Srinagar airport for your onward journey with beautiful memories." }
+    ]
   },
   {
     slug: "kashmir-honeymoon-delight",
@@ -190,8 +197,16 @@ export const packages = [
     originalPrice: "Rs 15,999",
     badge: "Hot Deal",
     type: "Honeymoon",
-    image: "/images/package-honeymoon.jpg",
+    image: "/images/package-honeymoon.png",
     inclusions: ["Houseboat stay", "Candlelight dinner", "Sightseeing", "Private cab"],
+    itinerary: [
+      { day: 1, title: "Romantic Arrival & Houseboat Stay", details: "Welcome to Kashmir! Transfer to a luxury houseboat. Enjoy a private Shikara ride with floating market visit. Romantic candlelight dinner." },
+      { day: 2, title: "Mughal Gardens & Sunset", details: "Visit Nishat Bagh and Shalimar Bagh. Afternoon visit to Pari Mahal for panoramic views. Evening at leisure near Dal Lake." },
+      { day: 3, title: "Gulmarg Winter Wonderland", details: "Drive to Gulmarg. Experience the Gondola ride together. Try skiing or snowboarding. Overnight stay in a premium Gulmarg hotel." },
+      { day: 4, title: "Journey to Pahalgam", details: "Travel to Pahalgam. Enjoy the romantic walks along the Lidder River. Visit Apple orchards on the way. Overnight in Pahalgam." },
+      { day: 5, title: "Betaab Valley & Baisaran", details: "Take a pony ride to Baisaran (Mini Switzerland). Visit the stunning Betaab Valley. Relax amidst nature." },
+      { day: 6, title: "Departure", details: "After breakfast, drive back to Srinagar airport for your flight back home." }
+    ]
   },
   {
     slug: "kashmir-family-special",
@@ -202,8 +217,17 @@ export const packages = [
     originalPrice: "Rs 18,500",
     badge: "New Offer",
     type: "Family",
-    image: "/images/package-family.jpg",
+    image: "/images/package-family.png",
     inclusions: ["Family rooms", "Daily meals", "Airport pickup", "Flexible pacing"],
+    itinerary: [
+      { day: 1, title: "Arrival in Srinagar", details: "Welcome by our representative. Check-in to hotel. Rest and acclimatize. Evening walk around Dal lake boulevard." },
+      { day: 2, title: "Sonamarg Excursion", details: "Full day trip to Sonamarg (Meadow of Gold). Visit Thajiwas Glacier on ponies. Enjoy snow activities with kids. Return to Srinagar." },
+      { day: 3, title: "Gulmarg Day Trip", details: "Drive to Gulmarg. Enjoy phase 1 and 2 of the Gondola ride. Family picnic in the meadows." },
+      { day: 4, title: "Transfer to Pahalgam", details: "Drive to Pahalgam. Visit Awantipora ruins and Bat factories on the way. Check-in to Pahalgam hotel." },
+      { day: 5, title: "Pahalgam Sightseeing", details: "Visit Aru Valley, Betaab Valley, and Chandanwari. Evening free for local market exploration." },
+      { day: 6, title: "Return to Srinagar & Houseboat", details: "Drive back to Srinagar. Check-in to a traditional houseboat. Evening Shikara ride." },
+      { day: 7, title: "Departure", details: "Breakfast and drop at Srinagar airport." }
+    ]
   },
   {
     slug: "winter-wonderland-kashmir",
@@ -214,8 +238,16 @@ export const packages = [
     originalPrice: "Rs 19,999",
     badge: "Winter",
     type: "Adventure",
-    image: "/images/package-winter.jpg",
+    image: "/images/package-winter.png",
     inclusions: ["Snow itinerary", "Ski support", "Warm hotels", "Transfers"],
+    itinerary: [
+      { day: 1, title: "Srinagar Arrival & Snow Views", details: "Arrive in snow-covered Srinagar. Transfer to central heated hotel. Evening walk to enjoy winter aesthetics." },
+      { day: 2, title: "Gulmarg Skiing Phase 1", details: "Drive to Gulmarg. Check-in to resort. Meet instructors and begin beginner skiing lessons on baby slopes." },
+      { day: 3, title: "Gulmarg Gondola & Snowboarding", details: "Gondola ride to Apharwat peak for incredible snowscapes. Optional snowboarding or advanced skiing." },
+      { day: 4, title: "Pahalgam Winter Trek", details: "Drive to Pahalgam. Experience the frozen Lidder river and snow-clad pine forests. Overnight in Pahalgam." },
+      { day: 5, title: "Srinagar Houseboat", details: "Return to Srinagar. Stay in a cozy houseboat. Enjoy Kangri (traditional fire pot) and Kahwa." },
+      { day: 6, title: "Departure", details: "Morning breakfast. Transfer to airport." }
+    ]
   },
   {
     slug: "kashmir-valley-explorer",
@@ -226,8 +258,18 @@ export const packages = [
     originalPrice: "Rs 22,999",
     badge: "Explorer",
     type: "Group",
-    image: "/images/package-explorer.jpg",
+    image: "/images/package-explorer.png",
     inclusions: ["Extended route", "Local guide", "Meals", "Sightseeing"],
+    itinerary: [
+      { day: 1, title: "Arrival & Srinagar Leisure", details: "Arrival in Srinagar. Transfer to hotel. Evening free to explore local markets and cuisine." },
+      { day: 2, title: "Sonamarg Glaciers", details: "Day trip to Sonamarg. Visit the stunning Thajiwas Glacier and zero point. Return to Srinagar." },
+      { day: 3, title: "Doodhpathri Exploration", details: "Visit the offbeat Valley of Milk, Doodhpathri. Enjoy the pristine alpine meadows and Shaliganga river." },
+      { day: 4, title: "Gulmarg Adventure", details: "Drive to Gulmarg. Gondola ride and walk around the majestic meadows. Return to Srinagar." },
+      { day: 5, title: "Srinagar to Pahalgam", details: "Transfer to Pahalgam. Visit apple orchards and saffron fields. Check-in and relax." },
+      { day: 6, title: "Pahalgam Valleys", details: "Extensive tour of Aru Valley, Betaab Valley, and Chandanwari. Scenic photography sessions." },
+      { day: 7, title: "Houseboat & Shikara", details: "Return to Srinagar. Check-in to Houseboat. Evening sunset Shikara ride on Dal Lake." },
+      { day: 8, title: "Departure", details: "Breakfast and safe drop at the airport." }
+    ]
   },
   {
     slug: "grand-kashmir-ladakh",
@@ -238,8 +280,20 @@ export const packages = [
     originalPrice: "Rs 34,999",
     badge: "Premium",
     type: "Adventure",
-    image: "/images/package-ladakh.jpg",
+    image: "/images/package-ladakh.png",
     inclusions: ["Kargil route", "Leh stay", "Permits guidance", "SUV transfers"],
+    itinerary: [
+      { day: 1, title: "Srinagar Arrival", details: "Arrive in Srinagar. Local sightseeing of Mughal Gardens. Overnight stay." },
+      { day: 2, title: "Gulmarg Excursion", details: "Day trip to Gulmarg. Enjoy the Gondola and beautiful landscapes." },
+      { day: 3, title: "Pahalgam Excursion", details: "Day trip to Pahalgam. Visit Betaab valley. Return to Srinagar." },
+      { day: 4, title: "Srinagar to Kargil via Sonamarg", details: "Drive to Kargil via Sonamarg and Zojila Pass. Visit Drass war memorial. Overnight in Kargil." },
+      { day: 5, title: "Kargil to Leh", details: "Drive to Leh via Lamayuru and Magnetic Hill. Check-in to Leh hotel to acclimatize." },
+      { day: 6, title: "Leh Local Sightseeing", details: "Visit Shanti Stupa, Leh Palace, and local monasteries. Rest for altitude adjustment." },
+      { day: 7, title: "Nubra Valley via Khardung La", details: "Drive to Nubra Valley over Khardung La (highest motorable road). Enjoy double-humped camel ride." },
+      { day: 8, title: "Pangong Lake", details: "Drive to the mesmerizing Pangong Lake via Shyok river route. Overnight camping near the lake." },
+      { day: 9, title: "Return to Leh", details: "Wake up to stunning lake views. Drive back to Leh via Chang La pass. Evening shopping." },
+      { day: 10, title: "Departure from Leh", details: "Transfer to Kushok Bakula Rimpochee Airport for your flight home." }
+    ]
   },
   {
     slug: "vaishno-devi-kashmir",
@@ -250,8 +304,19 @@ export const packages = [
     originalPrice: "Rs 23,499",
     badge: "Pilgrimage Combo",
     type: "Pilgrimage",
-    image: "/images/package-vaishno.jpg",
+    image: "/images/package-vaishno.png",
     inclusions: ["Katra stay", "Kashmir tour", "Transfers", "Meals"],
+    itinerary: [
+      { day: 1, title: "Arrival in Jammu & Katra", details: "Arrive at Jammu station/airport. Transfer to Katra. Check-in and relax." },
+      { day: 2, title: "Mata Vaishno Devi Darshan", details: "Early morning trek/helicopter to the holy shrine of Mata Vaishno Devi. Return to Katra by evening." },
+      { day: 3, title: "Katra to Srinagar", details: "Long scenic drive from Katra to Srinagar. Check-in to Srinagar hotel/houseboat." },
+      { day: 4, title: "Srinagar Local Sightseeing", details: "Visit Mughal Gardens, Shankaracharya Temple, and enjoy a Shikara ride." },
+      { day: 5, title: "Gulmarg Excursion", details: "Day trip to Gulmarg. Enjoy the Gondola ride and mountain views. Return to Srinagar." },
+      { day: 6, title: "Srinagar to Pahalgam", details: "Drive to Pahalgam. Enjoy the scenic route. Check-in to Pahalgam hotel." },
+      { day: 7, title: "Pahalgam Sightseeing", details: "Visit Betaab Valley and Aru Valley. Evening leisure time." },
+      { day: 8, title: "Return to Jammu", details: "Drive back to Jammu. Check-in to hotel for overnight rest." },
+      { day: 9, title: "Departure", details: "Morning breakfast and drop at Jammu airport/station." }
+    ]
   },
   {
     slug: "kashmir-group-budget-tour",
@@ -262,9 +327,16 @@ export const packages = [
     originalPrice: "Rs 9,999",
     badge: "Group Saver",
     type: "Group",
-    image: "/images/package-group.jpg",
+    image: "/images/package-group.png",
     inclusions: ["Min 10 pax", "Shared transport", "Budget hotels", "Meals"],
-  },
+    itinerary: [
+      { day: 1, title: "Group Arrival", details: "Receive the group at Srinagar airport. Transfer to budget hotel. Evening group Shikara ride." },
+      { day: 2, title: "Gulmarg Group Excursion", details: "Shared coach to Gulmarg. Group guide for Gondola ticket assistance and sightseeing." },
+      { day: 3, title: "Pahalgam Valleys", details: "Day trip to Pahalgam. Group visit to Betaab Valley and shared pony rides. Return to Srinagar." },
+      { day: 4, title: "Srinagar Gardens", details: "Visit Mughal Gardens. Free time for group shopping at local markets." },
+      { day: 5, title: "Departure", details: "Group drop at Srinagar airport." }
+    ]
+  }
 ];
 
 export const serviceCards = [
@@ -272,7 +344,7 @@ export const serviceCards = [
   { icon: Landmark, title: "Hajj & Umrah", text: "Guided qafila packages, visa support and on-ground care.", href: "/hajj-umrah" },
   { icon: Plane, title: "Air Ticketing", text: "Domestic, international, group and last-minute flight bookings.", href: "/ticketing" },
   { icon: Stamp, title: "Visa Services", text: "Tourist, business, student, work and Saudi visa assistance.", href: "/visa-services" },
-  { icon: UsersRound, title: "Group Tours", text: "Managed retreats, pilgrim groups and custom travel planning.", href: "/contact" },
+  { icon: UsersRound, title: "Group Tours", text: "Managed retreats, pilgrim groups and custom travel planning.", href: "/aboutus#contact" },
 ];
 
 export const testimonials = [

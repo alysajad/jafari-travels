@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { packages } from "../data/site";
 
@@ -5,6 +6,22 @@ export function PackageDetailPage() {
   const { slug } = useParams();
   const pkg = packages.find((item) => item.slug === slug) ?? packages[0];
   const similar = packages.filter((item) => item.slug !== pkg.slug).slice(0, 3);
+  
+  const [expandedDays, setExpandedDays] = useState<number[]>([]);
+
+  const toggleDay = (index: number) => {
+    setExpandedDays(prev => 
+      prev.includes(index) ? prev.filter(d => d !== index) : [...prev, index]
+    );
+  };
+
+  const expandAll = () => {
+    if (pkg.itinerary && expandedDays.length === pkg.itinerary.length) {
+      setExpandedDays([]);
+    } else if (pkg.itinerary) {
+      setExpandedDays(pkg.itinerary.map((_, i) => i));
+    }
+  };
 
   return (
     <main className="bg-white text-black transition-colors duration-300">
@@ -83,20 +100,35 @@ export function PackageDetailPage() {
           <section>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold">Day-by-Day Itinerary</h2>
-              <button className="text-primary font-bold text-sm">Expand All</button>
+              {pkg.itinerary && (
+                <button onClick={expandAll} className="text-primary font-bold text-sm">
+                  {expandedDays.length === pkg.itinerary.length ? 'Collapse All' : 'Expand All'}
+                </button>
+              )}
             </div>
             <div className="space-y-4">
-              {["Arrival in Srinagar and houseboat check-in", "Gulmarg excursion with Gondola option", "Pahalgam, Betaab Valley and Lidder River walk", "Mughal Gardens and Hazratbal Shrine", "Breakfast and airport drop"].map((day, index) => (
-                <div key={day} className="border border-black rounded-2xl overflow-hidden bg-white">
-                  <button className="w-full px-6 py-5 flex items-center justify-between group">
-                    <div className="flex items-center gap-4">
-                      <span className="bg-primary/10 text-primary w-10 h-10 rounded-full flex items-center justify-center font-bold">{index + 1}</span>
-                      <span className="font-bold text-lg text-black">{day}</span>
+              {pkg.itinerary ? pkg.itinerary.map((day, index) => (
+                <div key={index} className="border border-black rounded-2xl overflow-hidden bg-white">
+                  <button onClick={() => toggleDay(index)} className="w-full px-6 py-5 flex items-center justify-between group">
+                    <div className="flex items-center gap-4 text-left">
+                      <span className="bg-primary/10 text-primary w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">
+                        {day.day}
+                      </span>
+                      <span className="font-bold text-lg text-black">{day.title}</span>
                     </div>
-                    <i className="material-icons-outlined text-slate-400 group-hover:text-primary transition-colors">expand_more</i>
+                    <i className={`material-icons-outlined text-slate-400 group-hover:text-primary transition-transform duration-300 ${expandedDays.includes(index) ? 'rotate-180' : ''}`}>
+                      expand_more
+                    </i>
                   </button>
+                  <div className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${expandedDays.includes(index) ? 'max-h-96 pb-5 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="pl-14 text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                      {day.details}
+                    </div>
+                  </div>
                 </div>
-              ))}
+              )) : (
+                <div className="text-slate-500 italic">Itinerary details coming soon.</div>
+              )}
             </div>
           </section>
           
@@ -158,17 +190,17 @@ export function PackageDetailPage() {
                   <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Check Availability</label>
                   <div className="relative">
                     <i className="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">calendar_today</i>
-                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all cursor-pointer" type="text" defaultValue="Select Date"/>
+                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all cursor-pointer" type="date" min={new Date().toISOString().split('T')[0]}/>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="relative">
                     <i className="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">person</i>
-                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary" type="number" defaultValue="2"/>
+                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary" type="number" min="1" defaultValue="2"/>
                   </div>
                   <div className="relative">
                     <i className="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">child_care</i>
-                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary" type="number" defaultValue="0"/>
+                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary" type="number" min="0" defaultValue="0"/>
                   </div>
                 </div>
                 <a href={`https://wa.me/917051693767?text=Hi, I am interested in ${pkg.name}`} target="_blank" rel="noreferrer" className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/25 mt-4 flex justify-center items-center">
@@ -214,7 +246,6 @@ export function PackageDetailPage() {
               <div key={item.slug} className="bg-white border border-black rounded-3xl overflow-hidden shadow-sm group">
                 <div className="relative h-64 overflow-hidden">
                   <img alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={item.image}/>
-                  <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">{item.badge}</span>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">{item.name}</h3>

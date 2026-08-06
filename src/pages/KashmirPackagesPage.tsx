@@ -73,9 +73,9 @@ export function KashmirPackagesPage() {
   return (
     <main className="bg-slate-50 text-slate-800 transition-colors duration-300">
       <section className="relative h-[400px] flex items-center overflow-hidden">
-        <img alt="Kashmir Landscape" className="absolute inset-0 w-full h-full object-cover" src="/images/page-kashmir.jpg"/>
+        <img alt="Kashmir Landscape" className="absolute inset-0 w-full h-full object-cover" src="/images/naweedey-XHG0uFAlEGM-unsplash.jpg"/>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
-        <div className="relative max-w-7xl mx-auto px-4 w-full text-white">
+        <div className="relative w-full px-4 lg:px-8 xl:px-12 mx-auto text-white -mt-16">
           <nav className="flex items-center gap-2 text-sm mb-4 opacity-90">
             <Link to="/" className="hover:underline">Home</Link>
             <ChevronRight className="w-3 h-3" />
@@ -146,7 +146,7 @@ export function KashmirPackagesPage() {
               <ShieldCheck className="w-10 h-10 mb-4 opacity-50" />
               <h4 className="text-xl font-bold mb-2">Book with Confidence</h4>
               <p className="text-xs opacity-90 leading-relaxed mb-4">Get 100% refund on cancellations before 72 hours of departure.</p>
-              <button className="w-full py-2 bg-white text-primary font-bold rounded-lg text-sm">Learn More</button>
+              <Link to="/aboutus#contact" className="block text-center w-full py-2 bg-white text-primary font-bold rounded-lg text-sm hover:bg-slate-50 transition-colors">Learn More</Link>
             </div>
           </aside>
           
@@ -176,7 +176,6 @@ export function KashmirPackagesPage() {
                 <div key={pkg.slug} className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-300">
                   <Link to={`/kashmir-packages/${pkg.slug}`} className="block relative h-64 overflow-hidden">
                     <img alt={pkg.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={pkg.image}/>
-                    <div className="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">{pkg.badge}</div>
                     <div className="absolute bottom-4 left-4 flex gap-1">
                       <span className="bg-black/40 backdrop-blur-md text-white text-[10px] px-2 py-1 rounded-md flex items-center gap-1"><Clock className="w-3 h-3" /> {pkg.duration}</span>
                     </div>

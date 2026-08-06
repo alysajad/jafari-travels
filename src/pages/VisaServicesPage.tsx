@@ -1,49 +1,126 @@
-import { PageHero } from "../components/PageHero";
 import { whatsappLink } from "../lib/whatsapp";
 
-const visaTypes = ["Tourist visa", "Saudi Umrah / Hajj visa", "Business visa", "Student visa", "Work visa", "Transit visa"];
-const process = ["Submit documents", "We verify and lodge the application", "Track status with regular updates", "Receive visa or passport"];
+const visaTypes = [
+  { name: "Tourist visa", icon: "travel_explore", desc: "For leisure travel and family visits" },
+  { name: "Saudi Umrah / Hajj visa", icon: "mosque", desc: "Specialized religious pilgrimage visas" },
+  { name: "Business visa", icon: "work", desc: "For meetings, conferences and trade" },
+  { name: "Student visa", icon: "school", desc: "For higher education and studies abroad" },
+  { name: "Work visa", icon: "assignment_ind", desc: "Employment and skilled worker visas" },
+  { name: "Transit visa", icon: "flight", desc: "For short layovers during travel" }
+];
+const process = [
+  { title: "Submit documents", icon: "folder_shared", desc: "Share your passport and basic details with us securely." },
+  { title: "We verify and lodge", icon: "verified_user", desc: "Our experts review and submit the application." },
+  { title: "Track status", icon: "update", desc: "Get regular updates on your application's progress." },
+  { title: "Receive visa", icon: "task_alt", desc: "Get your approved visa delivered to your email." }
+];
 
 export function VisaServicesPage() {
   return (
     <main>
-      <PageHero
-        eyebrow="Tourism, business, pilgrimage and work"
-        image="/images/visa-page.jpg"
-        text="End-to-end visa assistance for UAE, Saudi Arabia, UK, Schengen, USA, Canada, Australia and more."
-        title="Visa Made Simple"
-      />
-      <section className="section-wrap grid gap-8 lg:grid-cols-2">
-        <div>
-          <h2 className="font-serif text-5xl leading-none text-kashmir-blue">Visa types offered</h2>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+      {/* Hero Section */}
+      <section className="relative min-h-[400px] lg:min-h-[500px] flex items-center pt-16 pb-16">
+        <div className="absolute inset-0 z-0">
+          <img alt="Visa Services" className="w-full h-full object-cover object-center" src="/images/visa-page.jpg"/>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 uppercase tracking-widest">
+              <span className="material-icons-outlined text-secondary animate-pulse">language</span>
+              Tourism, Business, Pilgrimage and Work
+            </div>
+            <h1 className="font-varien text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.1] mb-6 tracking-wide">
+              Visa Made <span className="text-secondary italic font-sans font-extrabold">Simple</span>.
+            </h1>
+            <p className="text-lg md:text-xl text-slate-100 mb-8 opacity-90 max-w-xl">
+              End-to-end visa assistance for UAE, Saudi Arabia, UK, Schengen, USA, Canada, Australia and more.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Visa Types Section */}
+      <section className="py-24 bg-[#F9F8F6]">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-slate-900">Visa Types Offered</h2>
+            <p className="text-slate-500 font-medium">We specialize in a wide range of visa categories for top destinations globally, ensuring a smooth and hassle-free experience.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {visaTypes.map((type) => (
-              <div className="rounded-2xl bg-white p-5 font-black text-kashmir-blue shadow-lg shadow-kashmir-blue/10" key={type}>{type}</div>
+              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all flex items-start gap-5 group" key={type.name}>
+                <div className="w-14 h-14 bg-blue-50 text-primary rounded-full flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
+                  <span className="material-icons-outlined text-2xl">{type.icon}</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-xl text-slate-900 mb-1">{type.name}</h3>
+                  <p className="text-sm text-slate-500 font-medium leading-relaxed">{type.desc}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
-        <div>
-          <h2 className="font-serif text-5xl leading-none text-kashmir-blue">Our process</h2>
-          <ol className="mt-6 grid gap-3">
-            {process.map((step, index) => (
-              <li className="rounded-2xl bg-white p-5 font-bold text-slate-700 shadow-lg shadow-kashmir-blue/10" key={step}>
-                <span className="mr-3 font-numbers text-kashmir-gold">0{index + 1}</span>
-                {step}
-              </li>
-            ))}
-          </ol>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2 space-y-8">
+              <h2 className="text-3xl md:text-4xl font-extrabold leading-tight text-slate-900">Our Hassle-Free Process</h2>
+              <p className="text-slate-600 text-lg">Getting your visa shouldn't be stressful. We've streamlined our application process to ensure maximum success rates with minimal effort from you.</p>
+              <div className="space-y-6">
+                {process.map((step, index) => (
+                  <div className="flex gap-4 items-start" key={step.title}>
+                    <div className="w-12 h-12 rounded-full bg-secondary text-white font-bold flex items-center justify-center shrink-0 text-xl shadow-lg shadow-secondary/30">
+                      {index + 1}
+                    </div>
+                    <div className="pt-2">
+                      <h4 className="font-bold text-xl text-slate-900 mb-1">{step.title}</h4>
+                      <p className="text-slate-500 font-medium">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="lg:w-1/2 relative">
+              <div className="absolute inset-0 bg-primary rounded-[3rem] transform rotate-3 scale-105 opacity-10 hidden md:block"></div>
+              <img src="/images/visa-page.jpg" className="rounded-[3rem] shadow-2xl w-full object-cover relative z-10" alt="Visa application process" />
+            </div>
+          </div>
         </div>
       </section>
-      <section className="section-wrap pt-0">
-        <form className="grid gap-4 rounded-2xl bg-white p-7 shadow-travel lg:grid-cols-2" onSubmit={(event) => event.preventDefault()}>
-          <h2 className="font-serif text-4xl text-kashmir-blue lg:col-span-2">Visa enquiry</h2>
-          {["Country", "Visa Type", "Travel Date", "Passport Holder Name", "Contact Number"].map((field) => (
-            <input className="rounded-[10px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-bold outline-none focus:border-kashmir-gold" key={field} placeholder={field} type={field.includes("Date") ? "date" : "text"} min={field.includes("Date") ? new Date().toISOString().split('T')[0] : undefined} />
-          ))}
-          <a className="focus-ring rounded-[10px] bg-kashmir-green px-5 py-3 text-center font-black text-white" href={whatsappLink("I need visa assistance.")} rel="noreferrer" target="_blank">
-            Enquire on WhatsApp
-          </a>
-        </form>
+
+      {/* Enquiry Form */}
+      <section className="container mx-auto px-4 py-24">
+        <div className="bg-primary rounded-[3rem] p-8 md:p-16 overflow-hidden relative">
+          <div className="relative z-10 max-w-3xl mx-auto text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">Start Your Application</h2>
+            <p className="text-blue-100 opacity-90 text-lg">Leave your details and our visa experts will get in touch with you immediately to discuss your requirements.</p>
+          </div>
+          
+          <form className="relative z-10 bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(event) => event.preventDefault()}>
+            {["Country", "Visa Type", "Travel Date", "Passport Holder Name", "Contact Number"].map((field) => (
+              <div className={field === "Contact Number" ? "md:col-span-2" : ""} key={field}>
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">{field}</label>
+                <input 
+                  className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" 
+                  placeholder={field} 
+                  type={field.includes("Date") ? "date" : "text"} 
+                  min={field.includes("Date") ? new Date().toISOString().split('T')[0] : undefined} 
+                />
+              </div>
+            ))}
+            <a className="md:col-span-2 bg-secondary text-white py-4 rounded-xl font-bold text-lg hover:bg-amber-500 transition-colors flex items-center justify-center gap-2 mt-4 shadow-xl shadow-secondary/30" href={whatsappLink("I need visa assistance.")} rel="noreferrer" target="_blank">
+              Enquire on WhatsApp <span className="material-icons-outlined">arrow_forward</span>
+            </a>
+          </form>
+          
+          <div className="absolute -left-20 -bottom-20 opacity-10">
+            <span className="material-icons-outlined text-[300px] text-white">flight_takeoff</span>
+          </div>
+        </div>
       </section>
     </main>
   );

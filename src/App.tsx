@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { AboutPage } from "./pages/AboutPage";
-import { ContactPage } from "./pages/ContactPage";
+
 import { GalleryPage } from "./pages/GalleryPage";
 import { HajjRegistrationPage } from "./pages/HajjRegistrationPage";
 import { HajjUmrahPage } from "./pages/HajjUmrahPage";
@@ -24,9 +24,9 @@ export default function App() {
         <Route path="hajj-umrah/hajj" element={<HajjRegistrationPage />} />
         <Route path="ticketing" element={<TicketingPage />} />
         <Route path="visa-services" element={<VisaServicesPage />} />
-        <Route path="about" element={<AboutPage />} />
+        <Route path="aboutus" element={<AboutPage />} />
         <Route path="gallery" element={<GalleryPage />} />
-        <Route path="contact" element={<ContactPage />} />
+
         <Route path="privacy-policy" element={<LegalPage title="Privacy Policy" />} />
         <Route path="terms-and-conditions" element={<LegalPage title="Terms & Conditions" />} />
         <Route path="*" element={<NotFoundPage />} />

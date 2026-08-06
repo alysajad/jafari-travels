@@ -72,6 +72,8 @@ export default {
         sans: ["Source Sans Pro", "sans-serif"],
         numbers: ["Space Grotesk", "sans-serif"],
         amiri: ["Amiri", "serif"],
+        aalto: ["Aalto", "sans-serif"],
+        varien: ["Varien", "sans-serif"],
       },
       boxShadow: {
         travel: "0 18px 45px rgba(26, 58, 107, 0.14)",

@@ -8,6 +8,7 @@ export function Layout() {
     <>
       <Header />
       <Outlet />
+      <WhatsAppFloat />
       <Footer />
     </>
   );

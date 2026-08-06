@@ -10,7 +10,6 @@ export function PackageCard({ pkg, compact = false }: { pkg: Package; compact?: 
     <article className="group relative overflow-hidden rounded-2xl bg-white shadow-travel transition hover:-translate-y-1 hover:shadow-2xl">
       <div className="relative">
         <img className={`${compact ? "h-40" : "h-52"} w-full object-cover transition-transform duration-500 group-hover:scale-105`} src={pkg.image} alt={pkg.name} loading="lazy" />
-        <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-black text-kashmir-bright">{pkg.badge}</span>
         <span className="absolute bottom-3 left-3 rounded-full bg-kashmir-blue px-3 py-1 font-numbers text-sm font-black text-white">From {pkg.price}</span>
       </div>
       <div className="p-5">

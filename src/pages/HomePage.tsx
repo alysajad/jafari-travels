@@ -13,17 +13,16 @@ export function HomePage() {
     <main>
       <section className="relative min-h-[600px] lg:min-h-[750px] flex items-center pt-16 pb-32">
         <div className="absolute inset-0 z-0">
-          <img alt="Beautiful Kashmir Landscape" className="w-full h-full object-cover" src="/images/imad-clicks-pIZZtKU_aVU-unsplash.jpg"/>
+          <img alt="Beautiful Kashmir Landscape" className="w-full h-full object-cover object-[75%_center]" src="/images/imad-clicks-pIZZtKU_aVU-unsplash.jpg"/>
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <span className="material-icons-outlined text-secondary animate-pulse">stars</span>
+            <div className="text-white text-sm font-medium mb-6">
               Trusted by 50,000+ Happy Travelers
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6">
-              Explore <span className="text-secondary italic">Kashmir</span>.<br/>Fulfil Your Hajj.
+            <h1 className="font-varien text-6xl md:text-8xl lg:text-[120px] font-extrabold text-white leading-[1.1] mb-6 tracking-wide">
+              Explore <span className="text-secondary italic font-sans font-extrabold">Kashmir</span>.<br/>Fulfil Your Hajj.
             </h1>
             <p className="text-base md:text-xl text-slate-100 mb-8 max-w-xl opacity-90">
               Your trusted travel partner for boutique Kashmir tours, spiritual Hajj & Umrah journeys, and seamless global ticketing services.
@@ -32,19 +31,8 @@ export function HomePage() {
               <Link to="/kashmir-packages" className="bg-primary text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-blue-700 transition-all text-center w-full sm:w-auto">
                   Explore Destinations <span className="material-icons-outlined">arrow_forward</span>
               </Link>
-              <Link to="/kashmir-packages" className="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-slate-100 transition-all text-center w-full sm:w-auto">
-                  View Packages
-              </Link>
             </div>
-            <div className="mt-12 flex items-center gap-4">
-              <div className="flex -space-x-3">
-                <img alt="user" className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop"/>
-                <img alt="user" className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100&auto=format&fit=crop"/>
-                <img alt="user" className="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop"/>
-                <div className="w-10 h-10 rounded-full border-2 border-white bg-secondary flex items-center justify-center text-xs font-bold text-white">+5k</div>
-              </div>
-              <p className="text-white text-sm font-medium">Loved by our growing community</p>
-            </div>
+
           </div>
         </div>
       </section>
@@ -145,50 +133,34 @@ export function HomePage() {
               </div>
             </div>
             <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
-                <div className="relative h-48">
-                  <img alt="Package" className="w-full h-full object-cover" src="/images/package-classic.jpg"/>
-                  <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full">Best Seller</span>
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-bold text-xl">Heavenly Kashmir</h3>
-                    <p className="text-xs text-slate-400 font-bold uppercase">5 Days / 4 Nights</p>
+              {[packages[0], packages[3]].map((pkg) => (
+                <div key={pkg.slug} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all flex flex-col">
+                  <div className="relative h-48">
+                    <img alt={pkg.name} className="w-full h-full object-cover" src={pkg.image}/>
+                    {pkg.badge && (
+                      <span className={`absolute top-4 left-4 text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full ${pkg.badge === 'Hot Deal' ? 'bg-red-500' : 'bg-primary'}`}>
+                        {pkg.badge}
+                      </span>
+                    )}
                   </div>
-                  <p className="text-slate-500 text-sm mb-4 line-clamp-2">Srinagar, Gulmarg, and Dal Lake Shikara experience with premium stay.</p>
-                  <div className="flex justify-between items-center">
-                    <div className="flex flex-col">
-                      <span className="text-slate-400 text-xs line-through">₹12,499</span>
-                      <span className="text-2xl font-extrabold text-primary">₹8,999</span>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex justify-between items-start mb-2 gap-2">
+                      <h3 className="font-bold text-xl">{pkg.name}</h3>
+                      <p className="text-xs text-slate-400 font-bold uppercase text-right shrink-0">{pkg.duration.replace('/', ' / ').replace('N', ' Nights').replace('D', ' Days').replace('4 Nights / 5 Days', '5 Days / 4 Nights').replace('5 Nights / 6 Days', '6 Days / 5 Nights')}</p>
                     </div>
-                    <Link to="/kashmir-packages" className="text-primary font-bold flex items-center gap-1 text-sm hover:translate-x-1 transition-transform">
-                      View Details <span className="material-icons-outlined text-sm">arrow_forward</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
-                <div className="relative h-48">
-                  <img alt="Package" className="w-full h-full object-cover" src="/images/package-winter.jpg"/>
-                  <span className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full">Hot Deal</span>
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-bold text-xl">Winter Gulmarg Special</h3>
-                    <p className="text-xs text-slate-400 font-bold uppercase">4 Days / 3 Nights</p>
-                  </div>
-                  <p className="text-slate-500 text-sm mb-4 line-clamp-2">The ultimate skiing and gondola ride experience in the heart of the Himalayas.</p>
-                  <div className="flex justify-between items-center">
-                    <div className="flex flex-col">
-                      <span className="text-slate-400 text-xs line-through">₹18,499</span>
-                      <span className="text-2xl font-extrabold text-primary">₹15,999</span>
+                    <p className="text-slate-500 text-sm mb-4 line-clamp-2 flex-1">{pkg.destinations}</p>
+                    <div className="flex justify-between items-center mt-auto">
+                      <div className="flex flex-col">
+                        <span className="text-slate-400 text-xs line-through">{pkg.originalPrice}</span>
+                        <span className="text-2xl font-extrabold text-primary">{pkg.price}</span>
+                      </div>
+                      <Link to={`/kashmir-packages/${pkg.slug}`} className="text-primary font-bold flex items-center gap-1 text-sm hover:translate-x-1 transition-transform">
+                        View Details <span className="material-icons-outlined text-sm">arrow_forward</span>
+                      </Link>
                     </div>
-                    <Link to="/kashmir-packages" className="text-primary font-bold flex items-center gap-1 text-sm hover:translate-x-1 transition-transform">
-                      View Details <span className="material-icons-outlined text-sm">arrow_forward</span>
-                    </Link>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

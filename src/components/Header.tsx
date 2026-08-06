@@ -26,9 +26,9 @@ export function Header() {
             <nav className="flex items-center gap-8 text-sm text-black uppercase tracking-wider font-bold">
               <Link className="hover:text-primary transition-colors" to="/ticketing">Air Tickets</Link>
               <Link className="hover:text-primary transition-colors" to="/visa-services">Visas</Link>
-              <Link className="hover:text-primary transition-colors" to="/contact">Contact</Link>
+              <Link className="hover:text-primary transition-colors" to="/aboutus">About Us</Link>
             </nav>
-            <Link to="/contact" className="bg-primary text-white px-8 py-3 text-sm font-semibold hover:shadow-lg hover:opacity-90 transition-all uppercase tracking-wider hidden xl:block">
+            <Link to="/aboutus#contact" className="bg-primary text-white px-8 py-3 text-sm font-semibold hover:shadow-lg hover:opacity-90 transition-all uppercase tracking-wider hidden xl:block">
                 Book Now
             </Link>
           </div>
@@ -54,10 +54,10 @@ export function Header() {
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/hajj-umrah">Hajj & Umrah</Link>
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/ticketing">Air Tickets</Link>
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/visa-services">Visas</Link>
-            <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/contact">Contact</Link>
+            <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/aboutus">About Us</Link>
           </nav>
           <div className="mt-auto pt-8">
-            <Link onClick={() => setIsMobileMenuOpen(false)} to="/contact" className="bg-primary text-white px-8 py-4 text-center rounded-xl font-bold uppercase tracking-wider block w-full shadow-lg">
+            <Link onClick={() => setIsMobileMenuOpen(false)} to="/aboutus#contact" className="bg-primary text-white px-8 py-4 text-center rounded-xl font-bold uppercase tracking-wider block w-full shadow-lg">
                 Book Now
             </Link>
           </div>
