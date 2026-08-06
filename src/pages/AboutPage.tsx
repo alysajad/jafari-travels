@@ -109,7 +109,7 @@ export function AboutPage() {
           <div className="max-w-sm mx-auto">
             <div className="group rounded-2xl overflow-hidden bg-white shadow-xl border border-slate-100 text-center">
               <div className="aspect-square overflow-hidden bg-slate-100">
-                <img alt="Adil Hussain Sofi" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" src="https://ui-avatars.com/api/?name=Adil+Hussain&size=400&background=0D8ABC&color=fff" />
+                <img alt="Adil Hussain Sofi" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" src="/images/founder.jpeg" />
               </div>
               <div className="p-8">
                 <h3 className="font-serif text-2xl text-primary mb-1">Adil Hussain Sofi</h3>
