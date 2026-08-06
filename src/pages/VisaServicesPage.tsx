@@ -26,8 +26,7 @@ export function VisaServicesPage() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 uppercase tracking-widest">
-              <span className="material-icons-outlined text-secondary animate-pulse">language</span>
+            <div className="text-white text-sm font-bold mb-6 uppercase tracking-widest">
               Tourism, Business, Pilgrimage and Work
             </div>
             <h1 className="font-varien text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.1] mb-6 tracking-wide">

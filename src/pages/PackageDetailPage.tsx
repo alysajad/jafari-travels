@@ -71,7 +71,7 @@ export function PackageDetailPage() {
 
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-10 pb-20">
         <div className="lg:col-span-2 space-y-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-white border border-black rounded-3xl shadow-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-white border border-black rounded-3xl shadow-sm">
             <div className="flex items-center gap-3">
               <div className="bg-blue-50 p-3 rounded-2xl text-primary"><i className="material-icons-outlined">schedule</i></div>
               <div><p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Duration</p><p className="font-bold">{pkg.duration}</p></div>
@@ -193,7 +193,7 @@ export function PackageDetailPage() {
                     <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all cursor-pointer" type="date" min={new Date().toISOString().split('T')[0]}/>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="relative">
                     <i className="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">person</i>
                     <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary" type="number" min="1" defaultValue="2"/>

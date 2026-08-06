@@ -13,7 +13,7 @@ export function HajjRegistrationPage() {
           <div className="flex-1 text-center lg:text-left flex flex-col gap-6">
             <span className="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[12px] uppercase tracking-[0.1em] font-bold w-fit mx-auto lg:mx-0 shadow-sm">Early Access</span>
             
-            <h1 className="text-on-primary font-display text-[36px] lg:text-[56px] font-bold leading-[1.2] lg:leading-[1.1] tracking-[-0.02em]">
+            <h1 className="text-on-primary font-display text-4xl sm:text-5xl lg:text-[56px] font-bold leading-[1.2] lg:leading-[1.1] tracking-[-0.02em]">
               Hajj 2027 Packages — <br/>Pre-Registration Open
             </h1>
             

@@ -21,7 +21,7 @@ export function HomePage() {
             <div className="text-white text-sm font-medium mb-6">
               Trusted by 50,000+ Happy Travelers
             </div>
-            <h1 className="font-varien text-6xl md:text-8xl lg:text-[120px] font-extrabold text-white leading-[1.1] mb-6 tracking-wide">
+            <h1 className="font-varien text-5xl sm:text-6xl md:text-8xl lg:text-[120px] font-extrabold text-white leading-[1.1] mb-6 tracking-wide">
               Explore <span className="text-secondary italic font-sans font-extrabold">Kashmir</span>.<br/>Fulfil Your Hajj.
             </h1>
             <p className="text-base md:text-xl text-slate-100 mb-8 max-w-xl opacity-90">
@@ -41,7 +41,7 @@ export function HomePage() {
 
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
             <div className="flex flex-col items-center text-center gap-2 group">
               <div className="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                 <span className="material-icons-outlined">verified_user</span>

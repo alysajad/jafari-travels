@@ -47,7 +47,7 @@ export function Header() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-24 pb-8 px-6 flex flex-col lg:hidden">
+        <div className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-24 pb-8 px-6 flex flex-col lg:hidden overflow-y-auto">
           <nav className="flex flex-col gap-6 text-xl font-extrabold uppercase tracking-wider text-black">
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/">Home</Link>
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/kashmir-packages">Packages</Link>

@@ -20,7 +20,7 @@ export function AboutPage() {
               Founded with the mission to bridge the gap between spiritual longing and physical travel, Jaffari Sky Travels provides more than just a booking service—we provide peace of mind.
             </p>
             
-            <div className="grid grid-cols-2 gap-8 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
               <div className="p-6 bg-white rounded-lg border border-slate-200 shadow-sm">
                 <span className="material-icons-outlined text-primary text-4xl mb-4">history_edu</span>
                 <h4 className="font-bold text-primary mb-2">Est. 2012</h4>
@@ -57,7 +57,7 @@ export function AboutPage() {
                   </div>
                   <div>
                     <p className="text-sm font-bold text-slate-800 mb-0.5">Email</p>
-                    <a href="mailto:jaffariskytravels@gmail.com" className="text-slate-600 text-sm hover:text-primary transition-colors">jaffariskytravels@gmail.com</a>
+                    <a href="mailto:jaffariskytravels@gmail.com" className="text-slate-600 text-sm hover:text-primary transition-colors break-all">jaffariskytravels@gmail.com</a>
                   </div>
                 </div>
                 
