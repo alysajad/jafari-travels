@@ -41,9 +41,38 @@ export function HomePage() {
 
       <SearchWidget />
 
+      {/* Ticker Slider */}
+      <div data-aos="fade-up" className="w-full overflow-hidden bg-white border-y border-slate-100 shadow-sm mt-12 py-5 relative flex items-center">
+        {/* Gradient fades for smooth edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+        
+        <div className="flex animate-ticker whitespace-nowrap min-w-max items-center">
+          {[
+            "Wazwan Dining", "Tulip Garden", "Photography Tours", "Shikara Rides", 
+            "Mughal Gardens", "Houseboat Stay", "Valley Trekking", "Gondola Ride", 
+            "Pahalgam River Walk", "Sonamarg Trek",
+            // Duplicated to ensure seamless loop
+            "Wazwan Dining", "Tulip Garden", "Photography Tours", "Shikara Rides", 
+            "Mughal Gardens", "Houseboat Stay", "Valley Trekking", "Gondola Ride", 
+            "Pahalgam River Walk", "Sonamarg Trek"
+          ].map((item, i) => (
+            <div key={i} className="flex items-center gap-8 mx-4">
+              <div className="flex items-center gap-3 group cursor-pointer hover:text-primary transition-colors">
+                <div className="w-8 h-8 rounded-full bg-orange-50 text-secondary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                  <span className="material-icons-outlined text-sm">location_on</span>
+                </div>
+                <span className="text-sm font-bold text-slate-700 tracking-wide">{item}</span>
+              </div>
+              <span className="w-1.5 h-1.5 bg-slate-200 rounded-full"></span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
             <div className="flex flex-col items-center text-center gap-2 group">
               <div className="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                 <span className="material-icons-outlined">verified_user</span>
@@ -80,7 +109,7 @@ export function HomePage() {
 
       <section className="py-16 bg-white text-black">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-end mb-10">
+          <div data-aos="fade-up" className="flex justify-between items-end mb-10">
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-2">Explore the Paradise on Earth</h2>
               <p className="text-slate-500 font-medium">Breathtaking locations handpicked for your next Kashmir getaway.</p>
@@ -93,6 +122,8 @@ export function HomePage() {
             {destinations.map((dest, i) => (
               <button 
                 key={i} 
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 onClick={() => setSelectedDestination(dest)}
                 className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-xl text-left focus:outline-none focus:ring-4 focus:ring-primary/50"
               >
@@ -121,7 +152,7 @@ export function HomePage() {
 
       <section className="py-24">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-12">
+          <div data-aos="fade-up" className="flex flex-col lg:flex-row gap-12">
             <div className="lg:w-1/3 bg-primary rounded-[2rem] p-10 text-white relative overflow-hidden flex flex-col justify-between">
               <div className="relative z-10">
                 <h2 className="text-4xl font-extrabold mb-4 leading-tight">Top Packages This Season</h2>
@@ -174,7 +205,7 @@ export function HomePage() {
           <div className="absolute bottom-10 left-10 w-96 h-96 border-[50px] border-black rounded-full"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
+          <div data-aos="fade-up" className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 space-y-8">
               <div className="inline-flex items-center gap-2 border border-black bg-black text-white px-4 py-2 rounded-full text-sm font-bold tracking-widest uppercase">
                 <span className="material-icons-outlined text-sm">stars</span> Spiritual Journeys
@@ -216,7 +247,7 @@ export function HomePage() {
 
       <section className="py-24 bg-[#F9F8F6]">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-3xl md:text-4xl text-[#0b4b3c] font-serif mb-4 flex items-center justify-center gap-3">
               <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -240,7 +271,7 @@ export function HomePage() {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div data-aos="fade-up" data-aos-delay="100" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col relative h-full">
               <div className="flex items-center gap-3 mb-4">

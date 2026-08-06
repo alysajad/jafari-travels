@@ -13,7 +13,20 @@ import { PackageDetailPage } from "./pages/PackageDetailPage";
 import { TicketingPage } from "./pages/TicketingPage";
 import { VisaServicesPage } from "./pages/VisaServicesPage";
 
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function App() {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: "ease-out-cubic",
+      offset: 50,
+    });
+  }, []);
+
   return (
     <Routes>
       <Route element={<Layout />}>
