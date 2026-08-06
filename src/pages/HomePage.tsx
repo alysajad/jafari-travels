@@ -22,11 +22,12 @@ export function HomePage() {
             <div className="text-white text-sm font-medium mb-6">
               Trusted by 50,000+ Happy Travelers
             </div>
-            <h1 className="font-varien text-5xl sm:text-6xl md:text-8xl lg:text-[120px] font-extrabold text-white leading-[1.1] mb-6 tracking-wide">
-              Explore <span className="text-secondary italic font-sans font-extrabold">Kashmir</span>.<br/>Fulfil Your Hajj.
+            <h1 className="font-varien font-extrabold text-white leading-[1.1] mb-6 tracking-wide flex flex-col">
+              <span className="text-4xl sm:text-5xl md:text-7xl lg:text-[90px] opacity-90">Explore</span>
+              <span className="text-secondary text-6xl sm:text-7xl md:text-9xl lg:text-[150px] drop-shadow-2xl relative z-10 -mt-2 md:-mt-6">Kashmir.</span>
             </h1>
             <p className="text-base md:text-xl text-slate-100 mb-8 max-w-xl opacity-90">
-              Your trusted travel partner for boutique Kashmir tours, spiritual Hajj & Umrah journeys, and seamless global ticketing services.
+              Your trusted travel partner for boutique Kashmir tours, breathtaking mountain adventures, and unforgettable scenic getaways.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Link to="/kashmir-packages" className="bg-primary text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-blue-700 transition-all text-center w-full sm:w-auto">
