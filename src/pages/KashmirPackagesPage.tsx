@@ -83,7 +83,7 @@ export function KashmirPackagesPage() {
             <ChevronRight className="w-3 h-3" />
             <span className="font-bold">Kashmir</span>
           </nav>
-          <h2 className="text-4xl md:text-7xl font-extrabold mb-4">Heaven on Earth: <span className="text-blue-400">Kashmir</span></h2>
+          <h2 className="font-varien text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-wide mb-4">Heaven on Earth: <span className="text-secondary">Kashmir</span></h2>
           <p className="text-lg md:text-xl max-w-2xl opacity-90 leading-relaxed">Discover the enchanting valleys, serene lakes, and snow-capped peaks of the crown jewel of India.</p>
         </div>
       </section>

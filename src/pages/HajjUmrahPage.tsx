@@ -43,14 +43,14 @@ const hotels = [
     location: "Madinah",
     distance: "Adjacent to Prophet's Mosque",
     rating: "4.6",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    image: "/images/movenpick_madinah.png"
   },
   {
     name: "Manarat Al Misk",
     location: "Makkah",
     distance: "Ajyad - ~700m to Haram",
     rating: "3.5",
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    image: "/images/manarat_al_misk.png"
   }
 ];
 
@@ -59,48 +59,56 @@ export function HajjUmrahPage() {
     <main className="bg-slate-50 pb-12 pt-16 md:pt-24">
 
       {/* Featured Hajj Packages */}
-      <section className="max-w-7xl mx-auto px-4 pb-20 text-center">
-        <span className="inline-block bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Packages</span>
-        <h2 className="font-extrabold text-4xl md:text-5xl text-slate-900 mb-4">Featured Hajj Packages</h2>
-        <p className="text-slate-500 text-lg mb-12">Explore our expected packages for the upcoming Hajj season.</p>
+      <section className="relative py-20 text-center mt-[-4rem] md:mt-[-6rem] pt-32 md:pt-40 mb-20 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img alt="Hajj at Kaaba" className="w-full h-full object-cover object-center" src="/images/kaaba-hajj-bg.png"/>
+          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        </div>
         
-        <div className="max-w-[540px] mx-auto text-left">
-          <div className="mb-6 text-center text-kashmir-gold text-sm font-black tracking-[0.2em] uppercase">Hajj 2027</div>
-          <div className="rounded-[24px] bg-[#044c3c] text-white p-8 shadow-2xl relative border border-[#044c3c]/50">
-            <div className="absolute top-4 right-4 bg-[#9a5611] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full">LIMITED SEATS</div>
-            <div className="flex flex-col items-center text-center mb-6 pt-4">
-              <Landmark className="w-8 h-8 mb-4 opacity-70" strokeWidth={1.5} />
-              <h3 className="font-serif text-3xl mb-3 text-white">Shifting Package</h3>
-              <p className="text-sm text-white/80 leading-relaxed mb-6">
-                Full Hajj package with hotel shifting between Mecca, Mina & Arafat. Includes visa, flights, accommodation & Qafila leaders.
-              </p>
-              <div className="mb-2 flex items-baseline justify-center gap-1">
-                <span className="text-4xl font-serif text-white">₹6,50,000</span>
-                <span className="text-sm text-white/70">/person</span>
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <span className="inline-block bg-white/20 backdrop-blur-md text-white border border-white/20 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Packages</span>
+          <h2 className="font-extrabold text-4xl md:text-5xl text-white mb-4 drop-shadow-md">Featured Hajj Packages</h2>
+          <p className="text-slate-200 text-lg mb-12 font-medium drop-shadow">Explore our expected packages for the upcoming Hajj season.</p>
+          
+          <div className="max-w-[540px] mx-auto text-left">
+            <div className="mb-6 text-center text-[#f59e0b] drop-shadow-md text-sm font-black tracking-[0.2em] uppercase">Hajj 2027</div>
+            <div className="rounded-[24px] bg-[#044c3c] text-white p-8 shadow-2xl relative border border-[#044c3c]/50">
+              <div className="absolute top-4 right-4 bg-[#9a5611] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full">LIMITED SEATS</div>
+              <div className="flex flex-col items-center text-center mb-6 pt-4">
+                <Landmark className="w-8 h-8 mb-4 opacity-70" strokeWidth={1.5} />
+                <h3 className="font-serif text-3xl mb-3 text-white">Shifting Package</h3>
+                <p className="text-sm text-white/80 leading-relaxed mb-6">
+                  Full Hajj package with hotel shifting between Mecca, Mina & Arafat. Includes visa, flights, accommodation & Qafila leaders.
+                </p>
+                <div className="mb-2 flex items-baseline justify-center gap-1">
+                  <span className="text-4xl font-serif text-white">₹6,50,000</span>
+                  <span className="text-sm text-white/70">/person</span>
+                </div>
+                <p className="text-[9px] font-bold tracking-widest uppercase text-white/60 mb-8">(Prices subject to change) — Please enquire</p>
               </div>
-              <p className="text-[9px] font-bold tracking-widest uppercase text-white/60 mb-8">(Prices subject to change) — Please enquire</p>
-            </div>
-            
-            <div className="pt-2">
-              <ul className="space-y-4 mb-8">
-                {[
-                  "Hajj Visa & Return Flights",
-                  "Hotel Shifting — Mecca, Mina & Arafat",
-                  "Dedicated Kashmiri Qafila Leaders",
-                  "All Rituals Guidance & Transport"
-                ].map(inc => (
-                  <li key={inc} className="flex items-center gap-3 text-sm font-medium">
-                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 bg-transparent border border-[#a3e635]">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#a3e635]" />
-                    </div>
-                    <span className="text-white/90">{inc}</span>
-                  </li>
-                ))}
-              </ul>
               
-              <a href={whatsappLink("I want to reserve a seat for the Hajj 2027 Shifting Package.")} target="_blank" rel="noreferrer" className="flex items-center justify-center w-full py-4 rounded-xl font-black text-sm uppercase tracking-wider transition-colors duration-200 bg-[#854d0e] text-white hover:bg-[#713f12]">
-                Reserve Hajj Seat
-              </a>
+              <div className="pt-2">
+                <ul className="space-y-4 mb-8">
+                  {[
+                    "Hajj Visa & Return Flights",
+                    "Hotel Shifting — Mecca, Mina & Arafat",
+                    "Dedicated Kashmiri Qafila Leaders",
+                    "All Rituals Guidance & Transport"
+                  ].map(inc => (
+                    <li key={inc} className="flex items-center gap-3 text-sm font-medium">
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 bg-transparent border border-[#a3e635]">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#a3e635]" />
+                      </div>
+                      <span className="text-white/90">{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <a href={whatsappLink("I want to reserve a seat for the Hajj 2027 Shifting Package.")} target="_blank" rel="noreferrer" className="flex items-center justify-center w-full py-4 rounded-xl font-black text-sm uppercase tracking-wider transition-colors duration-200 bg-[#854d0e] text-white hover:bg-[#713f12]">
+                  Reserve Hajj Seat
+                </a>
+              </div>
             </div>
           </div>
         </div>
