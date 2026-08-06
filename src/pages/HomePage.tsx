@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SearchWidget } from "../components/SearchWidget";
 import { DestinationModal } from "../components/DestinationModal";
 import type { Destination } from "../data/site";
+import { whatsappLink } from "../lib/whatsapp";
 
 export function HomePage() {
   const today = new Date().toISOString().split('T')[0];
@@ -343,8 +344,15 @@ export function HomePage() {
             <p className="text-blue-100 opacity-90 text-lg">Subscribe to our newsletter and be the first to know about seasonal deals and pilgrimage slots.</p>
           </div>
           <div className="w-full md:w-auto relative z-10">
-            <form className="flex bg-white p-2 rounded-2xl w-full max-w-md shadow-2xl" onSubmit={e => e.preventDefault()}>
-              <input className="bg-transparent border-none focus:ring-0 px-4 py-3 text-slate-800 w-full font-medium" placeholder="Enter your email" type="email"/>
+            <form 
+              className="flex bg-white p-2 rounded-2xl w-full max-w-md shadow-2xl" 
+              onSubmit={e => {
+                e.preventDefault();
+                const email = new FormData(e.currentTarget).get("email");
+                if(email) window.open(whatsappLink(`Please subscribe me to the newsletter. Email: ${email}`), "_blank", "noopener,noreferrer");
+              }}
+            >
+              <input name="email" className="bg-transparent border-none focus:ring-0 px-4 py-3 text-slate-800 w-full font-medium" placeholder="Enter your email" type="email"/>
               <button className="bg-primary text-white p-3 rounded-xl flex items-center justify-center hover:scale-105 transition-all" type="submit">
                 <span className="material-icons-outlined">send</span>
               </button>

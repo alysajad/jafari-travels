@@ -90,32 +90,39 @@ export function TicketingPage() {
             <p className="text-blue-100 opacity-90 text-lg">Enter your travel details and our ticketing experts will find the best options for you.</p>
           </div>
           
-          <form className="relative z-10 bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6" onSubmit={(event) => event.preventDefault()}>
+          <form 
+            className="relative z-10 bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6" 
+            onSubmit={(event) => {
+              event.preventDefault();
+              const details = Array.from(new FormData(event.currentTarget)).map(([k, v]) => `${k}: ${v}`).join(", ");
+              window.open(whatsappLink(`I need help booking a flight ticket.\n\nDetails:\n${details}`), "_blank", "noopener,noreferrer");
+            }}
+          >
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">From City</label>
-              <input className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" placeholder="e.g. Srinagar" type="text" />
+              <input name="From City" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" placeholder="e.g. Srinagar" type="text" />
             </div>
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">To City</label>
-              <input className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" placeholder="e.g. New Delhi" type="text" />
+              <input name="To City" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" placeholder="e.g. New Delhi" type="text" />
             </div>
             
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Travel Date</label>
-              <input className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="date" min={new Date().toISOString().split('T')[0]} />
+              <input name="Travel Date" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="date" min={new Date().toISOString().split('T')[0]} />
             </div>
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Return Date</label>
-              <input className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="date" min={new Date().toISOString().split('T')[0]} />
+              <input name="Return Date" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="date" min={new Date().toISOString().split('T')[0]} />
             </div>
 
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Passengers</label>
-              <input className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="number" min="1" defaultValue="1" />
+              <input name="Passengers" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="number" min="1" defaultValue="1" />
             </div>
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Travel Class</label>
-              <select className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all cursor-pointer appearance-none">
+              <select name="Travel Class" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all cursor-pointer appearance-none">
                 <option>Economy</option>
                 <option>Premium Economy</option>
                 <option>Business</option>
@@ -125,12 +132,12 @@ export function TicketingPage() {
             
             <div className="sm:col-span-2">
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Contact No.</label>
-              <input className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" placeholder="Phone number" type="tel" />
+              <input name="Contact Number" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" placeholder="Phone number" type="tel" />
             </div>
 
-            <a className="sm:col-span-2 bg-secondary text-white py-4 rounded-xl font-bold text-lg hover:bg-amber-500 transition-colors flex items-center justify-center gap-2 mt-4 shadow-xl shadow-secondary/30" href={whatsappLink("I need help booking a flight ticket.")} rel="noreferrer" target="_blank">
+            <button type="submit" className="sm:col-span-2 bg-secondary text-white py-4 rounded-xl font-bold text-lg hover:bg-amber-500 transition-colors flex items-center justify-center gap-2 mt-4 shadow-xl shadow-secondary/30">
               Search Flights <span className="material-icons-outlined">arrow_forward</span>
-            </a>
+            </button>
           </form>
           
           <div className="absolute -left-20 -bottom-20 opacity-10">

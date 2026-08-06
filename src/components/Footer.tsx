@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { whatsappLink } from "../lib/whatsapp";
 
 export function Footer() {
   return (
@@ -26,7 +27,7 @@ export function Footer() {
       <li><Link className="hover:text-primary transition-colors" to="/">Our Services</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/aboutus">Careers</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/">Travel Blog</Link></li>
-      <li><Link className="hover:text-primary transition-colors" to="/aboutus#contact">Contact Us</Link></li>
+      <li><a className="hover:text-primary transition-colors" href={whatsappLink("Hello! I have a general inquiry.")} target="_blank" rel="noreferrer">Contact Us</a></li>
       </ul>
       </div>
       <div>
@@ -36,7 +37,7 @@ export function Footer() {
       <li><Link className="hover:text-primary transition-colors" to="/hajj-umrah">Hajj & Umrah Packages</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/ticketing">Air Ticketing</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/visa-services">Global Visa Services</Link></li>
-      <li><Link className="hover:text-primary transition-colors" to="/aboutus#contact">Hotel Reservations</Link></li>
+      <li><a className="hover:text-primary transition-colors" href={whatsappLink("I would like to make a hotel reservation.")} target="_blank" rel="noreferrer">Hotel Reservations</a></li>
       </ul>
       </div>
       <div>

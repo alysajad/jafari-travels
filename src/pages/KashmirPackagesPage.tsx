@@ -1,6 +1,7 @@
-import { Bed, CalendarCheck, CheckCircle2, ChevronRight, Clock, Headphones, Lock, MapPin, ShieldCheck, Star } from "lucide-react";
+import { Bed, CalendarCheck, CheckCircle2, ChevronRight, Clock, Headphones, Lock, MapPin, ShieldCheck, Star, ArrowRight, Camera, Mountain, Coffee, Plane } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { whatsappLink } from "../lib/whatsapp";
 import { packages } from "../data/site";
 
 export function KashmirPackagesPage() {
@@ -146,7 +147,7 @@ export function KashmirPackagesPage() {
               <ShieldCheck className="w-10 h-10 mb-4 opacity-50" />
               <h4 className="text-xl font-bold mb-2">Book with Confidence</h4>
               <p className="text-xs opacity-90 leading-relaxed mb-4">Get 100% refund on cancellations before 72 hours of departure.</p>
-              <Link to="/aboutus#contact" className="block text-center w-full py-2 bg-white text-primary font-bold rounded-lg text-sm hover:bg-slate-50 transition-colors">Learn More</Link>
+              <a href={whatsappLink(`I am interested in the ${pkg.title} Kashmir package and want to learn more.`)} target="_blank" rel="noreferrer" className="block text-center w-full py-2 bg-white text-primary font-bold rounded-lg text-sm hover:bg-slate-50 transition-colors">Learn More</a>
             </div>
           </aside>
           

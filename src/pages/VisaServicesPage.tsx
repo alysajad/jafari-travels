@@ -99,11 +99,19 @@ export function VisaServicesPage() {
             <p className="text-blue-100 opacity-90 text-lg">Leave your details and our visa experts will get in touch with you immediately to discuss your requirements.</p>
           </div>
           
-          <form className="relative z-10 bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(event) => event.preventDefault()}>
+          <form 
+            className="relative z-10 bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6" 
+            onSubmit={(event) => {
+              event.preventDefault();
+              const details = Array.from(new FormData(event.currentTarget)).map(([k, v]) => `${k}: ${v}`).join(", ");
+              window.open(whatsappLink(`I need visa assistance.\n\nDetails:\n${details}`), "_blank", "noopener,noreferrer");
+            }}
+          >
             {["Country", "Visa Type", "Travel Date", "Passport Holder Name", "Contact Number"].map((field) => (
               <div className={field === "Contact Number" ? "md:col-span-2" : ""} key={field}>
                 <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">{field}</label>
                 <input 
+                  name={field}
                   className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" 
                   placeholder={field} 
                   type={field.includes("Date") ? "date" : "text"} 
@@ -111,9 +119,9 @@ export function VisaServicesPage() {
                 />
               </div>
             ))}
-            <a className="md:col-span-2 bg-secondary text-white py-4 rounded-xl font-bold text-lg hover:bg-amber-500 transition-colors flex items-center justify-center gap-2 mt-4 shadow-xl shadow-secondary/30" href={whatsappLink("I need visa assistance.")} rel="noreferrer" target="_blank">
+            <button type="submit" className="md:col-span-2 bg-secondary text-white py-4 rounded-xl font-bold text-lg hover:bg-amber-500 transition-colors flex items-center justify-center gap-2 mt-4 shadow-xl shadow-secondary/30">
               Enquire on WhatsApp <span className="material-icons-outlined">arrow_forward</span>
-            </a>
+            </button>
           </form>
           
           <div className="absolute -left-20 -bottom-20 opacity-10">
