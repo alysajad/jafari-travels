@@ -60,12 +60,6 @@ export function Footer() {
       </div>
       <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-slate-600 text-sm">© 2026 Jaffari Sky Travels. All rights reserved.</p>
-        <div className="flex items-center gap-2">
-          <span className="px-3 py-1 bg-slate-100 border border-slate-200 rounded-md text-[11px] font-extrabold text-blue-900 tracking-wider">VISA</span>
-          <span className="px-3 py-1 bg-slate-100 border border-slate-200 rounded-md text-[11px] font-extrabold text-red-600 tracking-wider">MC</span>
-          <span className="px-3 py-1 bg-slate-100 border border-slate-200 rounded-md text-[11px] font-extrabold text-slate-700 tracking-wider">UPI</span>
-          <span className="px-3 py-1 bg-slate-100 border border-slate-200 rounded-md text-[11px] font-extrabold text-green-700 tracking-wider">GPay</span>
-        </div>
       </div>
       </div>
       </footer>
