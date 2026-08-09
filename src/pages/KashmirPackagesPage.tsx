@@ -8,7 +8,7 @@ export function KashmirPackagesPage() {
   const [filters, setFilters] = useState({
     duration: { '1-3': false, '4-6': false, '7+': false } as Record<string, boolean>,
     type: { 'Family': false, 'Honeymoon': false, 'Adventure': false } as Record<string, boolean>,
-    dest: { 'Srinagar': false, 'Gulmarg': false, 'Pahalgam': false, 'Sonamarg': false } as Record<string, boolean>
+    dest: { 'Srinagar': false, 'Gulmarg': false, 'Pahalgam': false, 'Sonamarg': false, 'Leh': false } as Record<string, boolean>
   });
   
   const [sortBy, setSortBy] = useState('Recommended');
@@ -24,7 +24,7 @@ export function KashmirPackagesPage() {
     setFilters({
       duration: { '1-3': false, '4-6': false, '7+': false },
       type: { 'Family': false, 'Honeymoon': false, 'Adventure': false },
-      dest: { 'Srinagar': false, 'Gulmarg': false, 'Pahalgam': false, 'Sonamarg': false }
+      dest: { 'Srinagar': false, 'Gulmarg': false, 'Pahalgam': false, 'Sonamarg': false, 'Leh': false }
     });
     setSortBy('Recommended');
   };
@@ -139,6 +139,9 @@ export function KashmirPackagesPage() {
                   </label>
                   <label className="flex items-center gap-2 text-sm">
                     <input checked={filters.dest['Sonamarg']} onChange={() => handleFilterChange('dest', 'Sonamarg')} className="rounded border-slate-300 text-primary" type="checkbox"/> Sonamarg
+                  </label>
+                  <label className="flex items-center gap-2 text-sm">
+                    <input checked={filters.dest['Leh']} onChange={() => handleFilterChange('dest', 'Leh')} className="rounded border-slate-300 text-primary" type="checkbox"/> Leh
                   </label>
                 </div>
               </div>

@@ -8,6 +8,24 @@ export function PackageDetailPage() {
   const similar = packages.filter((item) => item.slug !== pkg.slug).slice(0, 3);
   
   const [expandedDays, setExpandedDays] = useState<number[]>([]);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: pkg.name,
+          text: `Check out this amazing tour package: ${pkg.name}`,
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.log('Error sharing', error);
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
+    }
+  };
 
   const toggleDay = (index: number) => {
     setExpandedDays(prev => 
@@ -40,8 +58,8 @@ export function PackageDetailPage() {
               </div>
             </div>
             <div className="flex gap-2">
-              <button className="p-3 border border-black rounded-xl hover:bg-slate-100 transition-colors"><i className="material-icons-outlined text-xl">share</i></button>
-              <button className="p-3 border border-black rounded-xl hover:bg-slate-100 transition-colors"><i className="material-icons-outlined text-xl">favorite_border</i></button>
+              <button onClick={handleShare} className="p-3 border border-black rounded-xl hover:bg-slate-100 transition-colors"><i className="material-icons-outlined text-xl">share</i></button>
+              <button onClick={() => setIsFavorite(!isFavorite)} className={`p-3 border rounded-xl transition-colors ${isFavorite ? 'bg-rose-50 border-rose-200' : 'border-black hover:bg-slate-100'}`}><i className={`material-icons-outlined text-xl ${isFavorite ? 'text-rose-500' : ''}`}>{isFavorite ? 'favorite' : 'favorite_border'}</i></button>
             </div>
           </div>
         </div>

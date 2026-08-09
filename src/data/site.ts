@@ -164,7 +164,25 @@ export const destinations: Destination[] = [
       "Dishkal",
       "Shaliganga River"
     ],
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26543.151978252273!2d74.525283!3d33.916053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1a17afcb7beeb%3A0x8673a9f02919318b!2sDoodhpathri!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+  },
+  {
+    name: "Leh, Ladakh",
+    price: "₹18,999",
+    rating: "4.9 (1.5k)",
+    discount: "-15%",
+    image: "/images/ladakh destination.jpg",
+    subtitle: "LAND OF HIGH PASSES",
+    distance: "415 km from Srinagar",
+    time: "Approx. 10 Hours",
+    description: "A mesmerizing desert city in the Himalayas, famous for its Buddhist monasteries, stunning landscapes, and high-altitude mountain passes.",
+    attractions: [
+      "Pangong Lake",
+      "Khardung La Pass",
+      "Nubra Valley",
+      "Shanti Stupa",
+      "Magnetic Hill"
+    ],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d104576.49524029272!2d77.49129532842407!3d34.166318531766624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38fdeb21445fed85%3A0xd1bb09975086f710!2sLeh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
   }
 ];
 
@@ -335,6 +353,44 @@ export const packages = [
       { day: 3, title: "Pahalgam Valleys", details: "Day trip to Pahalgam. Group visit to Betaab Valley and shared pony rides. Return to Srinagar." },
       { day: 4, title: "Srinagar Gardens", details: "Visit Mughal Gardens. Free time for group shopping at local markets." },
       { day: 5, title: "Departure", details: "Group drop at Srinagar airport." }
+    ]
+  },
+  {
+    slug: "leh-ladakh-explorer",
+    name: "Leh Ladakh Explorer",
+    duration: "5N/6D",
+    destinations: "Leh, Nubra Valley, Pangong Lake",
+    price: "Rs 19,999",
+    originalPrice: "Rs 24,999",
+    badge: "Adventure",
+    type: "Adventure",
+    image: "/images/ladakh.jpg",
+    inclusions: ["Leh hotel stay", "Permits", "SUV transfers", "Meals"],
+    itinerary: [
+      { day: 1, title: "Arrival in Leh", details: "Arrive at Kushok Bakula Rimpochee Airport. Transfer to hotel for acclimatization. Evening visit to Shanti Stupa." },
+      { day: 2, title: "Leh Local Sightseeing", details: "Visit Magnetic Hill, Gurudwara Pathar Sahib, and Sangam (Confluence of Zanskar and Indus rivers)." },
+      { day: 3, title: "Nubra Valley via Khardung La", details: "Drive to Nubra Valley over Khardung La, the highest motorable road. Enjoy the double-humped camel safari." },
+      { day: 4, title: "Pangong Lake", details: "Travel to the mesmerizing Pangong Lake via Shyok river route. Overnight camping near the pristine blue waters." },
+      { day: 5, title: "Return to Leh", details: "Wake up to stunning lake sunrise views. Drive back to Leh via Chang La pass. Evening at leisure for shopping." },
+      { day: 6, title: "Departure", details: "Morning breakfast. Transfer to Leh airport for your onward flight." }
+    ]
+  },
+  {
+    slug: "leh-adventure",
+    name: "Leh Adventure",
+    duration: "3N/4D",
+    destinations: "Leh",
+    price: "Rs 6,200",
+    originalPrice: "Rs 8,500",
+    badge: "Budget",
+    type: "Adventure",
+    image: "/images/ladakh destination.jpg",
+    inclusions: ["Budget stay", "Local sightseeing", "Airport transfers", "Breakfast"],
+    itinerary: [
+      { day: 1, title: "Arrival in Leh", details: "Arrive at Kushok Bakula Rimpochee Airport. Transfer to hotel for acclimatization. Evening visit to Shanti Stupa and Leh Palace." },
+      { day: 2, title: "Sham Valley Tour", details: "Visit Magnetic Hill, Gurudwara Pathar Sahib, and Sangam (Confluence of Zanskar and Indus rivers)." },
+      { day: 3, title: "Monasteries & Markets", details: "Visit Thiksey Monastery and Shey Palace. Evening free for shopping at Leh Main Market." },
+      { day: 4, title: "Departure", details: "Morning breakfast. Transfer to Leh airport for your onward journey." }
     ]
   }
 ];
