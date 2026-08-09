@@ -208,7 +208,7 @@ export function PackageDetailPage() {
                   <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Check Availability</label>
                   <div className="relative">
                     <i className="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">calendar_today</i>
-                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all cursor-pointer" type="date" min={new Date().toISOString().split('T')[0]}/>
+                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all cursor-pointer" type="date" min={new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0]}/>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

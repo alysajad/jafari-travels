@@ -109,11 +109,12 @@ export function TicketingPage() {
             
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Travel Date</label>
-              <input name="Travel Date" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="date" min={new Date().toISOString().split('T')[0]} />
+              <input name="Travel Date" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="date" min={new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0]} />
             </div>
-            <div>
-              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 block">Return Date</label>
-              <input name="Return Date" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="date" min={new Date().toISOString().split('T')[0]} />
+            
+            <div className="space-y-2">
+              <label className="text-sm font-bold text-slate-500 uppercase tracking-wider pl-1">Return Date</label>
+              <input name="Return Date" className="bg-slate-50 border border-slate-100 rounded-xl px-4 py-4 text-slate-800 font-bold focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none w-full transition-all" type="date" min={new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0]} />
             </div>
 
             <div>

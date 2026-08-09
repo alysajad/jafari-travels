@@ -1,13 +1,14 @@
-import { ArrowRight, CalendarDays, FileText, Landmark, MapPin, Mountain, Plane, UsersRound } from "lucide-react";
+import { ArrowRight, CalendarDays, FileText, Landmark, MapPin, Mountain, Plane, UsersRound, Ticket } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { whatsappLink } from "../lib/whatsapp";
 
 const tabs = {
-  kashmir: ["Destination", "Srinagar, Kashmir", "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Search Packages"],
-  umrah: ["Package Type", "Premium Umrah", "Duration", "15 Days", "Travel Month", "Ramadan 2027", "Travelers", "Family of 4", "View Packages"],
-  tickets: ["From", "Srinagar", "To", "Delhi", "Travel Date", "2026-09-20", "Travelers", "2 Adults", "Search Flights"],
-  visa: ["Country", "Saudi Arabia", "Nationality", "Indian", "Travel Date", "2026-09-20", "Visa Type", "Umrah", "Enquire Now"],
+  kashmir: ["Destination", ["Srinagar, Kashmir", "Gulmarg, Kashmir", "Pahalgam, Kashmir", "Sonamarg, Kashmir", "All Kashmir"], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Search Packages"],
+  umrah: ["Package Type", ["Premium Umrah", "Economy Umrah", "VIP Umrah", "Ramadan Umrah"], "Duration", ["15 Days", "21 Days", "28 Days", "Custom"], "Travel Month", ["Ramadan 2027", "Shawwal 2027", "Rajab 2027", "Any Month"], "Travelers", "Family of 4", "View Packages"],
+  tickets: ["From", ["Srinagar (SXR)", "Delhi (DEL)", "Mumbai (BOM)", "Dubai (DXB)", "Jeddah (JED)"], "To", ["Delhi (DEL)", "Srinagar (SXR)", "Dubai (DXB)", "Jeddah (JED)", "Mumbai (BOM)"], "Travel Date", "2026-09-20", "Travelers", "2 Adults", "Search Flights"],
+  visa: ["Country", ["Saudi Arabia", "UAE", "Oman", "Qatar", "Kuwait", "Malaysia", "Thailand"], "Nationality", ["Indian", "Foreign National"], "Travel Date", "2026-09-20", "Visa Type", ["Umrah Visa", "Tourist Visa", "Business Visa", "Transit Visa"], "Enquire Now"],
+  gondola: ["Phase", ["Phase 1 (Gulmarg - Kongdoori)", "Phase 2 (Kongdoori - Apharwat)", "Phase 1 & 2"], "Date", "2026-09-20", "Time Slot", ["09:00 AM - 11:00 AM", "11:00 AM - 01:00 PM", "01:00 PM - 03:00 PM", "Any Time"], "Travelers", "2 Adults", "Book Gondola"],
 } as const;
 
 type TabKey = keyof typeof tabs;
@@ -38,22 +39,23 @@ export function SearchWidget() {
             {key === "umrah" && <Landmark className="w-5 h-5" />}
             {key === "tickets" && <Plane className="w-5 h-5" />}
             {key === "visa" && <FileText className="w-5 h-5" />}
-            {key === "umrah" ? "Hajj & Umrah" : key === "tickets" ? "Air Tickets" : key === "kashmir" ? "Kashmir Tours" : "Visas"}
+            {key === "gondola" && <Ticket className="w-5 h-5" />}
+            {key === "umrah" ? "Hajj & Umrah" : key === "tickets" ? "Air Tickets" : key === "kashmir" ? "Kashmir Tours" : key === "gondola" ? "Gondola Tickets" : "Visas"}
           </button>
         ))}
       </div>
 
       <form className="grid gap-3 pt-6 lg:grid-cols-[repeat(4,minmax(0,1fr))_180px]" onSubmit={submit}>
-        <SearchField key={`f1-${active}`} icon={<MapPin />} label={fields[0]} value={fields[1]} />
-        <SearchField key={`f2-${active}`} icon={<CalendarDays />} label={fields[2]} value={fields[3]} />
-        <SearchField key={`f3-${active}`} icon={<CalendarDays />} label={fields[4]} value={fields[5]} />
+        <SearchField key={`f1-${active}`} icon={<MapPin />} label={fields[0] as string} value={fields[1]} />
+        <SearchField key={`f2-${active}`} icon={<CalendarDays />} label={fields[2] as string} value={fields[3]} />
+        <SearchField key={`f3-${active}`} icon={<CalendarDays />} label={fields[4] as string} value={fields[5]} />
         {fields[6] === "Travelers" ? (
-          <TravelerField key={`f4-${active}`} icon={<UsersRound />} label={fields[6]} />
+          <TravelerField key={`f4-${active}`} icon={<UsersRound />} label={fields[6] as string} />
         ) : (
-          <SearchField key={`f4-${active}`} icon={<UsersRound />} label={fields[6]} value={fields[7]} />
+          <SearchField key={`f4-${active}`} icon={<UsersRound />} label={fields[6] as string} value={fields[7]} />
         )}
         <button className="focus-ring inline-flex min-h-[64px] items-center justify-center gap-2 rounded-2xl bg-kashmir-bright px-6 text-sm font-bold text-white shadow-travel" type="submit">
-          {fields[8]}
+          {fields[8] as string}
           <ArrowRight className="h-4 w-4" />
         </button>
       </form>
@@ -61,14 +63,26 @@ export function SearchWidget() {
   );
 }
 
-function SearchField({ icon, label, value }: { icon: ReactNode; label: string; value: string }) {
-  const isDate = /^\d{4}-\d{2}-\d{2}$/.test(value);
+function SearchField({ icon, label, value }: { icon: ReactNode; label: string; value: string | readonly string[] }) {
+  const isDate = typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value);
+  const isArray = Array.isArray(value);
+  
+  const minDate = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0];
+
   return (
     <label className="flex min-w-0 items-center gap-3 rounded-[10px] border border-slate-200 bg-slate-50 px-5 py-5">
       <span className="text-kashmir-bright [&>svg]:h-5 [&>svg]:w-5">{icon}</span>
-      <span className="min-w-0 flex-1">
-        <span className="block text-[11px] font-bold text-kashmir-slate">{label}</span>
-        <input name={label} className="w-full bg-transparent text-sm font-semibold outline-none" defaultValue={value} type={isDate ? "date" : "text"} min={isDate ? new Date().toISOString().split('T')[0] : undefined} />
+      <span className="min-w-0 flex-1 flex flex-col justify-center">
+        <span className="block text-[11px] font-bold text-kashmir-slate mb-1">{label}</span>
+        {isArray ? (
+          <select name={label} className="w-full bg-transparent text-sm font-semibold outline-none cursor-pointer">
+            {(value as readonly string[]).map((opt) => (
+              <option key={opt} value={opt}>{opt}</option>
+            ))}
+          </select>
+        ) : (
+          <input name={label} className="w-full bg-transparent text-sm font-semibold outline-none" defaultValue={value as string} type={isDate ? "date" : "text"} min={isDate ? minDate : undefined} />
+        )}
       </span>
     </label>
   );
