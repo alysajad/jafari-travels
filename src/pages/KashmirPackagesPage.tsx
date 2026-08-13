@@ -12,8 +12,10 @@ export function KashmirPackagesPage() {
   });
   
   const [sortBy, setSortBy] = useState('Recommended');
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const handleFilterChange = (category: keyof typeof filters, key: string) => {
+    setVisibleCount(6);
     setFilters(prev => ({
       ...prev,
       [category]: { ...prev[category], [key]: !prev[category][key] }
@@ -27,6 +29,7 @@ export function KashmirPackagesPage() {
       dest: { 'Srinagar': false, 'Gulmarg': false, 'Pahalgam': false, 'Sonamarg': false, 'Leh': false }
     });
     setSortBy('Recommended');
+    setVisibleCount(6);
   };
 
   const processedPackages = useMemo(() => {
@@ -176,7 +179,7 @@ export function KashmirPackagesPage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {processedPackages.map(pkg => (
+                {processedPackages.slice(0, visibleCount).map(pkg => (
                 <div key={pkg.slug} className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-300">
                   <Link to={`/kashmir-packages/${pkg.slug}`} className="block relative h-64 overflow-hidden">
                     <img alt={pkg.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={pkg.image}/>
@@ -220,9 +223,9 @@ export function KashmirPackagesPage() {
               </div>
             )}
             
-            {processedPackages.length > 0 && (
+            {processedPackages.length > visibleCount && (
               <div className="mt-12 text-center">
-                <button className="px-8 py-3 border-2 border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-white transition-all">Load More Packages</button>
+                <button onClick={() => setVisibleCount(v => v + 6)} className="px-8 py-3 border-2 border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-white transition-all">Load More Packages</button>
               </div>
             )}
           </div>
