@@ -199,6 +199,50 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Car Rental Preview Section */}
+      <section className="py-24 bg-white border-y border-slate-100">
+        <div className="container mx-auto px-4">
+          <div data-aos="fade-up" className="flex justify-between items-end mb-10">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-2">Rent a Vehicle for Your Journey</h2>
+              <p className="text-slate-500 font-medium">From sedans to luxury coaches, pick the format that fits your trip.</p>
+            </div>
+            <Link to="/car-rental" className="text-primary font-bold flex items-center gap-1 hover:underline whitespace-nowrap">
+                View Full Fleet <span className="material-icons-outlined text-base">arrow_forward</span>
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: "Sedan", cat: "Sedan", price: "2,499", image: "/images/rental-sedan.png" },
+              { name: "Innova", cat: "MUV", price: "3,000", image: "/images/rental-innova.png" },
+              { name: "Tempo 12 & 14 Seater", cat: "Tempo", price: "5,500", image: "/images/rental-tempo-12.png" }
+            ].map((v, i) => (
+              <div key={i} data-aos="fade-up" data-aos-delay={i * 100} className="bg-slate-50 rounded-[2rem] p-4 shadow-sm border border-slate-100 hover:shadow-xl transition-all group">
+                <div className="relative h-48 rounded-[1.5rem] bg-slate-200 mb-6 overflow-hidden flex items-center justify-center">
+                  <img src={v.image} alt={v.name} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-110 transition-transform duration-500" />
+                  <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full z-10">
+                    {v.cat}
+                  </span>
+                </div>
+                <div className="px-2">
+                  <h3 className="text-xl font-extrabold text-slate-900 mb-4">{v.name}</h3>
+                  <div className="flex items-center justify-between border-t border-slate-200 pt-4">
+                    <div>
+                      <span className="text-xl font-extrabold text-primary">₹{v.price}</span>
+                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest ml-1">/DAY</span>
+                    </div>
+                    <Link to="/car-rental" className="text-sm font-bold text-slate-600 hover:text-primary transition-colors flex items-center gap-1">
+                      Details <span className="material-icons-outlined text-[14px]">arrow_forward</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-24 bg-white text-black overflow-hidden relative">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 right-10 w-64 h-64 border-[30px] border-black rounded-full"></div>

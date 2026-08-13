@@ -35,6 +35,7 @@ export function Footer() {
       <ul className="space-y-4 text-slate-500 text-sm font-medium">
       <li><Link className="hover:text-primary transition-colors" to="/kashmir-packages">Kashmir Holiday Tours</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/hajj-umrah">Hajj & Umrah Packages</Link></li>
+      <li><Link className="hover:text-primary transition-colors" to="/car-rental">Car Rental</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/ticketing">Air Ticketing</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/visa-services">Global Visa Services</Link></li>
       <li><a className="hover:text-primary transition-colors" href={whatsappLink("I would like to make a hotel reservation.")} target="_blank" rel="noreferrer">Hotel Reservations</a></li>

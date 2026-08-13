@@ -12,6 +12,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { PackageDetailPage } from "./pages/PackageDetailPage";
 import { TicketingPage } from "./pages/TicketingPage";
 import { VisaServicesPage } from "./pages/VisaServicesPage";
+import { CarRentalPage } from "./pages/CarRentalPage";
 
 import { useEffect } from "react";
 import AOS from "aos";
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="hajj-umrah/hajj" element={<HajjRegistrationPage />} />
         <Route path="ticketing" element={<TicketingPage />} />
         <Route path="visa-services" element={<VisaServicesPage />} />
+        <Route path="car-rental" element={<CarRentalPage />} />
         <Route path="aboutus" element={<AboutPage />} />
         <Route path="gallery" element={<GalleryPage />} />
 

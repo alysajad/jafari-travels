@@ -164,6 +164,7 @@ export const destinations: Destination[] = [
       "Dishkal",
       "Shaliganga River"
     ],
+    mapUrl: ""
   },
   {
     name: "Leh, Ladakh",
@@ -433,4 +434,107 @@ export const routeHighlights = [
   { icon: Plane, from: "Delhi", to: "New York" },
   { icon: BriefcaseBusiness, from: "Group", to: "Corporate" },
   { icon: Clock3, from: "Urgent", to: "Last-minute" },
+];
+
+export interface RentalVehicle {
+  id: string;
+  name: string;
+  category: "Sedan" | "MUV" | "SUV" | "Premium MUV" | "Luxury Van" | "Tempo";
+  seats: number;
+  bags: number;
+  transmission: "Manual" | "Automatic";
+  ac: boolean;
+  pricePerDay: number;
+  image: string;
+}
+
+export const rentalVehicles: RentalVehicle[] = [
+  {
+    id: "sedan",
+    name: "Sedan",
+    category: "Sedan",
+    seats: 4,
+    bags: 2,
+    transmission: "Manual",
+    ac: true,
+    pricePerDay: 2499,
+    image: "/images/rental-sedan.png",
+  },
+  {
+    id: "ertiga",
+    name: "Ertiga",
+    category: "MUV",
+    seats: 7,
+    bags: 3,
+    transmission: "Manual",
+    ac: true,
+    pricePerDay: 2899,
+    image: "/images/rental-ertiga.png",
+  },
+  {
+    id: "innova",
+    name: "Innova",
+    category: "MUV",
+    seats: 7,
+    bags: 4,
+    transmission: "Manual",
+    ac: true,
+    pricePerDay: 3000,
+    image: "/images/rental-innova.png",
+  },
+  {
+    id: "innova-crysta",
+    name: "Innova Crysta",
+    category: "Premium MUV",
+    seats: 7,
+    bags: 4,
+    transmission: "Automatic",
+    ac: true,
+    pricePerDay: 3500,
+    image: "/images/rental-innova-crysta.png",
+  },
+  {
+    id: "urbania",
+    name: "Urbania",
+    category: "Luxury Van",
+    seats: 17,
+    bags: 8,
+    transmission: "Manual",
+    ac: true,
+    pricePerDay: 5888,
+    image: "/images/rental-urbania.png",
+  },
+  {
+    id: "fortuner",
+    name: "Fortuner",
+    category: "SUV",
+    seats: 7,
+    bags: 4,
+    transmission: "Automatic",
+    ac: true,
+    pricePerDay: 5500,
+    image: "/images/rental-fortuner.png",
+  },
+  {
+    id: "tempo-12-14",
+    name: "Tempo 12 & 14 Seater",
+    category: "Tempo",
+    seats: 14,
+    bags: 6,
+    transmission: "Manual",
+    ac: true,
+    pricePerDay: 5500,
+    image: "/images/rental-tempo-12.png",
+  },
+  {
+    id: "tempo-17-20",
+    name: "Tempo 17 & 20 Seater",
+    category: "Tempo",
+    seats: 20,
+    bags: 10,
+    transmission: "Manual",
+    ac: true,
+    pricePerDay: 6000,
+    image: "/images/rental-tempo-17.png",
+  },
 ];
