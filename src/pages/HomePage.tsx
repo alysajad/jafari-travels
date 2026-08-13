@@ -234,7 +234,7 @@ export function HomePage() {
                     <div className="flex flex-col">
                       <span className="text-[11px] text-slate-400 line-through font-semibold mb-0.5">₹{v.originalPrice}</span>
                       <div className="flex items-baseline gap-1">
-                        <span className="text-3xl font-extrabold text-black">₹{v.price}</span>
+                        <span className="text-3xl font-extrabold text-primary">₹{v.price}</span>
                         <span className="text-xs text-slate-500">/day</span>
                       </div>
                     </div>
