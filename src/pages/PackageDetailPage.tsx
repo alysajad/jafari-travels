@@ -64,26 +64,9 @@ export function PackageDetailPage() {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-3 h-[300px] md:h-[500px] rounded-3xl overflow-hidden relative">
-          <div className="md:col-span-2 md:row-span-2 relative group cursor-pointer overflow-hidden">
-            <img alt={pkg.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={pkg.image}/>
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
-          </div>
-          <div className="hidden md:block relative group cursor-pointer overflow-hidden">
-            <img alt="Gulmarg Snow" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="/images/destination-gulmarg.jpg"/>
-          </div>
-          <div className="hidden md:block relative group cursor-pointer overflow-hidden">
-            <img alt="Pahalgam Valley" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="/images/destination-pahalgam.jpg"/>
-          </div>
-          <div className="hidden md:block relative group cursor-pointer overflow-hidden">
-            <img alt="Houseboat" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="/images/destination-dal-lake.jpg"/>
-          </div>
-          <div className="hidden md:block relative group cursor-pointer overflow-hidden">
-            <img alt="Srinagar" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="/images/destination-srinagar.jpg"/>
-            <button className="absolute bottom-4 right-4 bg-white/90 backdrop-blur text-slate-900 px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2">
-              <i className="material-icons-outlined text-sm">grid_view</i> Show All Photos
-            </button>
-          </div>
+        <div className="h-[300px] md:h-[500px] rounded-3xl overflow-hidden relative group cursor-pointer">
+          <img alt={pkg.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={pkg.image}/>
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
         </div>
       </section>
 
