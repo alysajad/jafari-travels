@@ -85,14 +85,14 @@ export function HajjUmrahPage() {
                   <span className="text-4xl font-serif text-white">₹6,50,000</span>
                   <span className="text-sm text-white/70">/person</span>
                 </div>
-                <p className="text-[9px] font-bold tracking-widest uppercase text-white/60 mb-8">(Prices subject to change) — Please enquire</p>
+                <p className="text-[9px] font-bold tracking-widest uppercase text-white/60 mb-8">(Prices subject to change) - Please enquire</p>
               </div>
               
               <div className="pt-2">
                 <ul className="space-y-4 mb-8">
                   {[
                     "Hajj Visa & Return Flights",
-                    "Hotel Shifting — Mecca, Mina & Arafat",
+                    "Hotel Shifting - Mecca, Mina & Arafat",
                     "Dedicated Kashmiri Qafila Leaders",
                     "All Rituals Guidance & Transport"
                   ].map(inc => (

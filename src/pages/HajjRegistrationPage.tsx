@@ -14,7 +14,7 @@ export function HajjRegistrationPage() {
             <span className="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[12px] uppercase tracking-[0.1em] font-bold w-fit mx-auto lg:mx-0 shadow-sm">Early Access</span>
             
             <h1 className="text-on-primary font-display text-4xl sm:text-5xl lg:text-[56px] font-bold leading-[1.2] lg:leading-[1.1] tracking-[-0.02em]">
-              Hajj 2027 Packages — <br/>Pre-Registration Open
+              Hajj 2027 Packages - <br/>Pre-Registration Open
             </h1>
             
             <p className="text-surface-container-low text-[18px] leading-[1.6] max-w-2xl mx-auto lg:mx-0">

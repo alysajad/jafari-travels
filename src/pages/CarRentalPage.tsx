@@ -54,7 +54,7 @@ export function CarRentalPage() {
               Fifteen vehicles.<br/><span className="text-primary">One promise.</span>
             </h2>
             <p className="text-slate-600 text-lg">
-              From a Swift for two through to a 20-seater coach — pick the format that fits your trip.
+              From a Swift for two through to a 20-seater coach - pick the format that fits your trip.
             </p>
           </div>
 
@@ -117,9 +117,12 @@ export function CarRentalPage() {
 
                   {/* Price & Action */}
                   <div className="flex items-center justify-between border-t border-slate-200 pt-6">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-3xl font-extrabold text-black">₹{vehicle.pricePerDay.toLocaleString()}</span>
-                      <span className="text-xs text-slate-500">/day</span>
+                    <div className="flex flex-col">
+                      <span className="text-[11px] text-slate-400 line-through font-semibold mb-0.5">₹{(Math.round(vehicle.pricePerDay * 1.25 / 100) * 100).toLocaleString()}</span>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-3xl font-extrabold text-black">₹{vehicle.pricePerDay.toLocaleString()}</span>
+                        <span className="text-xs text-slate-500">/day</span>
+                      </div>
                     </div>
                     <a
                       href={whatsappLink(`Hi, I want to rent the ${vehicle.name} (${vehicle.category}) for ₹${vehicle.pricePerDay}/day.`)}

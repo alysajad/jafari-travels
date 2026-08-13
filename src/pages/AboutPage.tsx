@@ -17,7 +17,7 @@ export function AboutPage() {
           <div>
             <h2 className="font-serif text-4xl md:text-5xl text-primary mb-8 leading-tight">Crafting Journeys <br/>of a Lifetime</h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-8">
-              Founded with the mission to bridge the gap between spiritual longing and physical travel, Jaffari Sky Travels provides more than just a booking service—we provide peace of mind.
+              Founded with the mission to bridge the gap between spiritual longing and physical travel, Jaffari Sky Travels provides more than just a booking service - we provide peace of mind.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">

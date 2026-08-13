@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { destinations, packages } from "../data/site";
 import { useState } from "react";
 import { SearchWidget } from "../components/SearchWidget";
@@ -214,26 +215,34 @@ export function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Sedan", cat: "Sedan", price: "2,499", image: "/images/rental-sedan.png" },
-              { name: "Innova", cat: "MUV", price: "3,000", image: "/images/rental-innova.png" },
-              { name: "Tempo 12 & 14 Seater", cat: "Tempo", price: "5,500", image: "/images/rental-tempo-12.png" }
+              { name: "Sedan", cat: "Sedan", price: "2,499", originalPrice: "3,100", image: "/images/rental-sedan.png" },
+              { name: "Innova", cat: "MUV", price: "3,000", originalPrice: "3,800", image: "/images/rental-innova.png" },
+              { name: "Tempo 12 & 14 Seater", cat: "Tempo", price: "5,500", originalPrice: "6,900", image: "/images/rental-tempo-12.png" }
             ].map((v, i) => (
               <div key={i} data-aos="fade-up" data-aos-delay={i * 100} className="bg-slate-50 rounded-[2rem] p-4 shadow-sm border border-slate-100 hover:shadow-xl transition-all group">
-                <div className="relative h-48 rounded-[1.5rem] bg-slate-200 mb-6 overflow-hidden flex items-center justify-center">
-                  <img src={v.image} alt={v.name} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-110 transition-transform duration-500" />
+                <div className="relative aspect-[4/3] w-full rounded-[1.5rem] bg-slate-200 mb-6 overflow-hidden flex items-center justify-center">
+                  <img src={v.image} alt={v.name} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />
                   <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full z-10">
                     {v.cat}
                   </span>
                 </div>
-                <div className="px-2">
-                  <h3 className="text-xl font-extrabold text-slate-900 mb-4">{v.name}</h3>
-                  <div className="flex items-center justify-between border-t border-slate-200 pt-4">
-                    <div>
-                      <span className="text-xl font-extrabold text-primary">₹{v.price}</span>
-                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest ml-1">/DAY</span>
+                <div className="px-2 flex flex-col flex-1">
+                  <div className="mb-5">
+                    <h3 className="text-2xl font-extrabold text-black">{v.name}</h3>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-slate-200 pt-6 mt-auto">
+                    <div className="flex flex-col">
+                      <span className="text-[11px] text-slate-400 line-through font-semibold mb-0.5">₹{v.originalPrice}</span>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-3xl font-extrabold text-black">₹{v.price}</span>
+                        <span className="text-xs text-slate-500">/day</span>
+                      </div>
                     </div>
-                    <Link to="/car-rental" className="text-sm font-bold text-slate-600 hover:text-primary transition-colors flex items-center gap-1">
-                      Details <span className="material-icons-outlined text-[14px]">arrow_forward</span>
+                    <Link to="/car-rental" className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 gap-3 bg-black text-white hover:bg-slate-800">
+                      Details
+                      <div className="w-7 h-7 rounded-full flex items-center justify-center bg-[#f59e0b] text-white">
+                        <ArrowRight className="w-3 h-3" />
+                      </div>
                     </Link>
                   </div>
                 </div>
