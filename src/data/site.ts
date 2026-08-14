@@ -297,8 +297,8 @@ export const packages = [
   {
     slug: "grand-kashmir-ladakh",
     name: "Grand Kashmir & Ladakh",
-    duration: "9N/10D",
-    destinations: "Srinagar, Gulmarg, Pahalgam, Sonamarg, Kargil, Leh",
+    duration: "10N/11D",
+    destinations: "Srinagar, Gulmarg, Pahalgam, Yusmarg, Sonamarg, Kargil, Leh",
     price: "Rs 28,999",
     originalPrice: "Rs 34,999",
     badge: "Premium",
@@ -309,13 +309,14 @@ export const packages = [
       { day: 1, title: "Srinagar Arrival", details: "Arrive in Srinagar. Local sightseeing of Mughal Gardens and Lal Chowk. Overnight stay." },
       { day: 2, title: "Gulmarg Excursion", details: "Day trip to Gulmarg. Enjoy the Gondola and beautiful landscapes. Visit Drung Waterfall and Maharaja Palace." },
       { day: 3, title: "Pahalgam Excursion", details: "Day trip to Pahalgam. Visit Betaab valley. Return to Srinagar." },
-      { day: 4, title: "Srinagar to Kargil via Sonamarg", details: "Drive to Kargil via Sonamarg and Zojila Pass. Visit Drass war memorial. Overnight in Kargil." },
-      { day: 5, title: "Kargil to Leh", details: "Drive to Leh via Lamayuru and Magnetic Hill. Check-in to Leh hotel to acclimatize." },
-      { day: 6, title: "Leh Local Sightseeing", details: "Visit Shanti Stupa, Leh Palace, and local monasteries. Rest for altitude adjustment." },
-      { day: 7, title: "Nubra Valley via Khardung La", details: "Drive to Nubra Valley over Khardung La (highest motorable road). Enjoy double-humped camel ride." },
-      { day: 8, title: "Pangong Lake", details: "Drive to the mesmerizing Pangong Lake via Shyok river route. Overnight camping near the lake." },
-      { day: 9, title: "Return to Leh", details: "Wake up to stunning lake views. Drive back to Leh via Chang La pass. Evening shopping." },
-      { day: 10, title: "Departure from Leh", details: "Transfer to Kushok Bakula Rimpochee Airport for your flight home." }
+      { day: 4, title: "Yusmarg Excursion", details: "Day trip to Yusmarg, the Meadow of Jesus. Walk along the Doodh Ganga stream. Return to Srinagar." },
+      { day: 5, title: "Srinagar to Kargil via Sonamarg", details: "Drive to Kargil via Sonamarg and Zojila Pass. Visit Drass war memorial. Overnight in Kargil." },
+      { day: 6, title: "Kargil to Leh", details: "Drive to Leh via Lamayuru and Magnetic Hill. Check-in to Leh hotel to acclimatize." },
+      { day: 7, title: "Leh Local Sightseeing", details: "Visit Shanti Stupa, Leh Palace, and local monasteries. Rest for altitude adjustment." },
+      { day: 8, title: "Nubra Valley via Khardung La", details: "Drive to Nubra Valley over Khardung La (highest motorable road). Enjoy double-humped camel ride." },
+      { day: 9, title: "Pangong Lake", details: "Drive to the mesmerizing Pangong Lake via Shyok river route. Overnight camping near the lake." },
+      { day: 10, title: "Return to Leh", details: "Wake up to stunning lake views. Drive back to Leh via Chang La pass. Evening shopping." },
+      { day: 11, title: "Departure from Leh", details: "Transfer to Kushok Bakula Rimpochee Airport for your flight home." }
     ]
   },
   {
@@ -396,6 +397,45 @@ export const packages = [
       { day: 2, title: "Sham Valley Tour", details: "Visit Magnetic Hill, Gurudwara Pathar Sahib, and Sangam (Confluence of Zanskar and Indus rivers)." },
       { day: 3, title: "Monasteries & Markets", details: "Visit Thiksey Monastery and Shey Palace. Evening free for shopping at Leh Main Market." },
       { day: 4, title: "Departure", details: "Morning breakfast. Transfer to Leh airport for your onward journey." }
+    ]
+  },
+  {
+    slug: "amarnath-yatra-budget",
+    name: "Amarnath Yatra Budget Package",
+    duration: "4N/5D",
+    destinations: "Srinagar, Baltal, Amarnath Cave",
+    price: "Rs 16,999",
+    originalPrice: "Rs 19,999",
+    badge: "Spiritual",
+    type: "Pilgrimage",
+    image: "/images/package-vaishno.jpg",
+    inclusions: ["Trek Assistance", "Tent/Budget Stay", "Shared Transport", "Meals"],
+    itinerary: [
+      { day: 1, title: "Srinagar Arrival", details: "Arrive in Srinagar. Transfer to hotel/houseboat for acclimatization and rest." },
+      { day: 2, title: "Srinagar to Baltal", details: "Early morning drive to Baltal base camp via Sonamarg. Check-in to tent/camp. Rest for the trek." },
+      { day: 3, title: "Holy Cave Darshan", details: "Start the trek early morning from Baltal to the Holy Cave. Perform Darshan and return to Baltal base camp by evening." },
+      { day: 4, title: "Return to Srinagar", details: "Drive back to Srinagar. Evening Shikara ride on Dal Lake." },
+      { day: 5, title: "Departure", details: "Morning breakfast and drop at Srinagar airport." }
+    ]
+  },
+  {
+    slug: "kashmir-offbeat-explorer",
+    name: "Kashmir Offbeat Explorer",
+    duration: "5N/6D",
+    destinations: "Srinagar, Yusmarg, Gurez Valley",
+    price: "On Demand",
+    originalPrice: "",
+    badge: "Offbeat",
+    type: "Adventure",
+    image: "/images/gurez_destination.jpg",
+    inclusions: ["Gurez Permits", "SUV Transfers", "Premium Stay", "Meals"],
+    itinerary: [
+      { day: 1, title: "Arrival in Srinagar", details: "Arrive at Srinagar airport. Transfer to a premium Houseboat. Evening Shikara ride on Dal Lake." },
+      { day: 2, title: "Yusmarg Excursion", details: "Day trip to Yusmarg, the Meadow of Jesus. Explore the serene Doodh Ganga stream. Return to Srinagar." },
+      { day: 3, title: "Srinagar to Gurez Valley", details: "Drive to Gurez Valley via the scenic Razdan Pass. Experience the raw beauty of the Himalayas. Overnight in Gurez." },
+      { day: 4, title: "Explore Gurez", details: "Visit Dawar, admire the Habba Khatoon peak, and relax by the Kishanganga river. Overnight in Gurez." },
+      { day: 5, title: "Return to Srinagar", details: "Drive back to Srinagar. Evening free for shopping at Lal Chowk." },
+      { day: 6, title: "Departure", details: "Breakfast and drop at Srinagar airport for your onward journey." }
     ]
   }
 ];
