@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { destinations, packages } from "../data/site";
+import { destinations, packages, rentalVehicles } from "../data/site";
 import { useState } from "react";
 import { SearchWidget } from "../components/SearchWidget";
 import { DestinationModal } from "../components/DestinationModal";
@@ -25,7 +25,7 @@ export function HomePage() {
             </div>
             <h1 className="font-varien text-white leading-[1.1] mb-6 tracking-wide flex flex-col">
               <span className="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-[90px] opacity-90">Explore</span>
-              <span className="font-normal text-secondary text-6xl sm:text-7xl md:text-9xl lg:text-[150px] drop-shadow-2xl relative z-10 -mt-2 md:-mt-6">Kashmir.</span>
+              <span className="font-normal text-secondary text-5xl sm:text-7xl md:text-9xl lg:text-[150px] drop-shadow-2xl relative z-10 -mt-2 md:-mt-6">Kashmir.</span>
             </h1>
             <p className="text-base md:text-xl text-slate-100 mb-8 max-w-xl opacity-90">
               Your trusted travel partner for boutique Kashmir tours, breathtaking mountain adventures, and unforgettable scenic getaways.
@@ -110,12 +110,12 @@ export function HomePage() {
 
       <section className="py-16 bg-white text-black">
         <div className="container mx-auto px-4">
-          <div data-aos="fade-up" className="flex justify-between items-end mb-10">
+          <div data-aos="fade-up" className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 mb-10">
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-2">Explore the Paradise on Earth</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2">Explore the Paradise on Earth</h2>
               <p className="text-slate-500 font-medium">Breathtaking locations handpicked for your next Kashmir getaway.</p>
             </div>
-            <Link to="/kashmir-packages" className="text-primary font-bold flex items-center gap-1 hover:underline">
+            <Link to="/kashmir-packages" className="text-primary font-bold flex items-center gap-1 hover:underline shrink-0">
                 View All <span className="material-icons-outlined text-base">arrow_forward</span>
             </Link>
           </div>
@@ -128,7 +128,7 @@ export function HomePage() {
                 onClick={() => setSelectedDestination(dest)}
                 className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-xl text-left focus:outline-none focus:ring-4 focus:ring-primary/50"
               >
-                <img alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src={dest.image}/>
+                <img alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src={dest.image} loading="lazy"/>
                 <div className="absolute top-4 left-4 flex gap-2">
                   <span className={`${i % 2 === 0 ? 'bg-red-500' : 'bg-green-500'} text-white px-3 py-1 rounded-full text-xs font-bold`}>{dest.discount}</span>
                 </div>
@@ -170,7 +170,7 @@ export function HomePage() {
               {[packages[0], packages[3]].map((pkg) => (
                 <div key={pkg.slug} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all flex flex-col">
                   <div className="relative h-48">
-                    <img alt={pkg.name} className="w-full h-full object-cover" src={pkg.image}/>
+                    <img alt={pkg.name} className="w-full h-full object-cover" src={pkg.image} loading="lazy"/>
                     {pkg.badge && (
                       <span className={`absolute top-4 left-4 text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full ${pkg.badge === 'Hot Deal' ? 'bg-red-500' : 'bg-primary'}`}>
                         {pkg.badge}
@@ -203,47 +203,72 @@ export function HomePage() {
       {/* Car Rental Preview Section */}
       <section className="py-24 bg-white border-y border-slate-100">
         <div className="container mx-auto px-4">
-          <div data-aos="fade-up" className="flex justify-between items-end mb-10">
+          <div data-aos="fade-up" className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 mb-10">
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-2">Rent a Vehicle for Your Journey</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2">Rent a Vehicle for Your Journey</h2>
               <p className="text-slate-500 font-medium">From sedans to luxury coaches, pick the format that fits your trip.</p>
             </div>
-            <Link to="/car-rental" className="text-primary font-bold flex items-center gap-1 hover:underline whitespace-nowrap">
+            <Link to="/car-rental" className="text-primary font-bold flex items-center gap-1 hover:underline whitespace-nowrap shrink-0">
                 View Full Fleet <span className="material-icons-outlined text-base">arrow_forward</span>
             </Link>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { name: "Sedan", cat: "Sedan", price: "2,499", originalPrice: "3,100", image: "/images/rental-sedan.png" },
-              { name: "Innova", cat: "MUV", price: "3,000", originalPrice: "3,800", image: "/images/rental-innova.png" },
-              { name: "Tempo 12 & 14 Seater", cat: "Tempo", price: "5,500", originalPrice: "6,900", image: "/images/rental-tempo-12.png" }
-            ].map((v, i) => (
-              <div key={i} data-aos="fade-up" data-aos-delay={i * 100} className="bg-slate-50 rounded-[2rem] p-4 shadow-sm border border-slate-100 hover:shadow-xl transition-all group">
-                <div className="relative aspect-[4/3] w-full rounded-[1.5rem] bg-slate-200 mb-6 overflow-hidden flex items-center justify-center">
-                  <img src={v.image} alt={v.name} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />
+            {rentalVehicles.slice(0, 3).map((vehicle) => (
+              <div key={vehicle.id} className="rounded-[32px] p-6 flex flex-col h-full transition-all duration-300 ease-out border bg-white border-black text-black hover:shadow-xl hover:-translate-y-1 group">
+                <div className="relative aspect-[4/3] w-full rounded-[1.5rem] bg-transparent mb-4 overflow-hidden flex items-center justify-center">
+                  <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-contain scale-[1.35] mix-blend-multiply contrast-125 brightness-110 group-hover:scale-[1.45] transition-transform duration-500" loading="lazy" />
                   <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full z-10">
-                    {v.cat}
+                    {vehicle.category}
                   </span>
                 </div>
+                
                 <div className="px-2 flex flex-col flex-1">
-                  <div className="mb-5">
-                    <h3 className="text-2xl font-extrabold text-black">{v.name}</h3>
-                  </div>
-                  <div className="flex items-center justify-between border-t border-slate-200 pt-6 mt-auto">
-                    <div className="flex flex-col">
-                      <span className="text-[11px] text-slate-400 line-through font-semibold mb-0.5">₹{v.originalPrice}</span>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-3xl font-extrabold text-primary">₹{v.price}</span>
-                        <span className="text-xs text-slate-500">/day</span>
-                      </div>
+                  <div className="mb-6 flex justify-between items-start">
+                    <div>
+                      <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mb-1">{vehicle.category}</p>
+                      <h3 className="text-2xl font-extrabold text-black leading-tight">{vehicle.name}</h3>
                     </div>
-                    <Link to="/car-rental" className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 gap-3 bg-black text-white hover:bg-slate-800">
-                      Details
-                      <div className="w-7 h-7 rounded-full flex items-center justify-center bg-[#f59e0b] text-white">
-                        <ArrowRight className="w-3 h-3" />
+                  </div>
+
+                  <div className="flex justify-between items-end mt-auto gap-2">
+                    <div className="flex flex-col gap-4">
+                      <div className="flex flex-col gap-0.5">
+                         <span className="text-[11px] text-slate-400 line-through font-semibold">₹{(Math.round(vehicle.pricePerDay * 1.25 / 100) * 100).toLocaleString()}</span>
+                         <div className="flex items-baseline gap-1">
+                           <span className="text-3xl font-extrabold text-black tracking-tight">₹{vehicle.pricePerDay.toLocaleString()}</span>
+                           <span className="text-[10px] text-slate-500 font-bold uppercase">/day</span>
+                         </div>
                       </div>
-                    </Link>
+
+                      <a className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit gap-3 bg-black text-white hover:bg-slate-800" href={whatsappLink(`Hi, I want to rent the ${vehicle.name} (${vehicle.category}) for ₹${vehicle.pricePerDay}/day.`)} target="_blank" rel="noreferrer">
+                        Book Now
+                        <div className="w-7 h-7 rounded-full flex items-center justify-center bg-[#f59e0b] text-white">
+                          <ArrowRight className="w-3 h-3" />
+                        </div>
+                      </a>
+                    </div>
+
+                    <div className="pl-6 border-l border-slate-100 py-1 ml-auto">
+                      <ul className="space-y-2">
+                          <li className="flex items-center gap-2 text-[13px] font-semibold">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>
+                            <span className="text-slate-600">Seating: <span className="text-slate-900">{vehicle.seats}</span></span>
+                          </li>
+                          <li className="flex items-center gap-2 text-[13px] font-semibold">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>
+                            <span className="text-slate-600">Luggage: <span className="text-slate-900">{vehicle.luggageDetails}</span></span>
+                          </li>
+                          <li className="flex items-center gap-2 text-[13px] font-semibold">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>
+                            <span className="text-slate-600">AC: <span className="text-slate-900">{vehicle.ac ? 'Yes' : 'No'}</span></span>
+                          </li>
+                          <li className="flex items-center gap-2 text-[13px] font-semibold">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>
+                            <span className="text-slate-600">Tolls: <span className="text-slate-900">{vehicle.tollTaxes}</span></span>
+                          </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -285,7 +310,7 @@ export function HomePage() {
             </div>
             <div className="lg:w-1/2">
               <div className="relative">
-                <img alt="Hajj" className="rounded-[3rem] shadow-2xl relative z-10 w-full h-full object-cover max-h-[500px]" src="/images/hajj-hero.jpg"/>
+                <img alt="Hajj" className="rounded-[3rem] shadow-2xl relative z-10 w-full h-full object-cover max-h-[500px]" src="/images/hajj-hero.jpg" loading="lazy"/>
                 <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-[2rem] shadow-xl z-20 hidden md:block">
                   <div className="text-slate-900">
                     <p className="text-xs font-bold text-slate-400 uppercase mb-1">Starting from</p>

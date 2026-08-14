@@ -158,7 +158,7 @@ export function KashmirPackagesPage() {
           </aside>
           
           <div className="flex-1">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
               <h3 className="text-2xl font-bold">{processedPackages.length} Kashmir Packages Found</h3>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium opacity-60">Sort by:</span>
@@ -182,7 +182,7 @@ export function KashmirPackagesPage() {
                 {processedPackages.slice(0, visibleCount).map(pkg => (
                 <div key={pkg.slug} className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-300">
                   <Link to={`/kashmir-packages/${pkg.slug}`} className="block relative h-64 overflow-hidden">
-                    <img alt={pkg.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={pkg.image}/>
+                    <img alt={pkg.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={pkg.image} loading="lazy"/>
                     <div className="absolute bottom-4 left-4 flex gap-1">
                       <span className="bg-black/40 backdrop-blur-md text-white text-[10px] px-2 py-1 rounded-md flex items-center gap-1"><Clock className="w-3 h-3" /> {pkg.duration}</span>
                     </div>

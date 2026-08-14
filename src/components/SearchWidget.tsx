@@ -1,10 +1,11 @@
-import { ArrowRight, CalendarDays, FileText, Landmark, MapPin, Mountain, Plane, UsersRound, Ticket } from "lucide-react";
+import { ArrowRight, CalendarDays, FileText, Landmark, MapPin, Mountain, Plane, UsersRound, Ticket, Car } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { whatsappLink } from "../lib/whatsapp";
 
 const tabs = {
   kashmir: ["Destination", ["Srinagar, Kashmir", "Gulmarg, Kashmir", "Pahalgam, Kashmir", "Sonamarg, Kashmir", "All Kashmir"], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Search Packages"],
+  cars: ["Pickup Location", ["Srinagar Airport", "Srinagar City", "Gulmarg", "Pahalgam"], "Pickup Date", "2026-09-20", "Drop Date", "2026-09-26", "Car Type", ["Sedan", "MUV", "SUV", "Tempo Traveller", "Bus", "Force Urbania"], "Search Cars"],
   umrah: ["Package Type", ["Premium Umrah", "Economy Umrah", "VIP Umrah", "Ramadan Umrah"], "Duration", ["15 Days", "21 Days", "28 Days", "Custom"], "Travel Month", ["Ramadan 2027", "Shawwal 2027", "Rajab 2027", "Any Month"], "Travelers", "Family of 4", "View Packages"],
   tickets: ["From", ["Srinagar (SXR)", "Delhi (DEL)", "Mumbai (BOM)", "Dubai (DXB)", "Jeddah (JED)"], "To", ["Delhi (DEL)", "Srinagar (SXR)", "Dubai (DXB)", "Jeddah (JED)", "Mumbai (BOM)"], "Travel Date", "2026-09-20", "Travelers", "2 Adults", "Search Flights"],
   visa: ["Country", ["Saudi Arabia", "UAE", "Oman", "Qatar", "Kuwait", "Malaysia", "Thailand"], "Nationality", ["Indian", "Foreign National"], "Travel Date", "2026-09-20", "Visa Type", ["Umrah Visa", "Tourist Visa", "Business Visa", "Transit Visa"], "Enquire Now"],
@@ -24,28 +25,29 @@ export function SearchWidget() {
   }
 
   return (
-    <section className="relative z-20 mx-auto -mt-20 w-[min(1400px,calc(100%_-_44px))] rounded-[22px] border border-kashmir-blue/10 bg-white p-8 md:p-10 shadow-travel">
-      <div className="flex flex-wrap gap-7 border-b border-slate-200 px-1 pb-4">
+    <section className="relative z-20 mx-auto -mt-20 w-[min(1400px,calc(100%_-_32px))] md:w-[min(1400px,calc(100%_-_44px))] rounded-xl md:rounded-[22px] border border-kashmir-blue/10 bg-white p-4 md:p-8 lg:p-10 shadow-travel">
+      <div className="flex gap-5 md:gap-7 border-b border-slate-200 px-1 pb-4 overflow-x-auto scrollbar-hide -mx-1 md:mx-0">
         {Object.keys(tabs).map((key) => (
           <button
-            className={`focus-ring relative py-2 flex items-center gap-2 text-sm font-bold after:absolute after:inset-x-0 after:-bottom-4 after:h-1 after:rounded-full after:bg-kashmir-bright transition-colors ${
+            className={`focus-ring relative py-2 flex items-center gap-2 text-xs md:text-sm font-bold whitespace-nowrap after:absolute after:inset-x-0 after:-bottom-4 after:h-1 after:rounded-full after:bg-kashmir-bright transition-colors ${
               active === key ? "text-kashmir-bright after:scale-x-100" : "text-kashmir-charcoal hover:text-kashmir-bright/70 after:scale-x-0"
             }`}
             key={key}
             onClick={() => setActive(key as TabKey)}
             type="button"
           >
-            {key === "kashmir" && <Mountain className="w-5 h-5" />}
-            {key === "umrah" && <Landmark className="w-5 h-5" />}
-            {key === "tickets" && <Plane className="w-5 h-5" />}
-            {key === "visa" && <FileText className="w-5 h-5" />}
-            {key === "gondola" && <Ticket className="w-5 h-5" />}
-            {key === "umrah" ? "Hajj & Umrah" : key === "tickets" ? "Air Tickets" : key === "kashmir" ? "Kashmir Tours" : key === "gondola" ? "Gondola Tickets" : "Visas"}
+            {key === "kashmir" && <Mountain className="w-4 h-4 md:w-5 md:h-5" />}
+            {key === "cars" && <Car className="w-4 h-4 md:w-5 md:h-5" />}
+            {key === "umrah" && <Landmark className="w-4 h-4 md:w-5 md:h-5" />}
+            {key === "tickets" && <Plane className="w-4 h-4 md:w-5 md:h-5" />}
+            {key === "visa" && <FileText className="w-4 h-4 md:w-5 md:h-5" />}
+            {key === "gondola" && <Ticket className="w-4 h-4 md:w-5 md:h-5" />}
+            {key === "umrah" ? "Hajj & Umrah" : key === "tickets" ? "Air Tickets" : key === "kashmir" ? "Kashmir Tours" : key === "gondola" ? "Gondola Tickets" : key === "cars" ? "Car Rentals" : "Visas"}
           </button>
         ))}
       </div>
 
-      <form className="grid gap-3 pt-6 lg:grid-cols-[repeat(4,minmax(0,1fr))_180px]" onSubmit={submit}>
+      <form className="grid gap-3 pt-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_180px]" onSubmit={submit}>
         <SearchField key={`f1-${active}`} icon={<MapPin />} label={fields[0] as string} value={fields[1]} />
         <SearchField key={`f2-${active}`} icon={<CalendarDays />} label={fields[2] as string} value={fields[3]} />
         <SearchField key={`f3-${active}`} icon={<CalendarDays />} label={fields[4] as string} value={fields[5]} />
@@ -54,7 +56,7 @@ export function SearchWidget() {
         ) : (
           <SearchField key={`f4-${active}`} icon={<UsersRound />} label={fields[6] as string} value={fields[7]} />
         )}
-        <button className="focus-ring inline-flex min-h-[64px] items-center justify-center gap-2 rounded-2xl bg-kashmir-bright px-6 text-sm font-bold text-white shadow-travel" type="submit">
+        <button className="focus-ring inline-flex min-h-[56px] md:min-h-[64px] items-center justify-center gap-2 rounded-2xl bg-kashmir-bright px-6 text-sm font-bold text-white shadow-travel md:col-span-2 lg:col-span-1" type="submit">
           {fields[8] as string}
           <ArrowRight className="h-4 w-4" />
         </button>

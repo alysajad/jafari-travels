@@ -82,59 +82,59 @@ export function CarRentalPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {filteredVehicles.map((vehicle) => (
               <div key={vehicle.id} className="rounded-[32px] p-6 flex flex-col h-full transition-all duration-300 ease-out border bg-white border-black text-black hover:shadow-xl hover:-translate-y-1 group">
-                <div className="relative aspect-[4/3] w-full rounded-[1.5rem] bg-slate-100 mb-6 overflow-hidden flex items-center justify-center">
-                  <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />
+                <div className="relative aspect-[4/3] w-full rounded-[1.5rem] bg-transparent mb-4 overflow-hidden flex items-center justify-center">
+                  <img src={vehicle.image} alt={vehicle.name} className={`w-full h-full object-contain mix-blend-multiply contrast-125 brightness-110 transition-transform duration-500 ${vehicle.id === 'bus-19' ? 'scale-100 group-hover:scale-110 p-2' : vehicle.id === 'bus-large' ? 'scale-[1.35] group-hover:scale-[1.45] translate-x-8 group-hover:translate-x-10' : 'scale-[1.35] group-hover:scale-[1.45]'}`} loading="lazy" />
                   <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full z-10">
                     {vehicle.category}
                   </span>
                 </div>
                 
                 <div className="px-2 flex flex-col flex-1">
-                  <div className="mb-5">
-                    <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mb-1">{vehicle.category}</p>
-                    <h3 className="text-2xl font-extrabold text-black">{vehicle.name}</h3>
-                  </div>
-
-                  {/* Specs Grid */}
-                  <div className="grid grid-cols-4 gap-2 mb-8 mt-auto">
-                    <div className="flex flex-col">
-                      <span className="text-black font-extrabold text-base">{vehicle.seats}</span>
-                      <span className="text-slate-400 text-xs uppercase font-medium">Seats</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-black font-extrabold text-base">{vehicle.bags}</span>
-                      <span className="text-slate-400 text-xs uppercase font-medium">Bags</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-black font-extrabold text-base">{vehicle.transmission}</span>
-                      <span className="text-slate-400 text-xs uppercase font-medium">Trans.</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-black font-extrabold text-base">{vehicle.ac ? 'AC' : 'Non-AC'}</span>
-                      <span className="text-slate-400 text-xs uppercase font-medium">Climate</span>
+                  <div className="mb-6 flex justify-between items-start">
+                    <div>
+                      <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mb-1">{vehicle.category}</p>
+                      <h3 className="text-2xl font-extrabold text-black leading-tight">{vehicle.name}</h3>
                     </div>
                   </div>
 
-                  {/* Price & Action */}
-                  <div className="flex items-center justify-between border-t border-slate-200 pt-6">
-                    <div className="flex flex-col">
-                      <span className="text-[11px] text-slate-400 line-through font-semibold mb-0.5">₹{(Math.round(vehicle.pricePerDay * 1.25 / 100) * 100).toLocaleString()}</span>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-3xl font-extrabold text-primary">₹{vehicle.pricePerDay.toLocaleString()}</span>
-                        <span className="text-xs text-slate-500">/day</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mt-auto gap-4">
+                    <div className="flex flex-col gap-4">
+                      <div className="flex flex-col gap-0.5">
+                         <span className="text-[11px] text-slate-400 line-through font-semibold">₹{(Math.round(vehicle.pricePerDay * 1.25 / 100) * 100).toLocaleString()}</span>
+                         <div className="flex items-baseline gap-1">
+                           <span className="text-2xl sm:text-3xl font-extrabold text-black tracking-tight">₹{vehicle.pricePerDay.toLocaleString()}</span>
+                           <span className="text-[10px] text-slate-500 font-bold uppercase">/day</span>
+                         </div>
                       </div>
+
+                      <a className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit gap-3 bg-black text-white hover:bg-slate-800" href={whatsappLink(`Hi, I want to rent the ${vehicle.name} (${vehicle.category}) for ₹${vehicle.pricePerDay}/day.`)} target="_blank" rel="noreferrer">
+                        Book Now
+                        <div className="w-7 h-7 rounded-full flex items-center justify-center bg-[#f59e0b] text-white">
+                          <ArrowRight className="w-3 h-3" />
+                        </div>
+                      </a>
                     </div>
-                    <a
-                      href={whatsappLink(`Hi, I want to rent the ${vehicle.name} (${vehicle.category}) for ₹${vehicle.pricePerDay}/day.`)}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center justify-between pl-6 pr-2 py-2 rounded-full font-bold text-sm uppercase tracking-wider transition-colors duration-200 gap-5 bg-black text-white hover:bg-slate-800"
-                    >
-                      Book
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#f59e0b] text-white">
-                        <ArrowRight className="w-5 h-5" />
-                      </div>
-                    </a>
+
+                    <div className="sm:pl-6 sm:border-l border-slate-100 py-1 sm:ml-auto">
+                      <ul className="space-y-2">
+                          <li className="flex items-center gap-2 text-[13px] font-semibold">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>
+                            <span className="text-slate-600">Seating: <span className="text-slate-900">{vehicle.seats}</span></span>
+                          </li>
+                          <li className="flex items-center gap-2 text-[13px] font-semibold">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>
+                            <span className="text-slate-600">Luggage: <span className="text-slate-900">{vehicle.luggageDetails}</span></span>
+                          </li>
+                          <li className="flex items-center gap-2 text-[13px] font-semibold">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>
+                            <span className="text-slate-600">AC: <span className="text-slate-900">{vehicle.ac ? 'Yes' : 'No'}</span></span>
+                          </li>
+                          <li className="flex items-center gap-2 text-[13px] font-semibold">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>
+                            <span className="text-slate-600">Tolls: <span className="text-slate-900">{vehicle.tollTaxes}</span></span>
+                          </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export function CarRentalPage() {
             </div>
             <div className="lg:w-1/2 relative">
               <div className="absolute inset-0 bg-primary rounded-[3rem] transform -rotate-3 scale-105 opacity-10 hidden md:block"></div>
-              <img src="/images/imad-clicks-pihL1C0Mtvc-unsplash.jpg" className="rounded-[3rem] shadow-2xl w-full h-[500px] object-cover relative z-10" alt="Booking process" />
+              <img src="/images/imad-clicks-pihL1C0Mtvc-unsplash.jpg" className="rounded-[3rem] shadow-2xl w-full h-[500px] object-cover relative z-10" alt="Booking process" loading="lazy" />
             </div>
           </div>
         </div>

@@ -65,7 +65,7 @@ export function PackageDetailPage() {
         </div>
         
         <div className="h-[300px] md:h-[500px] rounded-3xl overflow-hidden relative group cursor-pointer">
-          <img alt={pkg.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={pkg.image}/>
+          <img alt={pkg.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={pkg.image} loading="lazy"/>
           <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
         </div>
       </section>
@@ -115,14 +115,14 @@ export function PackageDetailPage() {
                       <span className="bg-primary/10 text-primary w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">
                         {day.day}
                       </span>
-                      <span className="font-bold text-lg text-black">{day.title}</span>
+                      <span className="font-bold text-base sm:text-lg text-black">{day.title}</span>
                     </div>
                     <i className={`material-icons-outlined text-slate-400 group-hover:text-primary transition-transform duration-300 ${expandedDays.includes(index) ? 'rotate-180' : ''}`}>
                       expand_more
                     </i>
                   </button>
                   <div className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${expandedDays.includes(index) ? 'max-h-96 pb-5 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <div className="pl-14 text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                    <div className="pl-4 sm:pl-14 text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
                       {day.details}
                     </div>
                   </div>
@@ -246,7 +246,7 @@ export function PackageDetailPage() {
             {similar.map(item => (
               <div key={item.slug} className="bg-white border border-black rounded-3xl overflow-hidden shadow-sm group">
                 <div className="relative h-64 overflow-hidden">
-                  <img alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={item.image}/>
+                  <img alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={item.image} loading="lazy"/>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">{item.name}</h3>

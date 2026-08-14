@@ -14,12 +14,13 @@ export function Header() {
           <nav className="hidden lg:flex items-center justify-start gap-8 text-sm text-black uppercase tracking-wider font-bold">
             <Link className="hover:text-primary transition-colors" to="/">Home</Link>
             <Link className="hover:text-primary transition-colors" to="/kashmir-packages">Packages</Link>
+            <Link className="hover:text-primary transition-colors" to="/car-rental">Car Rental</Link>
             <Link className="hover:text-primary transition-colors" to="/hajj-umrah">Hajj & Umrah</Link>
           </nav>
 
           {/* Center Logo */}
           <Link to="/" className="z-10 flex items-center">
-            <img src="/logo.png" alt="Jaffari Sky Travels & Tours" className="h-10 md:h-14 w-auto" />
+            <img src="/logo.png" alt="Jaffari Sky Travels & Tours" className="h-16 md:h-20 w-auto" />
           </Link>
 
           {/* Right Nav & Action (Desktop) */}
@@ -27,7 +28,6 @@ export function Header() {
             <nav className="flex items-center gap-8 text-sm text-black uppercase tracking-wider font-bold">
               <Link className="hover:text-primary transition-colors" to="/ticketing">Air Tickets</Link>
               <Link className="hover:text-primary transition-colors" to="/visa-services">Visas</Link>
-              <Link className="hover:text-primary transition-colors" to="/car-rental">Car Rental</Link>
               <Link className="hover:text-primary transition-colors" to="/aboutus">About Us</Link>
             </nav>
             <a href={whatsappLink("Hello! I have a general inquiry.")} target="_blank" rel="noreferrer" className="bg-primary text-white px-8 py-3 text-sm font-semibold hover:shadow-lg hover:opacity-90 transition-all uppercase tracking-wider hidden xl:block">
@@ -53,10 +53,10 @@ export function Header() {
           <nav className="flex flex-col gap-6 text-xl font-extrabold uppercase tracking-wider text-black">
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/">Home</Link>
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/kashmir-packages">Packages</Link>
+            <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/car-rental">Car Rental</Link>
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/hajj-umrah">Hajj & Umrah</Link>
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/ticketing">Air Tickets</Link>
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/visa-services">Visas</Link>
-            <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/car-rental">Car Rental</Link>
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/aboutus">About Us</Link>
           </nav>
           <div className="mt-auto pt-8">

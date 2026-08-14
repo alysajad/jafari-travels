@@ -21,16 +21,26 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    min-width: 0;
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-kashmir-cream font-sans text-kashmir-charcoal antialiased;
+    overflow-x: hidden;
   }
 
   img {
     @apply max-w-full;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 }
 

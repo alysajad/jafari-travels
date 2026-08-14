@@ -67,12 +67,13 @@ export const destinations: Destination[] = [
       "Mughal Gardens (Shalimar & Nishat Bagh)",
       "Hazratbal Shrine",
       "Shankaracharya Temple",
-      "Pari Mahal (Palace of Fairies)"
+      "Pari Mahal (Palace of Fairies)",
+      "Lal Chowk Market"
     ],
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105676.62089408682!2d74.7214732155734!3d34.09279532588373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e18f2f25b29093%3A0xc3bba4f3743c4a22!2sSrinagar!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
   },
   {
-    name: "Gulmarg, Ski Resort",
+    name: "Gulmarg",
     price: "₹15,999",
     rating: "4.9 (1.8k)",
     discount: "-25%",
@@ -85,13 +86,16 @@ export const destinations: Destination[] = [
       "Gulmarg Gondola (Phase 1 & 2)",
       "Apharwat Peak",
       "Alpather Lake (Frozen Lake)",
-      "Strawberry Valley",
-      "Maharani Temple"
+      "Drung Waterfall",
+      "Maharaja Palace",
+      "Bota Pathri",
+      "Khelanmarg",
+      "Strawberry Valley"
     ],
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26458.7470659929!2d74.37397746187532!3d34.04870020475308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1ae1d6248b615%3A0xeab50d2e5b922736!2sGulmarg!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
   },
   {
-    name: "Pahalgam, Betaab Valley",
+    name: "Pahalgam",
     price: "₹8,999",
     rating: "4.7 (1.2k)",
     discount: "-20%",
@@ -110,7 +114,7 @@ export const destinations: Destination[] = [
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26532.551608670154!2d75.30528657682226!3d34.015091728148816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e21a719c83eb8f%3A0x600fbce3199e1205!2sPahalgam!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
   },
   {
-    name: "Sonmarg, Thajiwas",
+    name: "Sonamarg",
     price: "₹14,999",
     rating: "5.0 (950)",
     discount: "-18%",
@@ -201,7 +205,7 @@ export const packages = [
     inclusions: ["Hotel stay", "Breakfast and dinner", "Private vehicle", "Shikara ride"],
     itinerary: [
       { day: 1, title: "Arrival in Srinagar & Houseboat", details: "Arrive at Srinagar airport. Meet our representative and transfer to a premium houseboat on Dal Lake. Evening enjoy a relaxing 1-hour Shikara ride." },
-      { day: 2, title: "Day trip to Gulmarg", details: "After breakfast, drive to Gulmarg (Meadow of Flowers). Enjoy the scenic Gondola cable car ride to Apharwat peak. Evening return to Srinagar." },
+      { day: 2, title: "Day trip to Gulmarg", details: "After breakfast, drive to Gulmarg (Meadow of Flowers). Enjoy the scenic Gondola cable car ride to Apharwat peak. Visit Drung Waterfall and Bota Pathri. Evening return to Srinagar." },
       { day: 3, title: "Day trip to Pahalgam", details: "Drive to Pahalgam (Valley of Shepherds) via saffron fields. Visit Betaab Valley and Aru Valley. Enjoy the serene Lidder river. Return to Srinagar." },
       { day: 4, title: "Srinagar Sightseeing", details: "Visit the famous Mughal Gardens (Shalimar & Nishat Bagh), Hazratbal Shrine, and Shankaracharya Temple. Evening shopping at Lal Chowk." },
       { day: 5, title: "Departure", details: "Morning breakfast. Transfer to Srinagar airport for your onward journey with beautiful memories." }
@@ -220,8 +224,8 @@ export const packages = [
     inclusions: ["Houseboat stay", "Candlelight dinner", "Sightseeing", "Private cab"],
     itinerary: [
       { day: 1, title: "Romantic Arrival & Houseboat Stay", details: "Welcome to Kashmir! Transfer to a luxury houseboat. Enjoy a private Shikara ride with floating market visit. Romantic candlelight dinner." },
-      { day: 2, title: "Mughal Gardens & Sunset", details: "Visit Nishat Bagh and Shalimar Bagh. Afternoon visit to Pari Mahal for panoramic views. Evening at leisure near Dal Lake." },
-      { day: 3, title: "Gulmarg Winter Wonderland", details: "Drive to Gulmarg. Experience the Gondola ride together. Try skiing or snowboarding. Overnight stay in a premium Gulmarg hotel." },
+      { day: 2, title: "Mughal Gardens & Sunset", details: "Visit Nishat Bagh and Shalimar Bagh. Afternoon visit to Pari Mahal for panoramic views. Evening shopping at Lal Chowk." },
+      { day: 3, title: "Gulmarg Winter Wonderland", details: "Drive to Gulmarg. Experience the Gondola ride together. Visit Maharaja Palace and Khelanmarg. Try skiing or snowboarding. Overnight stay in a premium Gulmarg hotel." },
       { day: 4, title: "Journey to Pahalgam", details: "Travel to Pahalgam. Enjoy the romantic walks along the Lidder River. Visit Apple orchards on the way. Overnight in Pahalgam." },
       { day: 5, title: "Betaab Valley & Baisaran", details: "Take a pony ride to Baisaran (Mini Switzerland). Visit the stunning Betaab Valley. Relax amidst nature." },
       { day: 6, title: "Departure", details: "After breakfast, drive back to Srinagar airport for your flight back home." }
@@ -239,9 +243,9 @@ export const packages = [
     image: "/images/package-family.png",
     inclusions: ["Family rooms", "Daily meals", "Airport pickup", "Flexible pacing"],
     itinerary: [
-      { day: 1, title: "Arrival in Srinagar", details: "Welcome by our representative. Check-in to hotel. Rest and acclimatize. Evening walk around Dal lake boulevard." },
+      { day: 1, title: "Arrival in Srinagar", details: "Welcome by our representative. Check-in to hotel. Rest and acclimatize. Evening walk around Dal Lake boulevard and Lal Chowk." },
       { day: 2, title: "Sonamarg Excursion", details: "Full day trip to Sonamarg (Meadow of Gold). Visit Thajiwas Glacier on ponies. Enjoy snow activities with kids. Return to Srinagar." },
-      { day: 3, title: "Gulmarg Day Trip", details: "Drive to Gulmarg. Enjoy phase 1 and 2 of the Gondola ride. Family picnic in the meadows." },
+      { day: 3, title: "Gulmarg Day Trip", details: "Drive to Gulmarg. Enjoy phase 1 and 2 of the Gondola ride. Visit Drung Waterfall and Bota Pathri. Family picnic in the meadows." },
       { day: 4, title: "Transfer to Pahalgam", details: "Drive to Pahalgam. Visit Awantipora ruins and Bat factories on the way. Check-in to Pahalgam hotel." },
       { day: 5, title: "Pahalgam Sightseeing", details: "Visit Aru Valley, Betaab Valley, and Chandanwari. Evening free for local market exploration." },
       { day: 6, title: "Return to Srinagar & Houseboat", details: "Drive back to Srinagar. Check-in to a traditional houseboat. Evening Shikara ride." },
@@ -261,10 +265,10 @@ export const packages = [
     inclusions: ["Snow itinerary", "Ski support", "Warm hotels", "Transfers"],
     itinerary: [
       { day: 1, title: "Srinagar Arrival & Snow Views", details: "Arrive in snow-covered Srinagar. Transfer to central heated hotel. Evening walk to enjoy winter aesthetics." },
-      { day: 2, title: "Gulmarg Skiing Phase 1", details: "Drive to Gulmarg. Check-in to resort. Meet instructors and begin beginner skiing lessons on baby slopes." },
+      { day: 2, title: "Gulmarg Skiing Phase 1", details: "Drive to Gulmarg. Check-in to resort. Visit Maharaja Palace. Meet instructors and begin beginner skiing lessons on baby slopes." },
       { day: 3, title: "Gulmarg Gondola & Snowboarding", details: "Gondola ride to Apharwat peak for incredible snowscapes. Optional snowboarding or advanced skiing." },
       { day: 4, title: "Pahalgam Winter Trek", details: "Drive to Pahalgam. Experience the frozen Lidder river and snow-clad pine forests. Overnight in Pahalgam." },
-      { day: 5, title: "Srinagar Houseboat", details: "Return to Srinagar. Stay in a cozy houseboat. Enjoy Kangri (traditional fire pot) and Kahwa." },
+      { day: 5, title: "Srinagar Houseboat", details: "Return to Srinagar. Visit Lal Chowk market. Stay in a cozy houseboat. Enjoy Kangri (traditional fire pot) and Kahwa." },
       { day: 6, title: "Departure", details: "Morning breakfast. Transfer to airport." }
     ]
   },
@@ -272,7 +276,7 @@ export const packages = [
     slug: "kashmir-valley-explorer",
     name: "Kashmir Valley Explorer",
     duration: "7N/8D",
-    destinations: "Srinagar, Sonamarg, Pahalgam, Betaab Valley, Gulmarg, Doodhpathri",
+    destinations: "Srinagar, Sonamarg, Pahalgam, Gulmarg, Doodhpathri",
     price: "Rs 18,499",
     originalPrice: "Rs 22,999",
     badge: "Explorer",
@@ -280,10 +284,10 @@ export const packages = [
     image: "/images/package-explorer.png",
     inclusions: ["Extended route", "Local guide", "Meals", "Sightseeing"],
     itinerary: [
-      { day: 1, title: "Arrival & Srinagar Leisure", details: "Arrival in Srinagar. Transfer to hotel. Evening free to explore local markets and cuisine." },
+      { day: 1, title: "Arrival & Srinagar Leisure", details: "Arrival in Srinagar. Transfer to hotel. Evening free to explore Lal Chowk market and local cuisine." },
       { day: 2, title: "Sonamarg Glaciers", details: "Day trip to Sonamarg. Visit the stunning Thajiwas Glacier and zero point. Return to Srinagar." },
       { day: 3, title: "Doodhpathri Exploration", details: "Visit the offbeat Valley of Milk, Doodhpathri. Enjoy the pristine alpine meadows and Shaliganga river." },
-      { day: 4, title: "Gulmarg Adventure", details: "Drive to Gulmarg. Gondola ride and walk around the majestic meadows. Return to Srinagar." },
+      { day: 4, title: "Gulmarg Adventure", details: "Drive to Gulmarg. Gondola ride and walk around the majestic meadows. Visit Drung Waterfall, Bota Pathri, and Khelanmarg. Return to Srinagar." },
       { day: 5, title: "Srinagar to Pahalgam", details: "Transfer to Pahalgam. Visit apple orchards and saffron fields. Check-in and relax." },
       { day: 6, title: "Pahalgam Valleys", details: "Extensive tour of Aru Valley, Betaab Valley, and Chandanwari. Scenic photography sessions." },
       { day: 7, title: "Houseboat & Shikara", details: "Return to Srinagar. Check-in to Houseboat. Evening sunset Shikara ride on Dal Lake." },
@@ -302,8 +306,8 @@ export const packages = [
     image: "/images/package-ladakh.png",
     inclusions: ["Kargil route", "Leh stay", "Permits guidance", "SUV transfers"],
     itinerary: [
-      { day: 1, title: "Srinagar Arrival", details: "Arrive in Srinagar. Local sightseeing of Mughal Gardens. Overnight stay." },
-      { day: 2, title: "Gulmarg Excursion", details: "Day trip to Gulmarg. Enjoy the Gondola and beautiful landscapes." },
+      { day: 1, title: "Srinagar Arrival", details: "Arrive in Srinagar. Local sightseeing of Mughal Gardens and Lal Chowk. Overnight stay." },
+      { day: 2, title: "Gulmarg Excursion", details: "Day trip to Gulmarg. Enjoy the Gondola and beautiful landscapes. Visit Drung Waterfall and Maharaja Palace." },
       { day: 3, title: "Pahalgam Excursion", details: "Day trip to Pahalgam. Visit Betaab valley. Return to Srinagar." },
       { day: 4, title: "Srinagar to Kargil via Sonamarg", details: "Drive to Kargil via Sonamarg and Zojila Pass. Visit Drass war memorial. Overnight in Kargil." },
       { day: 5, title: "Kargil to Leh", details: "Drive to Leh via Lamayuru and Magnetic Hill. Check-in to Leh hotel to acclimatize." },
@@ -329,8 +333,8 @@ export const packages = [
       { day: 1, title: "Arrival in Jammu & Katra", details: "Arrive at Jammu station/airport. Transfer to Katra. Check-in and relax." },
       { day: 2, title: "Mata Vaishno Devi Darshan", details: "Early morning trek/helicopter to the holy shrine of Mata Vaishno Devi. Return to Katra by evening." },
       { day: 3, title: "Katra to Srinagar", details: "Long scenic drive from Katra to Srinagar. Check-in to Srinagar hotel/houseboat." },
-      { day: 4, title: "Srinagar Local Sightseeing", details: "Visit Mughal Gardens, Shankaracharya Temple, and enjoy a Shikara ride." },
-      { day: 5, title: "Gulmarg Excursion", details: "Day trip to Gulmarg. Enjoy the Gondola ride and mountain views. Return to Srinagar." },
+      { day: 4, title: "Srinagar Local Sightseeing", details: "Visit Mughal Gardens, Shankaracharya Temple, Lal Chowk shopping, and enjoy a Shikara ride." },
+      { day: 5, title: "Gulmarg Excursion", details: "Day trip to Gulmarg. Enjoy the Gondola ride and mountain views. Visit Bota Pathri and Khelanmarg. Return to Srinagar." },
       { day: 6, title: "Srinagar to Pahalgam", details: "Drive to Pahalgam. Enjoy the scenic route. Check-in to Pahalgam hotel." },
       { day: 7, title: "Pahalgam Sightseeing", details: "Visit Betaab Valley and Aru Valley. Evening leisure time." },
       { day: 8, title: "Return to Jammu", details: "Drive back to Jammu. Check-in to hotel for overnight rest." },
@@ -350,9 +354,9 @@ export const packages = [
     inclusions: ["Min 10 pax", "Shared transport", "Budget hotels", "Meals"],
     itinerary: [
       { day: 1, title: "Group Arrival", details: "Receive the group at Srinagar airport. Transfer to budget hotel. Evening group Shikara ride." },
-      { day: 2, title: "Gulmarg Group Excursion", details: "Shared coach to Gulmarg. Group guide for Gondola ticket assistance and sightseeing." },
+      { day: 2, title: "Gulmarg Group Excursion", details: "Shared coach to Gulmarg. Group guide for Gondola ticket assistance and sightseeing. Visit Drung Waterfall and Maharaja Palace." },
       { day: 3, title: "Pahalgam Valleys", details: "Day trip to Pahalgam. Group visit to Betaab Valley and shared pony rides. Return to Srinagar." },
-      { day: 4, title: "Srinagar Gardens", details: "Visit Mughal Gardens. Free time for group shopping at local markets." },
+      { day: 4, title: "Srinagar Gardens", details: "Visit Mughal Gardens. Free time for group shopping at Lal Chowk." },
       { day: 5, title: "Departure", details: "Group drop at Srinagar airport." }
     ]
   },
@@ -439,13 +443,21 @@ export const routeHighlights = [
 export interface RentalVehicle {
   id: string;
   name: string;
-  category: "Sedan" | "MUV" | "SUV" | "Premium MUV" | "Luxury Van" | "Tempo";
+  category: "Sedan" | "MUV" | "SUV" | "Premium MUV" | "Luxury Van" | "Tempo" | "Bus";
   seats: number;
   bags: number;
   transmission: "Manual" | "Automatic";
   ac: boolean;
   pricePerDay: number;
   image: string;
+  rating?: string;
+  reviews?: string;
+  duration?: string;
+  badge?: string;
+  luggageDetails?: string;
+  parking?: string;
+  tollTaxes?: string;
+  assistance?: string;
 }
 
 export const rentalVehicles: RentalVehicle[] = [
@@ -458,29 +470,51 @@ export const rentalVehicles: RentalVehicle[] = [
     transmission: "Manual",
     ac: true,
     pricePerDay: 2499,
-    image: "/images/rental-sedan.png",
+    image: "/images/rental_sedan_1786734700242.png",
+    rating: "4.5",
+    reviews: "10,230",
+    duration: "4 hour 15 mins",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
   },
   {
     id: "ertiga",
-    name: "Ertiga",
+    name: "Maruti Ertiga",
     category: "MUV",
     seats: 7,
     bags: 3,
     transmission: "Manual",
     ac: true,
     pricePerDay: 2899,
-    image: "/images/rental-ertiga.png",
+    image: "/images/rental_ertiga_1786734716088.png",
+    rating: "4.5",
+    reviews: "17,678",
+    duration: "7 hour 10 mins",
+    badge: "Deal of the Day",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
   },
   {
     id: "innova",
-    name: "Innova",
+    name: "Toyota Innova",
     category: "MUV",
     seats: 7,
     bags: 4,
     transmission: "Manual",
     ac: true,
-    pricePerDay: 3000,
-    image: "/images/rental-innova.png",
+    pricePerDay: 3199,
+    image: "/images/rental_innova_1786734730661.png",
+    rating: "4.5",
+    reviews: "12,178",
+    duration: "4 hour 15 mins",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
   },
   {
     id: "innova-crysta",
@@ -490,19 +524,35 @@ export const rentalVehicles: RentalVehicle[] = [
     bags: 4,
     transmission: "Automatic",
     ac: true,
-    pricePerDay: 3500,
-    image: "/images/rental-innova-crysta.png",
+    pricePerDay: 3899,
+    image: "/images/rental_innova_crysta_1786734744684.png",
+    rating: "4.5",
+    reviews: "11,688",
+    duration: "4 hour 10 mins",
+    badge: "Limited Period Offer",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
   },
   {
     id: "urbania",
-    name: "Urbania",
+    name: "Force Urbania",
     category: "Luxury Van",
-    seats: 17,
+    seats: 12,
     bags: 8,
     transmission: "Manual",
     ac: true,
-    pricePerDay: 5888,
-    image: "/images/rental-urbania.png",
+    pricePerDay: 5999,
+    image: "/images/rental_urbania_1786734757749.png",
+    rating: "4.5",
+    reviews: "14,778",
+    duration: "3 hour 10 mins",
+    badge: "Offer of the day",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
   },
   {
     id: "fortuner",
@@ -514,6 +564,13 @@ export const rentalVehicles: RentalVehicle[] = [
     ac: true,
     pricePerDay: 5500,
     image: "/images/rental-fortuner.png",
+    rating: "4.8",
+    reviews: "8,945",
+    duration: "3 hour 45 mins",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
   },
   {
     id: "tempo-12-14",
@@ -524,7 +581,14 @@ export const rentalVehicles: RentalVehicle[] = [
     transmission: "Manual",
     ac: true,
     pricePerDay: 5500,
-    image: "/images/rental-tempo-12.png",
+    image: "/images/rental_tempo_1786734787211.png",
+    rating: "4.2",
+    reviews: "15,200",
+    duration: "5 hour 20 mins",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
   },
   {
     id: "tempo-17-20",
@@ -535,6 +599,50 @@ export const rentalVehicles: RentalVehicle[] = [
     transmission: "Manual",
     ac: true,
     pricePerDay: 6000,
-    image: "/images/rental-tempo-17.png",
+    image: "/images/rental_tempo_1786734787211.png",
+    rating: "4.3",
+    reviews: "11,100",
+    duration: "6 hour 10 mins",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
   },
+  {
+    id: "bus-19",
+    name: "Bus",
+    category: "Bus",
+    seats: 19,
+    bags: 15,
+    transmission: "Manual",
+    ac: true,
+    pricePerDay: 4999,
+    image: "/images/bus.png",
+    rating: "4.5",
+    reviews: "12,678",
+    duration: "1 hour 50 mins",
+    badge: "Damaka Offer",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
+  },
+  {
+    id: "bus-large",
+    name: "Bus (25/28/30/40 Seater)",
+    category: "Bus",
+    seats: 40,
+    bags: 30,
+    transmission: "Manual",
+    ac: true,
+    pricePerDay: 5999,
+    image: "/images/rental-bus-40.jpg",
+    rating: "4.4",
+    reviews: "9,876",
+    duration: "2 hour 30 mins",
+    luggageDetails: "Inside",
+    parking: "Paid",
+    tollTaxes: "Paid",
+    assistance: "24X7"
+  }
 ];

@@ -75,14 +75,14 @@ export function HajjUmrahPage() {
             <div className="mb-6 text-center text-[#f59e0b] drop-shadow-md text-sm font-black tracking-[0.2em] uppercase">Hajj 2027</div>
             <div className="rounded-[24px] bg-[#044c3c] text-white p-8 shadow-2xl relative border border-[#044c3c]/50">
               <div className="absolute top-4 right-4 bg-[#9a5611] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full">LIMITED SEATS</div>
-              <div className="flex flex-col items-center text-center mb-6 pt-4">
+              <div className="flex flex-col items-center text-center mb-6 pt-8 sm:pt-4">
                 <Landmark className="w-8 h-8 mb-4 opacity-70" strokeWidth={1.5} />
                 <h3 className="font-serif text-3xl mb-3 text-white">Shifting Package</h3>
                 <p className="text-sm text-white/80 leading-relaxed mb-6">
                   Full Hajj package with hotel shifting between Mecca, Mina & Arafat. Includes visa, flights, accommodation & Qafila leaders.
                 </p>
                 <div className="mb-2 flex items-baseline justify-center gap-1">
-                  <span className="text-4xl font-serif text-white">₹6,50,000</span>
+                  <span className="text-3xl sm:text-4xl font-serif text-white">₹6,50,000</span>
                   <span className="text-sm text-white/70">/person</span>
                 </div>
                 <p className="text-[9px] font-bold tracking-widest uppercase text-white/60 mb-8">(Prices subject to change) - Please enquire</p>
@@ -192,7 +192,7 @@ export function HajjUmrahPage() {
           {hotels.map((hotel) => (
             <div className="group rounded-3xl bg-white border border-slate-200 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" key={hotel.name}>
               <div className="relative h-48 overflow-hidden">
-                <img alt={hotel.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={hotel.image} />
+                <img alt={hotel.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={hotel.image} loading="lazy" />
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur text-black text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-wider">{hotel.location}</div>
               </div>
               <div className="p-6">
