@@ -15,19 +15,15 @@ export function Footer() {
                               Your trusted travel partner for unforgettable journeys. Specializing in Kashmir tours, Hajj & Umrah services, and global travel solutions since 2012.
                           </p>
       <div className="flex items-center gap-4">
-      <a className="w-10 h-10 bg-slate-100 text-slate-700 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-all" href="#"><span className="material-icons-outlined text-sm">facebook</span></a>
-      <a className="w-10 h-10 bg-slate-100 text-slate-700 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-all" href="#"><span className="material-icons-outlined text-sm">camera_alt</span></a>
-      <a className="w-10 h-10 bg-slate-100 text-slate-700 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-all" href="#"><span className="material-icons-outlined text-sm">twitter</span></a>
       </div>
       </div>
       <div>
       <h4 className="font-extrabold text-black mb-6">Company</h4>
       <ul className="space-y-4 text-slate-500 text-sm font-medium">
       <li><Link className="hover:text-primary transition-colors" to="/aboutus">About Us</Link></li>
-      <li><Link className="hover:text-primary transition-colors" to="/">Our Services</Link></li>
-      <li><Link className="hover:text-primary transition-colors" to="/aboutus">Careers</Link></li>
-      <li><Link className="hover:text-primary transition-colors" to="/">Travel Blog</Link></li>
       <li><a className="hover:text-primary transition-colors" href={whatsappLink("Hello! I have a general inquiry.")} target="_blank" rel="noreferrer">Contact Us</a></li>
+      <li><Link className="hover:text-primary transition-colors" to="/privacy-policy">Privacy Policy</Link></li>
+      <li><Link className="hover:text-primary transition-colors" to="/terms-and-conditions">Terms & Conditions</Link></li>
       </ul>
       </div>
       <div>
@@ -61,6 +57,10 @@ export function Footer() {
       </div>
       <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-slate-600 text-sm">© 2026 Jaffari Sky Travels. All rights reserved.</p>
+        <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-slate-500 font-medium">
+          <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+          <Link to="/terms-and-conditions" className="hover:text-primary transition-colors">Terms & Conditions</Link>
+        </div>
       </div>
       </div>
       </footer>
