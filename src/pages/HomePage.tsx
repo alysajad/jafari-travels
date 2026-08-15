@@ -556,7 +556,7 @@ export function HomePage() {
                   <span className="material-icons-outlined">home</span>
                 </div>
                 <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">Local Expertise</h4>
-                <p className="text-sm text-slate-500 leading-relaxed">Born and raised in Kashmir — we know every hidden trail, shikara owner, and family-run wazwan kitchen in the valley.</p>
+                <p className="text-sm text-slate-500 leading-relaxed">Born and raised in Kashmir - we know every hidden trail, shikara owner, and family-run wazwan kitchen in the valley.</p>
               </div>
               
               <div data-aos="fade-up" data-aos-delay="100" className="flex flex-col gap-3 group">
@@ -564,7 +564,7 @@ export function HomePage() {
                   <span className="material-icons-outlined">apartment</span>
                 </div>
                 <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">Curated Stays</h4>
-                <p className="text-sm text-slate-500 leading-relaxed">Every property — houseboat, mountain lodge, or luxury resort — is personally inspected by our team.</p>
+                <p className="text-sm text-slate-500 leading-relaxed">Every property - houseboat, mountain lodge, or luxury resort - is personally inspected by our team.</p>
               </div>
 
               <div data-aos="fade-up" data-aos-delay="200" className="flex flex-col gap-3 group">
@@ -572,7 +572,7 @@ export function HomePage() {
                   <span className="material-icons-outlined">phone_iphone</span>
                 </div>
                 <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">24/7 Concierge</h4>
-                <p className="text-sm text-slate-500 leading-relaxed">Your personal guide is always reachable — from airport arrival to farewell. Every detail handled for you.</p>
+                <p className="text-sm text-slate-500 leading-relaxed">Your personal guide is always reachable - from airport arrival to farewell. Every detail handled for you.</p>
               </div>
 
               <div data-aos="fade-up" data-aos-delay="300" className="flex flex-col gap-3 group">
@@ -580,7 +580,7 @@ export function HomePage() {
                   <span className="material-icons-outlined">favorite_border</span>
                 </div>
                 <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">Authentic Culture</h4>
-                <p className="text-sm text-slate-500 leading-relaxed">Dine with local families, learn pashmina weaving, attend a traditional feast — the real Kashmir, not a postcard of it.</p>
+                <p className="text-sm text-slate-500 leading-relaxed">Dine with local families, learn pashmina weaving, attend a traditional feast - the real Kashmir, not a postcard of it.</p>
               </div>
 
               <div data-aos="fade-up" data-aos-delay="400" className="flex flex-col gap-3 group">
@@ -588,7 +588,7 @@ export function HomePage() {
                   <span className="material-icons-outlined">assignment</span>
                 </div>
                 <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">Flexible Packages</h4>
-                <p className="text-sm text-slate-500 leading-relaxed">Budget to ultra-luxury, solo to large groups — we build itineraries around your time, taste, and budget.</p>
+                <p className="text-sm text-slate-500 leading-relaxed">Budget to ultra-luxury, solo to large groups - we build itineraries around your time, taste, and budget.</p>
               </div>
 
               <div data-aos="fade-up" data-aos-delay="500" className="flex flex-col gap-3 group">
@@ -627,7 +627,7 @@ export function HomePage() {
                 <div className="w-12 h-[1px] bg-slate-200 mb-6"></div>
 
                 <p className="text-slate-500 text-sm max-w-[280px] mx-auto leading-relaxed pb-8 lg:pb-0">
-                  Kashmir's most trusted travel partner — crafting unforgettable Himalayan escapes since 2009.
+                  Kashmir's most trusted travel partner - crafting unforgettable Himalayan escapes since 2009.
                 </p>
                 
                 {/* Floating Orange Box */}

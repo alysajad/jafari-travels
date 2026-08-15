@@ -1,13 +1,13 @@
 import { PageHero } from "../components/PageHero";
 
 const PRIVACY_TEXT = [
-  "This privacy policy will help you understand how your personal information is collected, used and protected by Jaffari Sky Travels. By personal information we mean any information you provide to us — including your name, age, address, contact number, email address, card / payment information and, where relevant, the date of birth of children travelling with you, or any other such detail you choose to share.",
+  "This privacy policy will help you understand how your personal information is collected, used and protected by Jaffari Sky Travels. By personal information we mean any information you provide to us - including your name, age, address, contact number, email address, card / payment information and, where relevant, the date of birth of children travelling with you, or any other such detail you choose to share.",
   "We assure you that we follow appropriate security standards to protect your privacy when you use our website and book with us.",
   "Jaffari Sky Travels does not sell or rent the personal information of our clients and users to any third party without the consent of the customer or user involved.",
   "We use your information only with your consent, to deliver the products and services you have requested from us.",
   "Financial information such as credit card, net-banking and debit card details is collected directly by the secure payment gateways and not stored by Jaffari Sky Travels.",
   "We may share necessary information with our trusted service partners and agents to respond to your queries and resolve issues, with restrictions placed on how they may use that data.",
-  "Your basic information — such as name, age, phone number and address — is shared with the relevant service providers (such as airlines or hotel / accommodation providers) only as required to confirm your bookings.",
+  "Your basic information - such as name, age, phone number and address - is shared with the relevant service providers (such as airlines or hotel / accommodation providers) only as required to confirm your bookings.",
   "We may disclose information when required by Indian or foreign government agencies for security, immigration or customs purposes, or as otherwise required by law.",
   "Jaffari Sky Travels applies standard regulations and the best administrative and technical security measures available to us to protect your personal data from unauthorised access, alteration or disclosure.",
   "Our website uses cookies to enhance your experience and to present customised information. Third parties such as Google may use cookies to serve advertisements based on your browsing history. You can control or disable cookies at any time through your browser settings, though some features of the site may then not function as intended.",
