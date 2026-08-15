@@ -617,8 +617,8 @@ export function HomePage() {
                 </div>
                 
                 {/* Logo and Content */}
-                <div className="w-32 h-32 mb-6 mt-8 p-1">
-                  <img src="/logo.png" alt="Jaffari Sky Travels" className="w-full h-full object-contain drop-shadow-md" />
+                <div className="w-56 h-32 mb-6 mt-8 p-1">
+                  <img src="/logo.png" alt="Jaffari Sky Travels" className="w-full h-full object-contain drop-shadow-md scale-125" />
                 </div>
                 
                 <h3 className="text-2xl md:text-3xl font-serif font-bold text-primary uppercase leading-tight">Jaffari Sky<br/>Travels</h3>
