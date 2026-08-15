@@ -83,7 +83,7 @@ export function CarRentalPage() {
             {filteredVehicles.map((vehicle) => (
               <div key={vehicle.id} className="rounded-[32px] p-6 flex flex-col h-full transition-all duration-300 ease-out border bg-white border-black text-black hover:shadow-xl hover:-translate-y-1 group">
                 <div className="relative aspect-[4/3] w-full rounded-[1.5rem] bg-transparent mb-4 overflow-hidden flex items-center justify-center">
-                  <img src={vehicle.image} alt={vehicle.name} className={`w-full h-full object-contain mix-blend-multiply contrast-125 brightness-110 transition-transform duration-500 ${vehicle.id === 'bus-19' ? 'scale-100 group-hover:scale-110 p-2' : vehicle.id === 'bus-large' ? 'scale-[1.35] group-hover:scale-[1.45] translate-x-8 group-hover:translate-x-10' : 'scale-[1.35] group-hover:scale-[1.45]'}`} loading="lazy" />
+                  <img src={vehicle.image} alt={vehicle.name} className={`w-full h-full object-contain mix-blend-multiply contrast-125 brightness-110 transition-transform duration-500 ${vehicle.id === 'bus-19' ? 'scale-100 group-hover:scale-110 p-2' : vehicle.id === 'bus-large' ? 'scale-[1.35] group-hover:scale-[1.45] translate-x-8 group-hover:translate-x-10' : vehicle.category === 'Tempo' || vehicle.id === 'urbania' ? 'scale-[1.25] group-hover:scale-[1.35] p-1' : 'scale-[1.35] group-hover:scale-[1.45]'}`} loading="lazy" />
                   <span className="absolute top-4 left-4 bg-primary text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full z-10">
                     {vehicle.category}
                   </span>

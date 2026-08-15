@@ -539,6 +539,113 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Value Before Business Section */}
+      <section className="py-24 bg-white relative">
+        <div className="container mx-auto px-4">
+          <div data-aos="fade-up" className="text-center mb-16">
+            <h4 className="text-secondary font-bold text-sm tracking-[0.2em] uppercase mb-2">Value Before Business</h4>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 uppercase tracking-tight">We Offer The Best</h2>
+            <div className="w-12 h-1 bg-secondary mx-auto mt-6"></div>
+          </div>
+          
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+            {/* Left side features */}
+            <div className="lg:w-7/12 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+              <div data-aos="fade-up" data-aos-delay="0" className="flex flex-col gap-3 group">
+                <div className="w-12 h-12 rounded border border-orange-200 flex items-center justify-center text-secondary mb-2 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons-outlined">home</span>
+                </div>
+                <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">Local Expertise</h4>
+                <p className="text-sm text-slate-500 leading-relaxed">Born and raised in Kashmir — we know every hidden trail, shikara owner, and family-run wazwan kitchen in the valley.</p>
+              </div>
+              
+              <div data-aos="fade-up" data-aos-delay="100" className="flex flex-col gap-3 group">
+                <div className="w-12 h-12 rounded border border-orange-200 flex items-center justify-center text-secondary mb-2 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons-outlined">apartment</span>
+                </div>
+                <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">Curated Stays</h4>
+                <p className="text-sm text-slate-500 leading-relaxed">Every property — houseboat, mountain lodge, or luxury resort — is personally inspected by our team.</p>
+              </div>
+
+              <div data-aos="fade-up" data-aos-delay="200" className="flex flex-col gap-3 group">
+                <div className="w-12 h-12 rounded border border-orange-200 flex items-center justify-center text-secondary mb-2 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons-outlined">phone_iphone</span>
+                </div>
+                <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">24/7 Concierge</h4>
+                <p className="text-sm text-slate-500 leading-relaxed">Your personal guide is always reachable — from airport arrival to farewell. Every detail handled for you.</p>
+              </div>
+
+              <div data-aos="fade-up" data-aos-delay="300" className="flex flex-col gap-3 group">
+                <div className="w-12 h-12 rounded border border-orange-200 flex items-center justify-center text-secondary mb-2 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons-outlined">favorite_border</span>
+                </div>
+                <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">Authentic Culture</h4>
+                <p className="text-sm text-slate-500 leading-relaxed">Dine with local families, learn pashmina weaving, attend a traditional feast — the real Kashmir, not a postcard of it.</p>
+              </div>
+
+              <div data-aos="fade-up" data-aos-delay="400" className="flex flex-col gap-3 group">
+                <div className="w-12 h-12 rounded border border-orange-200 flex items-center justify-center text-secondary mb-2 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons-outlined">assignment</span>
+                </div>
+                <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">Flexible Packages</h4>
+                <p className="text-sm text-slate-500 leading-relaxed">Budget to ultra-luxury, solo to large groups — we build itineraries around your time, taste, and budget.</p>
+              </div>
+
+              <div data-aos="fade-up" data-aos-delay="500" className="flex flex-col gap-3 group">
+                <div className="w-12 h-12 rounded border border-orange-200 flex items-center justify-center text-secondary mb-2 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                  <span className="material-icons-outlined">verified_user</span>
+                </div>
+                <h4 className="font-extrabold text-sm uppercase text-slate-800 tracking-wide">Trained Guides</h4>
+                <p className="text-sm text-slate-500 leading-relaxed">All our guides are certified, bilingual, first-aid trained, and deeply passionate about Kashmir's heritage.</p>
+              </div>
+            </div>
+
+            {/* Right side Card */}
+            <div data-aos="fade-left" className="lg:w-5/12 relative mt-12 lg:mt-0 px-4 sm:px-0">
+              <div className="bg-white rounded-sm shadow-[0_0_40px_rgba(0,0,0,0.05)] border border-slate-50 p-8 sm:p-10 flex flex-col items-center justify-center text-center relative h-full min-h-[450px]">
+                {/* Rating Badge */}
+                <div className="absolute top-6 right-6 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] rounded border border-slate-100 p-3 flex flex-col items-center justify-center w-20 z-10">
+                  <span className="text-2xl font-black text-slate-800 leading-none mb-1">4.9</span>
+                  <div className="flex text-secondary text-[10px]">
+                    <span className="material-icons-outlined text-[10px]">star</span>
+                    <span className="material-icons-outlined text-[10px]">star</span>
+                    <span className="material-icons-outlined text-[10px]">star</span>
+                    <span className="material-icons-outlined text-[10px]">star</span>
+                    <span className="material-icons-outlined text-[10px]">star</span>
+                  </div>
+                  <span className="text-[9px] font-extrabold text-slate-400 mt-1 uppercase tracking-wider">Rating</span>
+                </div>
+                
+                {/* Logo and Content */}
+                <div className="w-32 h-32 mb-6 mt-8 p-1">
+                  <img src="/logo.png" alt="Jaffari Sky Travels" className="w-full h-full object-contain drop-shadow-md" />
+                </div>
+                
+                <h3 className="text-2xl md:text-3xl font-serif font-bold text-primary uppercase leading-tight">Jaffari Sky<br/>Travels</h3>
+                <p className="text-secondary font-extrabold text-[10px] uppercase tracking-[0.3em] mt-3 mb-6">Kashmir • Est. 2009</p>
+                
+                <div className="w-12 h-[1px] bg-slate-200 mb-6"></div>
+
+                <p className="text-slate-500 text-sm max-w-[280px] mx-auto leading-relaxed pb-8 lg:pb-0">
+                  Kashmir's most trusted travel partner — crafting unforgettable Himalayan escapes since 2009.
+                </p>
+                
+                {/* Floating Orange Box */}
+                <div className="absolute -bottom-6 -left-6 md:-left-10 bg-secondary text-white p-6 rounded-sm w-48 shadow-xl z-20 hidden sm:block">
+                  <div className="text-3xl font-black mb-2 leading-none">5+</div>
+                  <div className="text-[10px] font-extrabold uppercase tracking-widest leading-[1.4]">Years Crafting<br/>Perfect Himalayan<br/>Escapes</div>
+                </div>
+                {/* Mobile Floating Box - inside flow or slightly shifted */}
+                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-secondary text-white p-5 rounded-sm w-48 shadow-xl z-20 sm:hidden">
+                  <div className="text-2xl font-black mb-1 leading-none text-center">5+</div>
+                  <div className="text-[9px] font-extrabold uppercase tracking-wider leading-[1.3] text-center">Years Crafting<br/>Perfect Himalayan<br/>Escapes</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="container mx-auto px-4 py-16">
         <div className="bg-primary rounded-[3rem] p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden relative">
           <div className="max-w-xl relative z-10">
