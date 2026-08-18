@@ -328,7 +328,7 @@ export const packages = [
     originalPrice: "Rs 23,499",
     badge: "Pilgrimage Combo",
     type: "Pilgrimage",
-    image: "/images/package-vaishno.png",
+    image: "/images/vaishno_devi_shrine.png",
     inclusions: ["Katra stay", "Kashmir tour", "Transfers", "Meals"],
     itinerary: [
       { day: 1, title: "Arrival in Jammu & Katra", details: "Arrive at Jammu station/airport. Transfer to Katra. Check-in and relax." },
@@ -408,7 +408,7 @@ export const packages = [
     originalPrice: "Rs 15,999",
     badge: "Spiritual",
     type: "Pilgrimage",
-    image: "/images/package-vaishno.jpg",
+    image: "/images/amarnath_cave_trek.png",
     inclusions: ["Helicopter tickets", "Shikara Ride", "Mughal Gardens", "Hotel/Tent Stay"],
     itinerary: [
       { day: 1, title: "Srinagar - Sonmarg", details: "Arrival at Srinagar Airport, pick up and transfer to Sonmarg. Check in at hotel/tent. Evening free for Leisure. Overnight at Sonmarg Hotel/Swiss Tented Accommodation." },
@@ -426,7 +426,7 @@ export const packages = [
     originalPrice: "Rs 12,999",
     badge: "Quick Yatra",
     type: "Pilgrimage",
-    image: "/images/package-vaishno.jpg",
+    image: "/images/amarnath_helicopter.png",
     inclusions: ["Helicopter tickets", "Shikara Ride", "Hotel/Tent Stay", "Meals"],
     itinerary: [
       { day: 1, title: "Srinagar - Sonmarg", details: "Arrival at Srinagar Airport, pick up and transfer to Sonmarg. Check in at hotel/tent. Evening free for Leisure. Overnight at Sonmarg Hotel/Swiss Tented Accommodation." },
@@ -673,7 +673,7 @@ export const rentalVehicles: RentalVehicle[] = [
     transmission: "Manual",
     ac: true,
     pricePerDay: 5555,
-    image: "/images/colored-tempo-large.png",
+    image: "/images/26tempo.jpg",
     rating: "4.5",
     reviews: "12,678",
     duration: "5 hour 30 mins",
