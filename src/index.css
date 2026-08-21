@@ -22,7 +22,15 @@
 
 @layer base {
   * {
+    box-sizing: border-box;
     min-width: 0;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
   }
 
   html {
@@ -36,21 +44,62 @@
 
   img {
     @apply max-w-full;
+    height: auto;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  button,
+  li,
+  span,
+  label {
+    overflow-wrap: anywhere;
     word-break: break-word;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    max-width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
   }
 }
 
 @layer components {
   .section-wrap {
-    @apply mx-auto w-[min(1120px,calc(100%_-_44px))] py-12;
+    @apply mx-auto w-[min(1120px,calc(100%_-_24px))] py-10 sm:w-[min(1120px,calc(100%_-_44px))] sm:py-12;
   }
 
   .focus-ring {
     @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kashmir-gold;
+  }
+
+  .fluid-title {
+    font-size: clamp(2.5rem, 14vw, 6rem);
+    line-height: 1.05;
+  }
+
+  .fluid-display {
+    font-size: clamp(3.25rem, 18vw, 9.375rem);
+    line-height: 0.95;
   }
 }
 

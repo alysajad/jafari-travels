@@ -45,15 +45,15 @@ export function PackageDetailPage() {
     <main className="bg-white text-black transition-colors duration-300">
       <section className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-6">
-          <nav className="flex text-sm text-slate-500 mb-2 gap-2">
+          <nav className="mb-2 flex flex-wrap gap-2 text-sm text-slate-500">
             <Link to="/">Home</Link> <span>/</span> <Link to="/kashmir-packages">Packages</Link> <span>/</span> <span className="text-primary font-medium">{pkg.name}</span>
           </nav>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <h1 className="text-3xl md:text-4xl font-extrabold mb-2">{pkg.name}</h1>
-              <div className="flex items-center gap-4 text-sm">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
                 <span className="flex items-center gap-1 text-amber-500"><i className="material-icons-outlined text-sm">star</i> 4.9 (124 reviews)</span>
-                <span className="text-slate-400">•</span>
+                <span className="hidden text-slate-400 sm:inline">•</span>
                 <span className="flex items-center gap-1"><i className="material-icons-outlined text-sm">location_on</i> {pkg.destinations}</span>
               </div>
             </div>
@@ -72,7 +72,7 @@ export function PackageDetailPage() {
 
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-10 pb-20">
         <div className="lg:col-span-2 space-y-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-white border border-black rounded-3xl shadow-sm">
+          <div className="grid grid-cols-1 gap-4 rounded-3xl border border-black bg-white p-4 shadow-sm sm:grid-cols-2 sm:p-6 md:grid-cols-4">
             <div className="flex items-center gap-3">
               <div className="bg-blue-50 p-3 rounded-2xl text-primary"><i className="material-icons-outlined">schedule</i></div>
               <div><p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Duration</p><p className="font-bold">{pkg.duration}</p></div>
@@ -99,7 +99,7 @@ export function PackageDetailPage() {
           </section>
           
           <section>
-            <div className="flex justify-between items-center mb-6">
+            <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <h2 className="text-2xl font-bold">Day-by-Day Itinerary</h2>
               {pkg.itinerary && (
                 <button onClick={expandAll} className="text-primary font-bold text-sm">
@@ -110,8 +110,8 @@ export function PackageDetailPage() {
             <div className="space-y-4">
               {pkg.itinerary ? pkg.itinerary.map((day, index) => (
                 <div key={index} className="border border-black rounded-2xl overflow-hidden bg-white">
-                  <button onClick={() => toggleDay(index)} className="w-full px-6 py-5 flex items-center justify-between group">
-                    <div className="flex items-center gap-4 text-left">
+                  <button onClick={() => toggleDay(index)} className="group flex w-full items-center justify-between gap-3 px-4 py-5 sm:px-6">
+                    <div className="flex min-w-0 items-center gap-3 text-left sm:gap-4">
                       <span className="bg-primary/10 text-primary w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">
                         {day.day}
                       </span>
@@ -172,12 +172,12 @@ export function PackageDetailPage() {
         
         <aside className="relative">
           <div className="sticky top-24 space-y-6">
-            <div className="bg-white border border-black p-8 rounded-3xl shadow-xl shadow-slate-200/50">
-              <div className="flex items-center justify-between mb-6">
+            <div className="rounded-3xl border border-black bg-white p-5 shadow-xl shadow-slate-200/50 sm:p-8">
+              <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-slate-500 text-sm font-medium line-through">{pkg.originalPrice}</p>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-extrabold text-black">{pkg.price}</span>
+                  <div className="flex flex-wrap items-baseline gap-1">
+                    <span className="text-2xl font-extrabold text-black sm:text-3xl">{pkg.price}</span>
                     <span className="text-slate-500 font-medium">/person</span>
                   </div>
                 </div>
@@ -231,7 +231,7 @@ export function PackageDetailPage() {
       
       <section className="bg-white py-20 border-t border-black">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between mb-10">
+          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h2 className="text-3xl font-bold mb-2">Similar Packages</h2>
               <p className="text-slate-500">More curated experiences in the Himalayas</p>
@@ -251,7 +251,7 @@ export function PackageDetailPage() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">{item.name}</h3>
                   <p className="text-slate-500 text-sm mb-4">{item.duration}</p>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <p className="font-bold text-lg">{item.price} <span className="text-slate-400 text-sm font-normal">/pp</span></p>
                     <Link to={`/kashmir-packages/${item.slug}`} className="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">View Details <i className="material-icons-outlined text-sm">arrow_forward</i></Link>
                   </div>

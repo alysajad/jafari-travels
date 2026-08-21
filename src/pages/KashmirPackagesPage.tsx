@@ -76,19 +76,19 @@ export function KashmirPackagesPage() {
 
   return (
     <main className="bg-slate-50 text-slate-800 transition-colors duration-300">
-      <section className="relative h-[400px] flex items-center overflow-hidden">
+      <section className="relative flex min-h-[360px] items-center overflow-hidden py-16 sm:min-h-[400px]">
         <img alt="Kashmir Landscape" className="absolute inset-0 w-full h-full object-cover" src="/images/naweedey-XHG0uFAlEGM-unsplash.jpg"/>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
-        <div className="relative w-full px-4 lg:px-8 xl:px-12 mx-auto text-white -mt-16">
-          <nav className="flex items-center gap-2 text-sm mb-4 opacity-90">
+        <div className="relative mx-auto w-full px-4 text-white lg:px-8 xl:px-12">
+          <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm opacity-90">
             <Link to="/" className="hover:underline">Home</Link>
             <ChevronRight className="w-3 h-3" />
             <Link to="/kashmir-packages" className="hover:underline">Packages</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="font-bold">Kashmir</span>
           </nav>
-          <h2 className="font-varien text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-wide mb-4">Heaven on Earth: <span className="text-secondary">Kashmir</span></h2>
-          <p className="text-lg md:text-xl max-w-2xl opacity-90 leading-relaxed">Discover the enchanting valleys, serene lakes, and snow-capped peaks of the crown jewel of India.</p>
+          <h2 className="mb-4 font-varien text-[clamp(2.35rem,12vw,4.5rem)] font-extrabold leading-[1.05] tracking-wide">Heaven on Earth: <span className="text-secondary">Kashmir</span></h2>
+          <p className="max-w-2xl text-base leading-relaxed opacity-90 md:text-xl">Discover the enchanting valleys, serene lakes, and snow-capped peaks of the crown jewel of India.</p>
         </div>
       </section>
 
@@ -158,9 +158,9 @@ export function KashmirPackagesPage() {
           </aside>
           
           <div className="flex-1">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
-              <h3 className="text-2xl font-bold">{processedPackages.length} Kashmir Packages Found</h3>
-              <div className="flex items-center gap-2">
+              <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <h3 className="text-2xl font-bold">{processedPackages.length} Kashmir Packages Found</h3>
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-sm font-medium opacity-60">Sort by:</span>
                 <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="text-sm border-none bg-transparent font-bold text-primary focus:ring-0 cursor-pointer">
                   <option>Recommended</option>
@@ -188,12 +188,12 @@ export function KashmirPackagesPage() {
                     </div>
                   </Link>
                   <div className="p-6 flex flex-col flex-grow">
-                    <Link to={`/kashmir-packages/${pkg.slug}`} className="flex justify-between items-start mb-2 group/title">
+                    <Link to={`/kashmir-packages/${pkg.slug}`} className="mb-2 flex flex-col gap-2 group/title sm:flex-row sm:items-start sm:justify-between">
                       <h4 className="text-xl font-bold group-hover/title:text-primary transition-colors">{pkg.name}</h4>
                       <div className="flex items-center text-yellow-400"><Star className="w-4 h-4 fill-current" /><span className="text-xs font-bold text-slate-800 ml-1">4.9</span></div>
                     </Link>
-                    <p className="text-xs text-slate-500 mb-4 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5" /> {pkg.destinations}
+                    <p className="mb-4 flex items-start gap-1 text-xs text-slate-500">
+                      <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0" /> {pkg.destinations}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-6">
                       {pkg.inclusions.map(inc => (
@@ -203,10 +203,10 @@ export function KashmirPackagesPage() {
                       ))}
                     </div>
                     <div className="mb-6 border-t border-slate-100 pt-6">
-                      <div className="flex items-baseline gap-2">
+                      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                         <span className="text-2xl font-black text-[#f59e0b]">{pkg.price}</span>
                         <span className="text-xs line-through opacity-50">{pkg.originalPrice}</span>
-                        <span className="text-[10px] font-medium opacity-60 ml-auto text-right uppercase">Per Pax<br/>Min. 2 Pax</span>
+                        <span className="text-[10px] font-medium uppercase opacity-60 sm:ml-auto sm:text-right">Per Pax<br/>Min. 2 Pax</span>
                       </div>
                     </div>
                     <div className="flex flex-col xl:flex-row gap-3 mt-auto pt-2">

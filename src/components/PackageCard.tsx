@@ -13,12 +13,12 @@ export function PackageCard({ pkg, compact = false }: { pkg: Package; compact?: 
         <span className="absolute bottom-3 left-3 rounded-full bg-kashmir-blue px-3 py-1 font-numbers text-sm font-black text-white">From {pkg.price}</span>
       </div>
       <div className="p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+          <div className="min-w-0">
             <h3 className="text-lg font-black text-kashmir-blue">{pkg.name}</h3>
             <p className="mt-1 text-xs font-bold text-kashmir-slate">{pkg.duration} | {pkg.destinations}</p>
           </div>
-          <del className="font-numbers text-xs font-bold text-kashmir-slate">{pkg.originalPrice}</del>
+          <del className="font-numbers text-xs font-bold text-kashmir-slate sm:shrink-0">{pkg.originalPrice}</del>
         </div>
         {!compact ? (
           <ul className="mt-4 grid gap-2 text-xs font-bold text-slate-600">
@@ -27,13 +27,13 @@ export function PackageCard({ pkg, compact = false }: { pkg: Package; compact?: 
             ))}
           </ul>
         ) : null}
-        <div className="mt-5 flex flex-wrap gap-2">
-          <Link className="focus-ring inline-flex items-center gap-2 rounded-[10px] bg-kashmir-bright px-4 py-2 text-sm font-black text-white" to={`/kashmir-packages/${pkg.slug}`}>
+        <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          <Link className="focus-ring inline-flex items-center justify-center gap-2 rounded-[10px] bg-kashmir-bright px-4 py-2 text-sm font-black text-white" to={`/kashmir-packages/${pkg.slug}`}>
             View Details
             <ArrowRight className="h-4 w-4" />
           </Link>
           <a
-            className="focus-ring inline-flex items-center gap-2 rounded-[10px] bg-kashmir-green px-4 py-2 text-sm font-black text-white"
+            className="focus-ring inline-flex items-center justify-center gap-2 rounded-[10px] bg-kashmir-green px-4 py-2 text-sm font-black text-white"
             href={whatsappLink(`I am interested in ${pkg.name} ${pkg.duration}.`)}
             rel="noreferrer"
             target="_blank"

@@ -13,25 +13,25 @@ export function HomePage() {
   
   return (
     <main>
-      <section className="relative min-h-[600px] lg:min-h-[750px] flex items-center pt-16 pb-32">
+      <section className="relative flex min-h-[560px] items-center pb-28 pt-10 sm:min-h-[620px] lg:min-h-[750px] lg:pb-32 lg:pt-16">
         <div className="absolute inset-0 z-0">
-          <img alt="Beautiful Kashmir Landscape" className="w-full h-full object-cover object-[75%_center]" src="/images/imad-clicks-pIZZtKU_aVU-unsplash.jpg"/>
+          <img alt="Beautiful Kashmir Landscape" className="h-full w-full object-cover object-[62%_center] sm:object-[75%_center]" src="/images/imad-clicks-pIZZtKU_aVU-unsplash.jpg"/>
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <div className="text-white text-sm font-medium mb-6">
+          <div className="max-w-3xl overflow-hidden">
+            <div className="mb-5 max-w-full text-sm font-medium text-white sm:mb-6">
               Trusted by 50,000+ Happy Travelers
             </div>
-            <h1 className="font-varien text-white leading-[1.1] mb-6 tracking-wide flex flex-col">
-              <span className="font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-[90px] opacity-90">Explore</span>
-              <span className="font-normal text-secondary text-5xl sm:text-7xl md:text-9xl lg:text-[150px] drop-shadow-2xl relative z-10 -mt-2 md:-mt-6">Kashmir.</span>
+            <h1 className="mb-5 flex max-w-full flex-col font-varien leading-none tracking-wide text-white sm:mb-6">
+              <span className="fluid-title font-extrabold opacity-90">Explore</span>
+              <span className="fluid-display relative z-10 font-normal text-secondary drop-shadow-2xl md:-mt-4 lg:-mt-6">Kashmir.</span>
             </h1>
             <p className="text-base md:text-xl text-slate-100 mb-8 max-w-xl opacity-90">
               Your trusted travel partner for boutique Kashmir tours, breathtaking mountain adventures, and unforgettable scenic getaways.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Link to="/kashmir-packages" className="bg-primary text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-blue-700 transition-all text-center w-full sm:w-auto">
+              <Link to="/kashmir-packages" className="flex w-full max-w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-4 text-center font-bold text-white transition-all hover:bg-blue-700 sm:w-auto sm:px-8">
                   Explore Destinations <span className="material-icons-outlined">arrow_forward</span>
               </Link>
             </div>
@@ -154,11 +154,11 @@ export function HomePage() {
       <section className="py-24">
         <div className="container mx-auto px-4">
           <div data-aos="fade-up" className="flex flex-col lg:flex-row gap-12">
-            <div className="lg:w-1/3 bg-primary rounded-[2rem] p-10 text-white relative overflow-hidden flex flex-col justify-between">
+            <div className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-primary p-6 text-white sm:p-10 lg:w-1/3">
               <div className="relative z-10">
-                <h2 className="text-4xl font-extrabold mb-4 leading-tight">Top Packages This Season</h2>
+                <h2 className="mb-4 text-3xl font-extrabold leading-tight sm:text-4xl">Top Packages This Season</h2>
                 <p className="text-blue-100 opacity-80 mb-8">Exclusive hand-crafted experiences designed just for you.</p>
-                <Link to="/kashmir-packages" className="bg-white text-primary px-8 py-3 rounded-full font-bold inline-flex items-center gap-2 hover:bg-slate-100 transition-all">
+                <Link to="/kashmir-packages" className="inline-flex max-w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-center font-bold text-primary transition-all hover:bg-slate-100 sm:px-8">
                   View All Offers <span className="material-icons-outlined">east</span>
                 </Link>
               </div>
@@ -178,12 +178,12 @@ export function HomePage() {
                     )}
                   </div>
                   <div className="p-6 flex flex-col flex-1">
-                    <div className="flex justify-between items-start mb-2 gap-2">
-                      <h3 className="font-bold text-xl">{pkg.name}</h3>
-                      <p className="text-xs text-slate-400 font-bold uppercase text-right shrink-0">{pkg.duration.replace('/', ' / ').replace('N', ' Nights').replace('D', ' Days').replace('4 Nights / 5 Days', '5 Days / 4 Nights').replace('5 Nights / 6 Days', '6 Days / 5 Nights')}</p>
+                    <div className="mb-2 flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:gap-2">
+                      <h3 className="text-xl font-bold">{pkg.name}</h3>
+                      <p className="text-xs font-bold uppercase text-slate-400 sm:shrink-0 sm:text-right">{pkg.duration.replace('/', ' / ').replace('N', ' Nights').replace('D', ' Days').replace('4 Nights / 5 Days', '5 Days / 4 Nights').replace('5 Nights / 6 Days', '6 Days / 5 Nights')}</p>
                     </div>
                     <p className="text-slate-500 text-sm mb-4 line-clamp-2 flex-1">{pkg.destinations}</p>
-                    <div className="flex justify-between items-center mt-auto">
+                    <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                       <div className="flex flex-col">
                         <span className="text-slate-400 text-xs line-through">{pkg.originalPrice}</span>
                         <span className="text-2xl font-extrabold text-primary">{pkg.price}</span>
@@ -208,7 +208,7 @@ export function HomePage() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2">Rent a Vehicle for Your Journey</h2>
               <p className="text-slate-500 font-medium">From sedans to luxury coaches, pick the format that fits your trip.</p>
             </div>
-            <Link to="/car-rental" className="text-primary font-bold flex items-center gap-1 hover:underline whitespace-nowrap shrink-0">
+            <Link to="/car-rental" className="flex shrink-0 items-center gap-1 font-bold text-primary hover:underline sm:whitespace-nowrap">
                 View Full Fleet <span className="material-icons-outlined text-base">arrow_forward</span>
             </Link>
           </div>
@@ -231,7 +231,7 @@ export function HomePage() {
                     </div>
                   </div>
 
-                  <div className="flex justify-between items-end mt-auto gap-2">
+                  <div className="mt-auto flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                     <div className="flex flex-col gap-4">
                       <div className="flex flex-col gap-0.5">
                          <span className="text-[11px] text-slate-400 line-through font-semibold">₹{(Math.round(vehicle.pricePerDay * 1.25 / 100) * 100).toLocaleString()}</span>
@@ -249,7 +249,7 @@ export function HomePage() {
                       </a>
                     </div>
 
-                    <div className="pl-6 border-l border-slate-100 py-1 ml-auto">
+                    <div className="py-1 sm:ml-auto sm:border-l sm:border-slate-100 sm:pl-6">
                       <ul className="space-y-2">
                           <li className="flex items-center gap-2 text-[13px] font-semibold">
                             <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>

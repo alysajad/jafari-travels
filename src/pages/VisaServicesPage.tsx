@@ -19,17 +19,17 @@ export function VisaServicesPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative min-h-[400px] lg:min-h-[500px] flex items-center pt-16 pb-16">
+      <section className="relative flex min-h-[380px] items-center pb-16 pt-16 lg:min-h-[500px]">
         <div className="absolute inset-0 z-0">
           <img alt="Visa Services" className="w-full h-full object-cover object-center" src="/images/visa-page.jpg"/>
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="text-white text-sm font-bold mb-6 uppercase tracking-widest">
+            <div className="mb-6 text-sm font-bold uppercase tracking-[0.12em] text-white sm:tracking-widest">
               Tourism, Business, Pilgrimage and Work
             </div>
-            <h1 className="font-varien text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.1] mb-6 tracking-wide">
+            <h1 className="mb-6 font-varien text-[clamp(2.5rem,13vw,6rem)] font-extrabold leading-[1.05] tracking-wide text-white">
               Visa Made <span className="text-secondary italic font-sans font-extrabold">Simple</span>.
             </h1>
             <p className="text-lg md:text-xl text-slate-100 mb-8 opacity-90 max-w-xl">
@@ -48,7 +48,7 @@ export function VisaServicesPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {visaTypes.map((type) => (
-              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all flex items-start gap-5 group" key={type.name}>
+              <div className="group flex items-start gap-4 rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl sm:gap-5 sm:p-8" key={type.name}>
                 <div className="w-14 h-14 bg-blue-50 text-primary rounded-full flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
                   <span className="material-icons-outlined text-2xl">{type.icon}</span>
                 </div>
@@ -85,7 +85,7 @@ export function VisaServicesPage() {
             </div>
             <div className="lg:w-1/2 relative">
               <div className="absolute inset-0 bg-primary rounded-[3rem] transform rotate-3 scale-105 opacity-10 hidden md:block"></div>
-              <img src="/images/visa-page.jpg" className="rounded-[3rem] shadow-2xl w-full object-cover relative z-10" alt="Visa application process" />
+              <img src="/images/visa-page.jpg" className="relative z-10 h-[320px] w-full rounded-[2rem] object-cover shadow-2xl sm:rounded-[3rem] md:h-auto" alt="Visa application process" />
             </div>
           </div>
         </div>
@@ -93,14 +93,14 @@ export function VisaServicesPage() {
 
       {/* Enquiry Form */}
       <section className="container mx-auto px-4 py-24">
-        <div className="bg-primary rounded-[3rem] p-8 md:p-16 overflow-hidden relative">
+        <div className="relative overflow-hidden rounded-[2rem] bg-primary p-5 sm:rounded-[3rem] sm:p-8 md:p-16">
           <div className="relative z-10 max-w-3xl mx-auto text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">Start Your Application</h2>
             <p className="text-blue-100 opacity-90 text-lg">Leave your details and our visa experts will get in touch with you immediately to discuss your requirements.</p>
           </div>
           
           <form 
-            className="relative z-10 bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6" 
+            className="relative z-10 mx-auto grid max-w-4xl grid-cols-1 gap-5 rounded-[1.5rem] bg-white p-5 shadow-2xl sm:gap-6 sm:rounded-[2rem] sm:p-8 md:grid-cols-2 md:p-10"
             onSubmit={(event) => {
               event.preventDefault();
               const details = Array.from(new FormData(event.currentTarget)).map(([k, v]) => `${k}: ${v}`).join(", ");

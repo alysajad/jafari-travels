@@ -25,12 +25,12 @@ export function SearchWidget() {
   }
 
   return (
-    <section className="relative z-20 mx-auto -mt-20 w-[min(1400px,calc(100%_-_32px))] md:w-[min(1400px,calc(100%_-_44px))] rounded-xl md:rounded-[22px] border border-kashmir-blue/10 bg-white p-4 md:p-8 lg:p-10 shadow-travel">
-      <div className="flex gap-5 md:gap-7 border-b border-slate-200 px-1 pb-4 overflow-x-auto scrollbar-hide -mx-1 md:mx-0">
+    <section className="relative z-20 mx-auto -mt-14 w-[min(1400px,calc(100%_-_20px))] rounded-xl border border-kashmir-blue/10 bg-white p-3 shadow-travel sm:w-[min(1400px,calc(100%_-_32px))] sm:p-4 md:-mt-20 md:w-[min(1400px,calc(100%_-_44px))] md:rounded-[22px] md:p-8 lg:p-10">
+      <div className="grid grid-cols-2 gap-2 border-b border-slate-200 pb-4 sm:grid-cols-3 lg:flex lg:gap-7 lg:overflow-x-auto">
         {Object.keys(tabs).map((key) => (
           <button
-            className={`focus-ring relative py-2 flex items-center gap-2 text-xs md:text-sm font-bold whitespace-nowrap after:absolute after:inset-x-0 after:-bottom-4 after:h-1 after:rounded-full after:bg-kashmir-bright transition-colors ${
-              active === key ? "text-kashmir-bright after:scale-x-100" : "text-kashmir-charcoal hover:text-kashmir-bright/70 after:scale-x-0"
+            className={`focus-ring relative flex min-h-11 items-center justify-center gap-1.5 rounded-lg border px-2 py-2 text-center text-[11px] font-bold leading-tight transition-colors after:absolute after:inset-x-0 after:-bottom-4 after:hidden after:h-1 after:rounded-full after:bg-kashmir-bright sm:text-xs lg:shrink-0 lg:justify-start lg:border-0 lg:bg-transparent lg:px-0 lg:text-sm lg:whitespace-nowrap lg:after:block ${
+              active === key ? "border-kashmir-bright/20 bg-kashmir-bright/10 text-kashmir-bright after:scale-x-100" : "border-slate-200 text-kashmir-charcoal hover:text-kashmir-bright/70 after:scale-x-0"
             }`}
             key={key}
             onClick={() => setActive(key as TabKey)}
@@ -47,7 +47,7 @@ export function SearchWidget() {
         ))}
       </div>
 
-      <form className="grid gap-3 pt-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_180px]" onSubmit={submit}>
+      <form className="grid grid-cols-1 gap-3 pt-5 md:grid-cols-2 md:pt-6 lg:grid-cols-[repeat(4,minmax(0,1fr))_180px]" onSubmit={submit}>
         <SearchField key={`f1-${active}`} icon={<MapPin />} label={fields[0] as string} value={fields[1]} />
         <SearchField key={`f2-${active}`} icon={<CalendarDays />} label={fields[2] as string} value={fields[3]} />
         <SearchField key={`f3-${active}`} icon={<CalendarDays />} label={fields[4] as string} value={fields[5]} />
@@ -56,7 +56,7 @@ export function SearchWidget() {
         ) : (
           <SearchField key={`f4-${active}`} icon={<UsersRound />} label={fields[6] as string} value={fields[7]} />
         )}
-        <button className="focus-ring inline-flex min-h-[56px] md:min-h-[64px] items-center justify-center gap-2 rounded-2xl bg-kashmir-bright px-6 text-sm font-bold text-white shadow-travel md:col-span-2 lg:col-span-1" type="submit">
+        <button className="focus-ring inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-kashmir-bright px-5 text-sm font-bold text-white shadow-travel md:col-span-2 md:min-h-[64px] md:rounded-2xl lg:col-span-1" type="submit">
           {fields[8] as string}
           <ArrowRight className="h-4 w-4" />
         </button>
@@ -72,8 +72,8 @@ function SearchField({ icon, label, value }: { icon: ReactNode; label: string; v
   const minDate = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0];
 
   return (
-    <label className="flex min-w-0 items-center gap-3 rounded-[10px] border border-slate-200 bg-slate-50 px-5 py-5">
-      <span className="text-kashmir-bright [&>svg]:h-5 [&>svg]:w-5">{icon}</span>
+    <label className="flex min-w-0 items-center gap-3 rounded-[10px] border border-slate-200 bg-slate-50 px-4 py-4 sm:px-5 sm:py-5">
+      <span className="shrink-0 text-kashmir-bright [&>svg]:h-5 [&>svg]:w-5">{icon}</span>
       <span className="min-w-0 flex-1 flex flex-col justify-center">
         <span className="block text-[11px] font-bold text-kashmir-slate mb-1">{label}</span>
         {isArray ? (
@@ -104,9 +104,9 @@ function TravelerField({ icon, label }: { icon: ReactNode; label: string }) {
       <button 
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full min-w-0 items-center gap-3 rounded-[10px] border border-slate-200 bg-slate-50 px-5 py-5 text-left"
+        className="flex w-full min-w-0 items-center gap-3 rounded-[10px] border border-slate-200 bg-slate-50 px-4 py-4 text-left sm:px-5 sm:py-5"
       >
-        <span className="text-kashmir-bright [&>svg]:h-5 [&>svg]:w-5">{icon}</span>
+        <span className="shrink-0 text-kashmir-bright [&>svg]:h-5 [&>svg]:w-5">{icon}</span>
         <span className="min-w-0 flex-1">
           <span className="block text-[11px] font-bold text-kashmir-slate">{label}</span>
           <span className="block text-sm font-semibold text-black">{value}</span>
@@ -115,7 +115,7 @@ function TravelerField({ icon, label }: { icon: ReactNode; label: string }) {
       <input type="hidden" name={label} value={`${adults} Adults, ${children} Children, ${infants} Infants`} />
       
       {open && (
-        <div className="absolute top-full left-0 z-50 mt-2 w-72 rounded-[10px] border border-slate-200 bg-white p-4 shadow-travel">
+        <div className="absolute left-0 top-full z-50 mt-2 w-full rounded-[10px] border border-slate-200 bg-white p-4 shadow-travel sm:w-72">
            <Counter label="Adults" sub="(12+ Years)" value={adults} onChange={setAdults} min={1} />
            <Counter label="Children" sub="(2-12 Years)" value={children} onChange={setChildren} min={0} />
            <Counter label="Infant" sub="(0-2 Years)" value={infants} onChange={setInfants} min={0} />

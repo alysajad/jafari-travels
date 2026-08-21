@@ -68,14 +68,14 @@ export function HajjUmrahPage() {
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <span className="inline-block bg-white/20 backdrop-blur-md text-white border border-white/20 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Packages</span>
-          <h2 className="font-extrabold text-4xl md:text-5xl text-white mb-4 drop-shadow-md">Featured Hajj Packages</h2>
-          <p className="text-slate-200 text-lg mb-12 font-medium drop-shadow">Explore our expected packages for the upcoming Hajj season.</p>
+          <h2 className="mb-4 text-[clamp(2rem,10vw,3rem)] font-extrabold leading-tight text-white drop-shadow-md">Featured Hajj Packages</h2>
+          <p className="mb-12 text-base font-medium text-slate-200 drop-shadow sm:text-lg">Explore our expected packages for the upcoming Hajj season.</p>
           
           <div className="max-w-[540px] mx-auto text-left">
             <div className="mb-6 text-center text-[#f59e0b] drop-shadow-md text-sm font-black tracking-[0.2em] uppercase">Hajj 2027</div>
-            <div className="rounded-[24px] bg-[#044c3c] text-white p-8 shadow-2xl relative border border-[#044c3c]/50">
-              <div className="absolute top-4 right-4 bg-[#9a5611] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full">LIMITED SEATS</div>
-              <div className="flex flex-col items-center text-center mb-6 pt-8 sm:pt-4">
+            <div className="relative rounded-[24px] border border-[#044c3c]/50 bg-[#044c3c] p-5 text-white shadow-2xl sm:p-8">
+              <div className="mb-4 ml-auto w-fit rounded-full bg-[#9a5611] px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-white">LIMITED SEATS</div>
+              <div className="mb-6 flex flex-col items-center text-center">
                 <Landmark className="w-8 h-8 mb-4 opacity-70" strokeWidth={1.5} />
                 <h3 className="font-serif text-3xl mb-3 text-white">Shifting Package</h3>
                 <p className="text-sm text-white/80 leading-relaxed mb-6">
@@ -118,7 +118,7 @@ export function HajjUmrahPage() {
       <section className="bg-slate-50 border-t border-slate-200 py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <span className="inline-block text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-4">Why Register</span>
-          <h2 className="font-extrabold text-3xl md:text-5xl text-slate-900 mb-12">Why Pre-Register for Hajj 2027?</h2>
+          <h2 className="mb-12 text-[clamp(2rem,10vw,3rem)] font-extrabold leading-tight text-slate-900">Why Pre-Register for Hajj 2027?</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-[32px] p-8 md:p-10 shadow-sm border border-slate-100 hover:shadow-lg transition-shadow">
@@ -150,8 +150,8 @@ export function HajjUmrahPage() {
         <h2 className="mb-6 font-extrabold text-2xl text-slate-800">Umrah package tiers</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
           {umrahPackages.map((pkg) => (
-            <div key={pkg.tier} className="rounded-[32px] p-6 flex flex-col h-full transition-all duration-300 ease-out border bg-white border-black text-black hover:shadow-xl hover:-translate-y-1">
-              <div className="flex items-center justify-between mb-6">
+            <div key={pkg.tier} className="flex h-full flex-col rounded-[24px] border border-black bg-white p-5 text-black transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl sm:rounded-[32px] sm:p-6">
+              <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <h4 className="text-xs font-bold text-black">{pkg.tier}</h4>
                 <span className="px-2 py-0.5 text-[10px] font-mono font-bold rounded-full uppercase tracking-wider bg-slate-100 text-slate-600 border border-slate-200">{pkg.duration}</span>
               </div>
@@ -197,14 +197,14 @@ export function HajjUmrahPage() {
               </div>
               <div className="p-6">
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <h3 className="font-extrabold text-lg text-slate-900 leading-tight">{hotel.name}</h3>
+                  <h3 className="text-lg font-extrabold leading-tight text-slate-900">{hotel.name}</h3>
                   <div className="flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-lg">
                     <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                     <span className="text-xs font-bold text-amber-900">{hotel.rating}</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-1.5 text-slate-500 mt-3">
-                  <MapPin className="w-4 h-4" />
+                <div className="mt-3 flex items-start gap-1.5 text-slate-500">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
                   <span className="text-xs font-semibold">{hotel.distance}</span>
                 </div>
               </div>
@@ -217,15 +217,15 @@ export function HajjUmrahPage() {
       <section className="bg-white border-t border-slate-200 py-20">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-extrabold text-3xl md:text-5xl text-slate-900 mb-4">Frequently Asked Questions</h2>
+            <h2 className="mb-4 text-[clamp(2rem,10vw,3rem)] font-extrabold leading-tight text-slate-900">Frequently Asked Questions</h2>
             <p className="text-slate-500 text-lg">Common questions about Hajj & Umrah bookings.</p>
           </div>
           <div className="space-y-4">
             {hajjFaqs.map((faq, index) => (
               <details key={index} className="group bg-slate-50 rounded-2xl border border-slate-200 [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-900">
+                <summary className="flex cursor-pointer items-center justify-between gap-3 p-5 font-bold text-slate-900 sm:p-6">
                   {faq.q}
-                  <ChevronDown className="w-5 h-5 text-slate-500 transition-transform group-open:-rotate-180" />
+                  <ChevronDown className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-open:-rotate-180" />
                 </summary>
                 <div className="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200/60 pt-4">
                   {faq.a}

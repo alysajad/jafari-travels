@@ -8,7 +8,7 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 text-black">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
+        <div className="container mx-auto flex items-center justify-between px-4 py-3 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:py-4">
           
           {/* Left Nav (Desktop) */}
           <nav className="hidden lg:flex items-center justify-start gap-8 text-sm text-black uppercase tracking-wider font-bold">
@@ -19,8 +19,8 @@ export function Header() {
           </nav>
 
           {/* Center Logo */}
-          <Link to="/" className="z-10 flex items-center">
-            <img src="/logo.png" alt="Jaffari Sky Travels & Tours" className="h-16 md:h-20 w-auto" />
+          <Link to="/" className="z-10 flex max-w-[150px] items-center sm:max-w-none">
+            <img src="/logo.png" alt="Jaffari Sky Travels & Tours" className="h-12 w-auto sm:h-16 md:h-20" />
           </Link>
 
           {/* Right Nav & Action (Desktop) */}
