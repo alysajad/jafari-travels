@@ -112,7 +112,7 @@ export function HomePage() {
         <div className="container mx-auto px-4">
           <div data-aos="fade-up" className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 mb-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-2">Explore the Paradise on Earth</h2>
+              <h2 className="mb-2 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Explore the Paradise on Earth</h2>
               <p className="text-slate-500 font-medium">Breathtaking locations handpicked for your next Kashmir getaway.</p>
             </div>
             <Link to="/kashmir-packages" className="text-primary font-bold flex items-center gap-1 hover:underline shrink-0">
