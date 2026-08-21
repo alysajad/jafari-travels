@@ -76,54 +76,66 @@ export function HomePage() {
         </div>
       </div>
 
-      <section className="py-10 sm:py-16">
+      <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4">
-          <div data-aos="fade-up" className="grid grid-cols-2 gap-5 sm:grid-cols-2 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
-            <div className="flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">verified_user</span>
-              </div>
-              <h4 className="font-bold text-sm">Best Price<br/>Guarantee</h4>
-            </div>
-            <div className="flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-blue-100 text-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">headset_mic</span>
-              </div>
-              <h4 className="font-bold text-sm">24/7 Support<br/>We are here</h4>
-            </div>
-            <div className="flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">security</span>
-              </div>
-              <h4 className="font-bold text-sm">Secure Booking<br/>100% safe</h4>
-            </div>
-            <div className="flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">event_available</span>
-              </div>
-              <h4 className="font-bold text-sm">Easy Cancellation<br/>Hassle-free</h4>
-            </div>
-            <div className="hidden lg:flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">star</span>
-              </div>
-              <h4 className="font-bold text-sm">Top Rated<br/>Handpicked</h4>
-            </div>
+          <div data-aos="fade-up" className="mx-auto mb-10 max-w-3xl text-center">
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Summer Packages</p>
+            <h2 className="mb-4 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Explore Kashmir Packages</h2>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-500">Every itinerary is crafted around your pace - from budget explorers to ultra-luxury seekers. Tap any package for the full day-by-day plan.</p>
           </div>
+          <div data-aos="fade-up" className="flex flex-col gap-8 lg:flex-row lg:gap-12">
+            <div className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-primary p-6 text-white sm:p-10 lg:w-1/3">
+              <div className="relative z-10">
+                <h2 className="mb-4 text-3xl font-extrabold leading-tight sm:text-4xl">Top Packages This Season</h2>
+                <p className="text-blue-100 opacity-80 mb-8">Exclusive hand-crafted experiences designed just for you.</p>
+                <Link to="/kashmir-packages" className="inline-flex max-w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-center font-bold text-primary transition-all hover:bg-slate-100 sm:px-8">
+                  View All Offers <span className="material-icons-outlined">east</span>
+                </Link>
+              </div>
+              <div className="absolute -right-10 -bottom-10 opacity-20 transform -rotate-12">
+                <span className="material-icons-outlined text-[200px]">luggage</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:w-2/3 lg:gap-8">
+              {[packages[0], packages[3]].map((pkg) => (
+                <div key={pkg.slug} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all flex flex-col">
+                  <div className="relative h-48">
+                    <img alt={pkg.name} className="w-full h-full object-cover" src={pkg.image} loading="lazy"/>
+                    {pkg.badge && (
+                      <span className={`absolute top-4 left-4 text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full ${pkg.badge === 'Hot Deal' ? 'bg-red-500' : 'bg-primary'}`}>
+                        {pkg.badge}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="mb-2 flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:gap-2">
+                      <h3 className="text-xl font-bold">{pkg.name}</h3>
+                      <p className="text-xs font-bold uppercase text-slate-400 sm:shrink-0 sm:text-right">{pkg.duration.replace('/', ' / ').replace('N', ' Nights').replace('D', ' Days').replace('4 Nights / 5 Days', '5 Days / 4 Nights').replace('5 Nights / 6 Days', '6 Days / 5 Nights')}</p>
+                    </div>
+                    <p className="text-slate-500 text-sm mb-4 line-clamp-2 flex-1">{pkg.destinations}</p>
+                    <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-slate-400 text-xs line-through">{pkg.originalPrice}</span>
+                        <span className="text-2xl font-extrabold text-primary">{pkg.price}</span>
+                      </div>
+                      <Link to={`/kashmir-packages/${pkg.slug}`} className="text-primary font-bold flex items-center gap-1 text-sm hover:translate-x-1 transition-transform">
+                        View Details <span className="material-icons-outlined text-sm">arrow_forward</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              </div>
+            </div>
         </div>
       </section>
 
       <section className="py-16 bg-white text-black">
         <div className="container mx-auto px-4">
-          <div data-aos="fade-up" className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 mb-10">
-            <div>
-              <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Summer Packages</p>
-              <h2 className="mb-4 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Explore Kashmir Packages</h2>
-              <p className="max-w-2xl text-base leading-relaxed text-slate-500">Every itinerary is crafted around your pace - from budget explorers to ultra-luxury seekers. Tap any package for the full day-by-day plan.</p>
-            </div>
-            <Link to="/kashmir-packages" className="text-primary font-bold flex items-center gap-1 hover:underline shrink-0">
-                View All <span className="material-icons-outlined text-base">arrow_forward</span>
-            </Link>
+          <div data-aos="fade-up" className="mx-auto mb-10 max-w-3xl text-center">
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Explore in Summer</p>
+            <h2 className="mb-4 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Popular Destinations</h2>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-500">Discover Kashmir in bloom - lush meadows, garden terraces, and shimmering lakes.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((dest, i) => (
@@ -157,50 +169,38 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-10 sm:py-16">
         <div className="container mx-auto px-4">
-          <div data-aos="fade-up" className="flex flex-col lg:flex-row gap-12">
-            <div className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-primary p-6 text-white sm:p-10 lg:w-1/3">
-              <div className="relative z-10">
-                <h2 className="mb-4 text-3xl font-extrabold leading-tight sm:text-4xl">Top Packages This Season</h2>
-                <p className="text-blue-100 opacity-80 mb-8">Exclusive hand-crafted experiences designed just for you.</p>
-                <Link to="/kashmir-packages" className="inline-flex max-w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-center font-bold text-primary transition-all hover:bg-slate-100 sm:px-8">
-                  View All Offers <span className="material-icons-outlined">east</span>
-                </Link>
+          <div data-aos="fade-up" className="grid grid-cols-2 gap-5 sm:grid-cols-2 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
+            <div className="flex flex-col items-center text-center gap-2 group">
+              <div className="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="material-icons-outlined">verified_user</span>
               </div>
-              <div className="absolute -right-10 -bottom-10 opacity-20 transform -rotate-12">
-                <span className="material-icons-outlined text-[200px]">luggage</span>
-              </div>
+              <h4 className="font-bold text-sm">Best Price<br/>Guarantee</h4>
             </div>
-            <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[packages[0], packages[3]].map((pkg) => (
-                <div key={pkg.slug} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all flex flex-col">
-                  <div className="relative h-48">
-                    <img alt={pkg.name} className="w-full h-full object-cover" src={pkg.image} loading="lazy"/>
-                    {pkg.badge && (
-                      <span className={`absolute top-4 left-4 text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full ${pkg.badge === 'Hot Deal' ? 'bg-red-500' : 'bg-primary'}`}>
-                        {pkg.badge}
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <div className="mb-2 flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:gap-2">
-                      <h3 className="text-xl font-bold">{pkg.name}</h3>
-                      <p className="text-xs font-bold uppercase text-slate-400 sm:shrink-0 sm:text-right">{pkg.duration.replace('/', ' / ').replace('N', ' Nights').replace('D', ' Days').replace('4 Nights / 5 Days', '5 Days / 4 Nights').replace('5 Nights / 6 Days', '6 Days / 5 Nights')}</p>
-                    </div>
-                    <p className="text-slate-500 text-sm mb-4 line-clamp-2 flex-1">{pkg.destinations}</p>
-                    <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="flex flex-col">
-                        <span className="text-slate-400 text-xs line-through">{pkg.originalPrice}</span>
-                        <span className="text-2xl font-extrabold text-primary">{pkg.price}</span>
-                      </div>
-                      <Link to={`/kashmir-packages/${pkg.slug}`} className="text-primary font-bold flex items-center gap-1 text-sm hover:translate-x-1 transition-transform">
-                        View Details <span className="material-icons-outlined text-sm">arrow_forward</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <div className="flex flex-col items-center text-center gap-2 group">
+              <div className="w-12 h-12 bg-blue-100 text-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="material-icons-outlined">headset_mic</span>
+              </div>
+              <h4 className="font-bold text-sm">24/7 Support<br/>We are here</h4>
+            </div>
+            <div className="flex flex-col items-center text-center gap-2 group">
+              <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="material-icons-outlined">security</span>
+              </div>
+              <h4 className="font-bold text-sm">Secure Booking<br/>100% safe</h4>
+            </div>
+            <div className="flex flex-col items-center text-center gap-2 group">
+              <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="material-icons-outlined">event_available</span>
+              </div>
+              <h4 className="font-bold text-sm">Easy Cancellation<br/>Hassle-free</h4>
+            </div>
+            <div className="hidden lg:flex flex-col items-center text-center gap-2 group">
+              <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="material-icons-outlined">star</span>
+              </div>
+              <h4 className="font-bold text-sm">Top Rated<br/>Handpicked</h4>
             </div>
           </div>
         </div>
