@@ -169,38 +169,38 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-10 sm:py-16">
+      <section className="bg-white py-12 sm:py-16">
         <div className="container mx-auto px-4">
-          <div data-aos="fade-up" className="grid grid-cols-2 gap-5 sm:grid-cols-2 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
-            <div className="flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">verified_user</span>
+          <div data-aos="fade-up" className="grid grid-cols-2 gap-7 sm:grid-cols-2 sm:gap-10 md:grid-cols-4 lg:grid-cols-5">
+            <div className="flex flex-col items-center text-center gap-3 group">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-secondary/10 text-secondary transition-transform group-hover:scale-110 sm:h-16 sm:w-16">
+                <span className="material-icons-outlined text-[26px] sm:text-[30px]">verified_user</span>
               </div>
-              <h4 className="font-bold text-sm">Best Price<br/>Guarantee</h4>
+              <h4 className="text-base font-bold leading-snug">Best Price<br/>Guarantee</h4>
             </div>
-            <div className="flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-blue-100 text-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">headset_mic</span>
+            <div className="flex flex-col items-center text-center gap-3 group">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-primary transition-transform group-hover:scale-110 sm:h-16 sm:w-16">
+                <span className="material-icons-outlined text-[26px] sm:text-[30px]">headset_mic</span>
               </div>
-              <h4 className="font-bold text-sm">24/7 Support<br/>We are here</h4>
+              <h4 className="text-base font-bold leading-snug">24/7 Support<br/>We are here</h4>
             </div>
-            <div className="flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">security</span>
+            <div className="flex flex-col items-center text-center gap-3 group">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-red-100 text-red-600 transition-transform group-hover:scale-110 sm:h-16 sm:w-16">
+                <span className="material-icons-outlined text-[26px] sm:text-[30px]">security</span>
               </div>
-              <h4 className="font-bold text-sm">Secure Booking<br/>100% safe</h4>
+              <h4 className="text-base font-bold leading-snug">Secure Booking<br/>100% safe</h4>
             </div>
-            <div className="flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">event_available</span>
+            <div className="flex flex-col items-center text-center gap-3 group">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-600 transition-transform group-hover:scale-110 sm:h-16 sm:w-16">
+                <span className="material-icons-outlined text-[26px] sm:text-[30px]">event_available</span>
               </div>
-              <h4 className="font-bold text-sm">Easy Cancellation<br/>Hassle-free</h4>
+              <h4 className="text-base font-bold leading-snug">Easy Cancellation<br/>Hassle-free</h4>
             </div>
-            <div className="hidden lg:flex flex-col items-center text-center gap-2 group">
-              <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="material-icons-outlined">star</span>
+            <div className="hidden flex-col items-center text-center gap-3 group lg:flex">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 text-purple-600 transition-transform group-hover:scale-110">
+                <span className="material-icons-outlined text-[30px]">star</span>
               </div>
-              <h4 className="font-bold text-sm">Top Rated<br/>Handpicked</h4>
+              <h4 className="text-base font-bold leading-snug">Top Rated<br/>Handpicked</h4>
             </div>
           </div>
         </div>
@@ -652,29 +652,76 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-16">
-        <div className="bg-primary rounded-[3rem] p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden relative">
-          <div className="max-w-xl relative z-10">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">Get Exclusive Offers & Travel Inspiration</h2>
-            <p className="text-blue-100 opacity-90 text-lg">Subscribe to our newsletter and be the first to know about seasonal deals and pilgrimage slots.</p>
+      <section className="border-y border-slate-100 bg-white py-16 sm:py-20">
+        <div className="container mx-auto grid gap-10 px-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div data-aos="fade-up" className="max-w-xl">
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Kashmir Tour FAQs</p>
+            <h2 className="mb-5 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Plan With Clarity</h2>
+            <p className="text-base leading-relaxed text-slate-500 sm:text-lg">
+              Quick answers about our Kashmir packages, booking support, seasonal travel, and custom itineraries.
+            </p>
           </div>
-          <div className="w-full md:w-auto relative z-10">
-            <form 
-              className="flex bg-white p-2 rounded-2xl w-full max-w-md shadow-2xl" 
-              onSubmit={e => {
-                e.preventDefault();
-                const email = new FormData(e.currentTarget).get("email");
-                if(email) window.open(whatsappLink(`Please subscribe me to the newsletter. Email: ${email}`), "_blank", "noopener,noreferrer");
-              }}
-            >
-              <input name="email" className="bg-transparent border-none focus:ring-0 px-4 py-3 text-slate-800 w-full font-medium" placeholder="Enter your email" type="email"/>
-              <button className="bg-primary text-white p-3 rounded-xl flex items-center justify-center hover:scale-105 transition-all" type="submit">
-                <span className="material-icons-outlined">send</span>
-              </button>
-            </form>
-          </div>
-          <div className="absolute -right-20 -bottom-20 opacity-10">
-            <span className="material-icons-outlined text-[300px] text-white">public</span>
+
+          <div data-aos="fade-up" className="space-y-3">
+            <details className="group rounded-2xl border border-slate-200 bg-[#F9F8F6] p-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-extrabold text-slate-900">
+                What is included in your Kashmir tour packages?
+                <span className="material-icons-outlined text-secondary transition-transform group-open:rotate-45">add</span>
+              </summary>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                Most packages include hotel stays, private transport, sightseeing, itinerary planning, and booking assistance. Meals, tickets, and special activities depend on the selected package and can be customized before confirmation.
+              </p>
+            </details>
+
+            <details className="group rounded-2xl border border-slate-200 bg-[#F9F8F6] p-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-extrabold text-slate-900">
+                Can you customize the itinerary for my budget?
+                <span className="material-icons-outlined text-secondary transition-transform group-open:rotate-45">add</span>
+              </summary>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                Yes. We build trips around your budget, travel dates, group size, hotel preference, and pace. Budget explorers, honeymoon couples, families, and luxury travelers can all request a custom plan.
+              </p>
+            </details>
+
+            <details className="group rounded-2xl border border-slate-200 bg-[#F9F8F6] p-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-extrabold text-slate-900">
+                What is the best time to visit Kashmir?
+                <span className="material-icons-outlined text-secondary transition-transform group-open:rotate-45">add</span>
+              </summary>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                April to June is ideal for spring views, gardens, and pleasant weather. July to September suits meadows, lakes, and soft adventure. October to November is great for autumn colors, while winter is best for snow, Gulmarg, skiing, and cozy stays.
+              </p>
+            </details>
+
+            <details className="group rounded-2xl border border-slate-200 bg-[#F9F8F6] p-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-extrabold text-slate-900">
+                Do you help with hotels, transport, and activity bookings?
+                <span className="material-icons-outlined text-secondary transition-transform group-open:rotate-45">add</span>
+              </summary>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                Yes. Our team handles accommodation, airport transfers, local transport, sightseeing routes, Gondola tickets, adventure activities, and other reservations based on availability.
+              </p>
+            </details>
+
+            <details className="group rounded-2xl border border-slate-200 bg-[#F9F8F6] p-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-extrabold text-slate-900">
+                Which package types do you offer?
+                <span className="material-icons-outlined text-secondary transition-transform group-open:rotate-45">add</span>
+              </summary>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                We offer cultural tours, winter adventure packages, honeymoon specials, family packages, luxury stays, budget tours, excursions, car rentals, air tickets, visas, and Hajj or Umrah support.
+              </p>
+            </details>
+
+            <details className="group rounded-2xl border border-slate-200 bg-[#F9F8F6] p-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-extrabold text-slate-900">
+                How do I book or get expert guidance?
+                <span className="material-icons-outlined text-secondary transition-transform group-open:rotate-45">add</span>
+              </summary>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                Choose a package or send us your dates on WhatsApp. Our travel team will suggest the right route, stays, vehicle, and activities before sharing a final quote.
+              </p>
+            </details>
           </div>
         </div>
       </section>
