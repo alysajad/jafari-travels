@@ -13,21 +13,21 @@ export function HomePage() {
   
   return (
     <main>
-      <section className="relative flex min-h-[560px] items-center pb-28 pt-10 sm:min-h-[620px] lg:min-h-[750px] lg:pb-32 lg:pt-16">
+      <section className="relative flex min-h-[520px] items-center overflow-hidden pb-24 pt-8 sm:min-h-[620px] lg:min-h-[750px] lg:pb-32 lg:pt-16">
         <div className="absolute inset-0 z-0">
           <img alt="Beautiful Kashmir Landscape" className="h-full w-full object-cover object-[62%_center] sm:object-[75%_center]" src="/images/imad-clicks-pIZZtKU_aVU-unsplash.jpg"/>
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl overflow-hidden">
-            <div className="mb-5 max-w-full text-sm font-medium text-white sm:mb-6">
+          <div className="max-w-3xl overflow-hidden pr-1">
+            <div className="mb-4 max-w-full text-xs font-medium text-white sm:mb-6 sm:text-sm">
               Trusted by 50,000+ Happy Travelers
             </div>
-            <h1 className="mb-5 flex max-w-full flex-col font-varien leading-none tracking-wide text-white sm:mb-6">
+            <h1 className="mb-4 flex max-w-full flex-col font-varien leading-none tracking-wide text-white sm:mb-6">
               <span className="fluid-title font-extrabold opacity-90">Explore</span>
               <span className="fluid-display relative z-10 font-normal text-secondary drop-shadow-2xl md:-mt-4 lg:-mt-6">Kashmir.</span>
             </h1>
-            <p className="text-base md:text-xl text-slate-100 mb-8 max-w-xl opacity-90">
+            <p className="mb-6 max-w-xl text-sm leading-6 text-slate-100 opacity-90 sm:text-base md:mb-8 md:text-xl">
               Your trusted travel partner for boutique Kashmir tours, breathtaking mountain adventures, and unforgettable scenic getaways.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -43,10 +43,10 @@ export function HomePage() {
       <SearchWidget />
 
       {/* Ticker Slider */}
-      <div data-aos="fade-up" className="w-full overflow-hidden bg-white border-y border-slate-100 shadow-sm mt-12 py-5 relative flex items-center">
+      <div data-aos="fade-up" className="relative mt-10 flex w-full items-center overflow-hidden border-y border-slate-100 bg-white py-4 shadow-sm sm:mt-12 sm:py-5">
         {/* Gradient fades for smooth edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 top-0 z-10 w-10 bg-gradient-to-r from-white to-transparent pointer-events-none sm:w-24"></div>
+        <div className="absolute bottom-0 right-0 top-0 z-10 w-10 bg-gradient-to-l from-white to-transparent pointer-events-none sm:w-24"></div>
         
         <div className="flex animate-ticker whitespace-nowrap min-w-max items-center">
           {[
@@ -71,9 +71,9 @@ export function HomePage() {
         </div>
       </div>
 
-      <section className="py-16">
+      <section className="py-10 sm:py-16">
         <div className="container mx-auto px-4">
-          <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          <div data-aos="fade-up" className="grid grid-cols-2 gap-5 sm:grid-cols-2 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
             <div className="flex flex-col items-center text-center gap-2 group">
               <div className="w-12 h-12 bg-secondary/10 text-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                 <span className="material-icons-outlined">verified_user</span>

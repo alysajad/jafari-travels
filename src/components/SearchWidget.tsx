@@ -25,7 +25,7 @@ export function SearchWidget() {
   }
 
   return (
-    <section className="relative z-20 mx-auto -mt-14 w-[min(1400px,calc(100%_-_20px))] rounded-xl border border-kashmir-blue/10 bg-white p-3 shadow-travel sm:w-[min(1400px,calc(100%_-_32px))] sm:p-4 md:-mt-20 md:w-[min(1400px,calc(100%_-_44px))] md:rounded-[22px] md:p-8 lg:p-10">
+    <section className="relative z-20 mx-auto -mt-14 w-[min(1400px,calc(100%_-_20px))] max-w-[calc(100vw_-_20px)] rounded-xl border border-kashmir-blue/10 bg-white p-3 shadow-travel sm:w-[min(1400px,calc(100%_-_32px))] sm:max-w-none sm:p-4 md:-mt-20 md:w-[min(1400px,calc(100%_-_44px))] md:rounded-[22px] md:p-8 lg:p-10">
       <div className="grid grid-cols-2 gap-2 border-b border-slate-200 pb-4 sm:grid-cols-3 lg:flex lg:gap-7 lg:overflow-x-auto">
         {Object.keys(tabs).map((key) => (
           <button
@@ -47,7 +47,7 @@ export function SearchWidget() {
         ))}
       </div>
 
-      <form className="grid grid-cols-1 gap-3 pt-5 md:grid-cols-2 md:pt-6 lg:grid-cols-[repeat(4,minmax(0,1fr))_180px]" onSubmit={submit}>
+      <form className="grid grid-cols-1 gap-3 pt-5 min-[420px]:grid-cols-2 md:pt-6 lg:grid-cols-[repeat(4,minmax(0,1fr))_180px]" onSubmit={submit}>
         <SearchField key={`f1-${active}`} icon={<MapPin />} label={fields[0] as string} value={fields[1]} />
         <SearchField key={`f2-${active}`} icon={<CalendarDays />} label={fields[2] as string} value={fields[3]} />
         <SearchField key={`f3-${active}`} icon={<CalendarDays />} label={fields[4] as string} value={fields[5]} />
@@ -56,7 +56,7 @@ export function SearchWidget() {
         ) : (
           <SearchField key={`f4-${active}`} icon={<UsersRound />} label={fields[6] as string} value={fields[7]} />
         )}
-        <button className="focus-ring inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-kashmir-bright px-5 text-sm font-bold text-white shadow-travel md:col-span-2 md:min-h-[64px] md:rounded-2xl lg:col-span-1" type="submit">
+        <button className="focus-ring inline-flex min-h-[54px] items-center justify-center gap-2 rounded-xl bg-kashmir-bright px-5 text-sm font-bold text-white shadow-travel min-[420px]:col-span-2 md:min-h-[64px] md:rounded-2xl lg:col-span-1" type="submit">
           {fields[8] as string}
           <ArrowRight className="h-4 w-4" />
         </button>
@@ -72,10 +72,10 @@ function SearchField({ icon, label, value }: { icon: ReactNode; label: string; v
   const minDate = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0];
 
   return (
-    <label className="flex min-w-0 items-center gap-3 rounded-[10px] border border-slate-200 bg-slate-50 px-4 py-4 sm:px-5 sm:py-5">
+    <label className="flex min-w-0 items-center gap-2 rounded-[10px] border border-slate-200 bg-slate-50 px-3 py-3.5 sm:gap-3 sm:px-5 sm:py-5">
       <span className="shrink-0 text-kashmir-bright [&>svg]:h-5 [&>svg]:w-5">{icon}</span>
       <span className="min-w-0 flex-1 flex flex-col justify-center">
-        <span className="block text-[11px] font-bold text-kashmir-slate mb-1">{label}</span>
+        <span className="mb-1 block text-[10px] font-bold text-kashmir-slate sm:text-[11px]">{label}</span>
         {isArray ? (
           <select name={label} className="w-full bg-transparent text-sm font-semibold outline-none cursor-pointer">
             {(value as readonly string[]).map((opt) => (
@@ -104,11 +104,11 @@ function TravelerField({ icon, label }: { icon: ReactNode; label: string }) {
       <button 
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full min-w-0 items-center gap-3 rounded-[10px] border border-slate-200 bg-slate-50 px-4 py-4 text-left sm:px-5 sm:py-5"
+        className="flex w-full min-w-0 items-center gap-2 rounded-[10px] border border-slate-200 bg-slate-50 px-3 py-3.5 text-left sm:gap-3 sm:px-5 sm:py-5"
       >
         <span className="shrink-0 text-kashmir-bright [&>svg]:h-5 [&>svg]:w-5">{icon}</span>
         <span className="min-w-0 flex-1">
-          <span className="block text-[11px] font-bold text-kashmir-slate">{label}</span>
+          <span className="block text-[10px] font-bold text-kashmir-slate sm:text-[11px]">{label}</span>
           <span className="block text-sm font-semibold text-black">{value}</span>
         </span>
       </button>

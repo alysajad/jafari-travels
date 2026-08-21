@@ -31,6 +31,7 @@
   #root {
     width: 100%;
     max-width: 100%;
+    overflow-x: clip;
   }
 
   html {
@@ -39,7 +40,6 @@
 
   body {
     @apply bg-kashmir-cream font-sans text-kashmir-charcoal antialiased;
-    overflow-x: hidden;
   }
 
   img {
@@ -93,13 +93,19 @@
   }
 
   .fluid-title {
-    font-size: clamp(2.5rem, 14vw, 6rem);
+    font-size: clamp(2.25rem, 13vw, 6rem);
     line-height: 1.05;
   }
 
   .fluid-display {
-    font-size: clamp(3.25rem, 18vw, 9.375rem);
+    font-size: clamp(3rem, 16vw, 9.375rem);
     line-height: 0.95;
+  }
+}
+
+@media (max-width: 767px) {
+  [data-aos^="fade"] {
+    transform: none !important;
   }
 }
 
