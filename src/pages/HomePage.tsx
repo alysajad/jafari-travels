@@ -117,8 +117,9 @@ export function HomePage() {
         <div className="container mx-auto px-4">
           <div data-aos="fade-up" className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 mb-10">
             <div>
-              <h2 className="mb-2 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Explore the Paradise on Earth</h2>
-              <p className="text-slate-500 font-medium">Breathtaking locations handpicked for your next Kashmir getaway.</p>
+              <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Summer Packages</p>
+              <h2 className="mb-4 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Explore Kashmir Packages</h2>
+              <p className="max-w-2xl text-base leading-relaxed text-slate-500">Every itinerary is crafted around your pace - from budget explorers to ultra-luxury seekers. Tap any package for the full day-by-day plan.</p>
             </div>
             <Link to="/kashmir-packages" className="text-primary font-bold flex items-center gap-1 hover:underline shrink-0">
                 View All <span className="material-icons-outlined text-base">arrow_forward</span>
