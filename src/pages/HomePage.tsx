@@ -20,6 +20,11 @@ export function HomePage() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl overflow-hidden pr-1">
+            <img
+              src="/logo.png"
+              alt="Jaffari Sky Travels & Tours"
+              className="mb-1 mt-14 h-24 w-auto drop-shadow-[0_2px_8px_rgba(255,255,255,0.55)] sm:mt-16 sm:h-32"
+            />
             <div className="mb-4 max-w-full text-xs font-medium text-white sm:mb-6 sm:text-sm">
               Trusted by 50,000+ Happy Travelers
             </div>
