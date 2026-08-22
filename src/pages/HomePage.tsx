@@ -15,7 +15,7 @@ export function HomePage() {
     <main>
       <section className="relative flex min-h-[520px] items-center overflow-hidden pb-24 pt-8 sm:min-h-[620px] lg:min-h-[750px] lg:pb-32 lg:pt-16">
         <div className="absolute inset-0 z-0">
-          <img alt="Beautiful Kashmir Landscape" className="h-full w-full object-cover object-[62%_center] sm:object-[75%_center]" src="/images/imad-clicks-pIZZtKU_aVU-unsplash.jpg"/>
+          <img alt="Beautiful Kashmir Landscape" className="h-full w-full object-cover object-[62%_center] sm:object-[75%_center]" src="/images/hero.jpeg"/>
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
