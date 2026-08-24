@@ -19,23 +19,29 @@ export function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl overflow-hidden pr-1">
-            <img
-              src="/logo.png"
-              alt="Jaffari Sky Travels & Tours"
-              className="mb-1 mt-14 h-24 w-auto drop-shadow-[0_2px_8px_rgba(255,255,255,0.55)] sm:mt-16 sm:h-32"
-            />
-            <div className="mb-4 max-w-full text-xs font-medium text-white sm:mb-6 sm:text-sm">
-              Trusted by 50,000+ Happy Travelers
+          <div className="mx-auto max-w-4xl overflow-hidden px-1 text-center">
+            <div className="mb-4 mt-14 flex w-full flex-col items-center text-center sm:mb-6 sm:mt-16">
+              <div className="mb-3 flex max-w-full items-center justify-center overflow-hidden rounded bg-white/95 p-3 shadow-lg ring-1 ring-white/70">
+                <div className="h-[57px] w-[82px] overflow-hidden sm:h-[74px] sm:w-[105px]">
+                  <img
+                    src="/logo.png"
+                    alt="Jaffari Sky Travels & Tours"
+                    className="-ml-[33px] -mt-[28px] h-28 w-auto max-w-none object-contain sm:-ml-[43px] sm:-mt-[36px] sm:h-36"
+                  />
+                </div>
+              </div>
+              <div className="max-w-full text-xs font-medium text-white sm:text-sm">
+                Trusted by 50,000+ Happy Travelers
+              </div>
             </div>
             <h1 className="mb-4 flex max-w-full flex-col font-varien leading-none tracking-wide text-white sm:mb-6">
               <span className="fluid-title font-extrabold opacity-90">Explore</span>
               <span className="fluid-display relative z-10 font-normal text-secondary drop-shadow-2xl md:-mt-4 lg:-mt-6">Kashmir.</span>
             </h1>
-            <p className="mb-6 max-w-xl text-sm leading-6 text-slate-100 opacity-90 sm:text-base md:mb-8 md:text-xl">
+            <p className="mx-auto mb-6 max-w-xl text-sm leading-6 text-slate-100 opacity-90 sm:text-base md:mb-8 md:text-xl">
               Your trusted travel partner for boutique Kashmir tours, breathtaking mountain adventures, and unforgettable scenic getaways.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
               <Link to="/kashmir-packages" className="flex w-full max-w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-4 text-center font-bold text-white transition-all hover:bg-blue-700 sm:w-auto sm:px-8">
                   Explore Destinations <span className="material-icons-outlined">arrow_forward</span>
               </Link>
