@@ -46,11 +46,11 @@ export function Footer() {
       </li>
       <li className="flex items-start gap-3">
       <span className="material-icons-outlined text-primary text-sm mt-1">mail</span>
-      <span>jaffariskytravels@gmail.com</span>
+      <span>info@jaffariskytravels.com</span>
       </li>
       <li className="flex items-start gap-3">
       <span className="material-icons-outlined text-primary text-sm mt-1">location_on</span>
-      <span>Jaffari Sky Travels, Srinagar, Kashmir</span>
+      <span>Jaffari Sky Travels, Gulmarg Road Magam, Budgam, J&K</span>
       </li>
       </ul>
       </div>

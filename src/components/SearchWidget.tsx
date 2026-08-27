@@ -14,6 +14,15 @@ const tabs = {
 
 type TabKey = keyof typeof tabs;
 
+const popularItems: Record<TabKey, readonly string[]> = {
+  kashmir: ["Dal Lake", "Mughal Gardens", "Pahalgam", "Sonamarg", "Gulmarg", "Doodhpathri"],
+  cars: ["Srinagar Airport", "Srinagar City", "Pahalgam Pickup", "Gulmarg Pickup", "Tempo Traveller", "Innova Crysta"],
+  umrah: ["Economy Umrah", "Premium Umrah", "Ramadan Umrah", "Makkah Hotels", "Madinah Hotels"],
+  tickets: ["Srinagar to Delhi", "Delhi to Srinagar", "Srinagar to Mumbai", "Dubai Flights", "Jeddah Flights"],
+  visa: ["Saudi Visa", "UAE Visa", "Oman Visa", "Qatar Visa", "Malaysia Visa", "Thailand Visa"],
+  gondola: ["Phase 1", "Phase 2", "Phase 1 & 2", "Morning Slot", "Afternoon Slot"],
+};
+
 export function SearchWidget() {
   const [active, setActive] = useState<TabKey>("kashmir");
   const fields = useMemo(() => tabs[active], [active]);
@@ -61,6 +70,15 @@ export function SearchWidget() {
           <ArrowRight className="h-4 w-4" />
         </button>
       </form>
+
+      <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-slate-200 pt-4">
+        <span className="mr-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-kashmir-slate">Popular:</span>
+        {popularItems[active].map((item) => (
+          <span key={item} className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-kashmir-slate shadow-sm sm:text-[13px]">
+            {item}
+          </span>
+        ))}
+      </div>
     </section>
   );
 }

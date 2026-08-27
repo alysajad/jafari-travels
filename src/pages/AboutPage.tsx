@@ -57,7 +57,7 @@ export function AboutPage() {
                   </div>
                   <div>
                     <p className="text-sm font-bold text-slate-800 mb-0.5">Email</p>
-                    <a href="mailto:jaffariskytravels@gmail.com" className="text-slate-600 text-sm hover:text-primary transition-colors break-all">jaffariskytravels@gmail.com</a>
+                    <a href="mailto:info@jaffariskytravels.com" className="text-slate-600 text-sm hover:text-primary transition-colors break-all">info@jaffariskytravels.com</a>
                   </div>
                 </div>
                 

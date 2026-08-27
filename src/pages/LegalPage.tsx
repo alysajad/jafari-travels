@@ -12,11 +12,11 @@ const PRIVACY_TEXT = [
   "Jaffari Sky Travels applies standard regulations and the best administrative and technical security measures available to us to protect your personal data from unauthorised access, alteration or disclosure.",
   "Our website uses cookies to enhance your experience and to present customised information. Third parties such as Google may use cookies to serve advertisements based on your browsing history. You can control or disable cookies at any time through your browser settings, though some features of the site may then not function as intended.",
   "Our website may contain links that connect you to entirely different websites. Jaffari Sky Travels bears no responsibility for the content or practices of those external sites, and we advise you to review their own terms and conditions and privacy policies before sharing any information with them.",
-  "If you have any questions about this privacy policy or how your information is handled, please reach out to us at jaffariskytravels@gmail.com"
+  "If you have any questions about this privacy policy or how your information is handled, please reach out to us at info@jaffariskytravels.com"
 ];
 
 const TERMS_TEXT = [
-  "By confirming a booking with Jaffari Sky Travels, you acknowledge that you have read, understood and agreed to these terms and conditions. For any clarification, please contact us at jaffariskytravels@gmail.com",
+  "By confirming a booking with Jaffari Sky Travels, you acknowledge that you have read, understood and agreed to these terms and conditions. For any clarification, please contact us at info@jaffariskytravels.com",
   "Jaffari Sky Travels requires only 20% of the total tour cost to confirm and secure your booking. This percentage may vary depending on the itinerary, trip category and duration.",
   "The advance amount will be adjusted as per the recommendation of your personal travel consultant.",
   "Online payments are accepted through our secure payment gateway.",

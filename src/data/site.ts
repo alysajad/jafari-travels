@@ -14,8 +14,8 @@ import {
 
 export const contact = {
   phone: "+91 7051693767",
-  email: "jaffariskytravels@gmail.com",
-  address: "Kashmir, India",
+  email: "info@jaffariskytravels.com",
+  address: "Jaffari Sky Travels, Gulmarg Road Magam, Budgam, J&K",
 };
 
 export const navItems = [

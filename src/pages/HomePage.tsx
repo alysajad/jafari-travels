@@ -153,14 +153,10 @@ export function HomePage() {
                 className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer shadow-xl text-left focus:outline-none focus:ring-4 focus:ring-primary/50"
               >
                 <img alt={dest.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src={dest.image} loading="lazy"/>
-                <div className="absolute top-4 left-4 flex gap-2">
-                  <span className={`${i % 2 === 0 ? 'bg-red-500' : 'bg-green-500'} text-white px-3 py-1 rounded-full text-xs font-bold`}>{dest.discount}</span>
-                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6 w-full text-left">
                   <h3 className="text-white text-xl font-bold">{dest.name}</h3>
-                  <p className="text-slate-200 text-sm mb-2">Starting from <span className="text-secondary font-bold">{dest.price}</span></p>
-                  <div className="flex items-center text-secondary text-xs">
+                  <div className="mt-2 flex items-center text-secondary text-xs">
                     <span className="material-icons-outlined text-sm">star</span>
                     <span className="material-icons-outlined text-sm">star</span>
                     <span className="material-icons-outlined text-sm">star</span>
