@@ -1,7 +1,7 @@
 import { ArrowRight, CalendarDays, FileText, Landmark, MapPin, Mountain, Plane, UsersRound, Ticket, Car } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import { whatsappLink } from "../lib/whatsapp";
+import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 const tabs = {
   kashmir: ["Select Package", ["Choose a package..", "Budget Explorer (5D/4N)", "Classic Delight (10D/9N)", "Royal Summer Paradise (12D/11N)", "Adventure Seekers (8D/7N)", "Custom Package Needed"], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Enquire Now"],
@@ -29,8 +29,12 @@ export function SearchWidget() {
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const details = Array.from(new FormData(event.currentTarget)).map(([k, v]) => `${k}: ${v}`).join(", ");
-    window.open(whatsappLink(`I want to enquire about ${active} services with Jaffari Sky Travels.\n\nDetails: ${details}`), "_blank", "noopener,noreferrer");
+    const details = formDetails(event.currentTarget);
+    void sendEnquiryThenOpenWhatsApp({
+      source: `Hero ${active} enquiry`,
+      details,
+      message: `I want to enquire about ${active} services with Jaffari Sky Travels.\n\nDetails:\n${formatDetails(details)}`,
+    });
   }
 
   return (

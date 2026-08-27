@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { packages } from "../data/site";
+import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 export function PackageDetailPage() {
   const { slug } = useParams();
@@ -186,27 +187,41 @@ export function PackageDetailPage() {
                 </span>
               </div>
               
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <form
+                className="space-y-4"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  const details = {
+                    Package: pkg.name,
+                    ...formDetails(event.currentTarget),
+                  };
+                  void sendEnquiryThenOpenWhatsApp({
+                    source: "Package availability form",
+                    details,
+                    message: `Hi, I am interested in ${pkg.name}.\n\nDetails:\n${formatDetails(details)}`,
+                  });
+                }}
+              >
                 <div>
                   <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Check Availability</label>
                   <div className="relative">
                     <i className="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">calendar_today</i>
-                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all cursor-pointer" type="date" min={new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0]}/>
+                    <input name="Travel Date" className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all cursor-pointer" type="date" min={new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0]}/>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="relative">
                     <i className="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">person</i>
-                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary" type="number" min="1" defaultValue="2"/>
+                    <input name="Adults" className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary" type="number" min="1" defaultValue="2"/>
                   </div>
                   <div className="relative">
                     <i className="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">child_care</i>
-                    <input className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary" type="number" min="0" defaultValue="0"/>
+                    <input name="Children" className="w-full pl-11 pr-4 py-3 bg-white border border-black rounded-xl text-sm focus:ring-2 focus:ring-primary" type="number" min="0" defaultValue="0"/>
                   </div>
                 </div>
-                <a href={`https://wa.me/917051693767?text=Hi, I am interested in ${pkg.name}`} target="_blank" rel="noreferrer" className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/25 mt-4 flex justify-center items-center">
+                <button type="submit" className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/25 mt-4 flex justify-center items-center">
                     Enquire on WhatsApp
-                </a>
+                </button>
               </form>
               <p className="text-center text-xs text-slate-500 mt-4 font-medium flex items-center justify-center gap-1">
                 <i className="material-icons-outlined text-sm">bolt</i> No hidden booking fees

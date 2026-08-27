@@ -1,5 +1,5 @@
 import { routeHighlights } from "../data/site";
-import { whatsappLink } from "../lib/whatsapp";
+import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 export function TicketingPage() {
   const steps = [
@@ -94,8 +94,12 @@ export function TicketingPage() {
             className="relative z-10 mx-auto grid max-w-4xl grid-cols-1 gap-5 rounded-[1.5rem] bg-white p-5 shadow-2xl sm:grid-cols-2 sm:gap-6 sm:rounded-[2rem] sm:p-8 md:p-10"
             onSubmit={(event) => {
               event.preventDefault();
-              const details = Array.from(new FormData(event.currentTarget)).map(([k, v]) => `${k}: ${v}`).join(", ");
-              window.open(whatsappLink(`I need help booking a flight ticket.\n\nDetails:\n${details}`), "_blank", "noopener,noreferrer");
+              const details = formDetails(event.currentTarget);
+              void sendEnquiryThenOpenWhatsApp({
+                source: "Flight enquiry form",
+                details,
+                message: `I need help booking a flight ticket.\n\nDetails:\n${formatDetails(details)}`,
+              });
             }}
           >
             <div>

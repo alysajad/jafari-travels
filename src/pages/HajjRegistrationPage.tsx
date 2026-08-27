@@ -1,4 +1,4 @@
-import { whatsappLink } from "../lib/whatsapp";
+import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 export function HajjRegistrationPage() {
   return (
@@ -136,7 +136,18 @@ export function HajjRegistrationPage() {
           
           <div className="rounded-2xl border border-outline-variant/50 bg-surface p-5 shadow-lg sm:p-8">
             <h3 className="font-serif text-[24px] text-primary mb-6">Pre-Registration Form</h3>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form
+              className="space-y-6"
+              onSubmit={(event) => {
+                event.preventDefault();
+                const details = formDetails(event.currentTarget);
+                void sendEnquiryThenOpenWhatsApp({
+                  source: "Hajj pre-registration form",
+                  details,
+                  message: `I want to pre-register for Hajj 2027.\n\nDetails:\n${formatDetails(details)}`,
+                });
+              }}
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium text-on-surface mb-1">Full Name *</label>
@@ -187,10 +198,10 @@ export function HajjRegistrationPage() {
                 <textarea id="requirements" name="requirements" rows={3} className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow resize-none"></textarea>
               </div>
               
-              <a href={whatsappLink("I want to pre-register for Hajj 2027.")} target="_blank" rel="noreferrer" className="w-full h-12 rounded-lg bg-primary text-on-primary font-bold hover:bg-primary-fixed-variant transition-colors flex items-center justify-center gap-2">
+              <button type="submit" className="w-full h-12 rounded-lg bg-primary text-on-primary font-bold hover:bg-primary-fixed-variant transition-colors flex items-center justify-center gap-2">
                 <span>Submit Pre-Registration</span>
                 <span className="material-icons-outlined text-sm">arrow_forward</span>
-              </a>
+              </button>
             </form>
           </div>
         </div>

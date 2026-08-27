@@ -1,4 +1,4 @@
-import { whatsappLink } from "../lib/whatsapp";
+import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 const visaTypes = [
   { name: "Tourist visa", icon: "travel_explore", desc: "For leisure travel and family visits" },
@@ -103,8 +103,12 @@ export function VisaServicesPage() {
             className="relative z-10 mx-auto grid max-w-4xl grid-cols-1 gap-5 rounded-[1.5rem] bg-white p-5 shadow-2xl sm:gap-6 sm:rounded-[2rem] sm:p-8 md:grid-cols-2 md:p-10"
             onSubmit={(event) => {
               event.preventDefault();
-              const details = Array.from(new FormData(event.currentTarget)).map(([k, v]) => `${k}: ${v}`).join(", ");
-              window.open(whatsappLink(`I need visa assistance.\n\nDetails:\n${details}`), "_blank", "noopener,noreferrer");
+              const details = formDetails(event.currentTarget);
+              void sendEnquiryThenOpenWhatsApp({
+                source: "Visa enquiry form",
+                details,
+                message: `I need visa assistance.\n\nDetails:\n${formatDetails(details)}`,
+              });
             }}
           >
             {["Country", "Visa Type", "Travel Date", "Passport Holder Name", "Contact Number"].map((field) => (
