@@ -18,6 +18,11 @@ export const contact = {
   address: "Jaffari Sky Travels, Gulmarg Road Magam, Budgam, J&K",
 };
 
+export const socialLinks = {
+  instagram: "https://www.instagram.com/adil_from_kashmir?igsi=dzRkYm1wY2xibXJk",
+  facebook: "https://www.facebook.com/share/1C8HnR95FQ/",
+};
+
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "Kashmir Packages", href: "/kashmir-packages" },

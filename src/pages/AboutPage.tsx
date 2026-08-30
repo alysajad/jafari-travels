@@ -1,5 +1,6 @@
 import { PageHero } from "../components/PageHero";
 import { Link } from "react-router-dom";
+import { socialLinks } from "../data/site";
 
 export function AboutPage() {
   return (
@@ -74,10 +75,10 @@ export function AboutPage() {
                 <div className="flex items-center gap-4 mt-2 pt-4 border-t border-slate-100">
                   <p className="text-sm font-bold text-slate-800">Follow Us:</p>
                   <div className="flex gap-4">
-                    <a href="#" className="text-slate-500 hover:text-primary transition-colors">
+                    <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-slate-500 hover:text-primary transition-colors">
                       <span className="material-icons-outlined">facebook</span>
                     </a>
-                    <a href="#" className="text-slate-500 hover:text-primary transition-colors">
+                    <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-slate-500 hover:text-primary transition-colors">
                       <span className="material-icons-outlined">camera_alt</span>
                     </a>
                   </div>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { whatsappLink } from "../lib/whatsapp";
+import { socialLinks } from "../data/site";
 
 export function Footer() {
   return (
@@ -15,6 +16,12 @@ export function Footer() {
                               Your trusted travel partner for unforgettable journeys. Specializing in Kashmir tours, Hajj & Umrah services, and global travel solutions since 2012.
                           </p>
       <div className="flex items-center gap-4">
+        <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-slate-500 hover:text-primary transition-colors">
+          <span className="material-icons-outlined">facebook</span>
+        </a>
+        <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-slate-500 hover:text-primary transition-colors">
+          <span className="material-icons-outlined">camera_alt</span>
+        </a>
       </div>
       </div>
       <div>
