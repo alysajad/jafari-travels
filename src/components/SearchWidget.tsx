@@ -1,11 +1,13 @@
 import { ArrowRight, CalendarDays, FileText, Landmark, MapPin, Mountain, Plane, UsersRound, Ticket, Car } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import { formDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
+import { packages, rentalVehicles } from "../data/site";
+import { openBookingEnquiry } from "../lib/booking";
+import { formDetails } from "../lib/whatsapp";
 
 const tabs = {
-  kashmir: ["Select Package", ["Choose a package..", "Budget Explorer (5D/4N)", "Classic Delight (10D/9N)", "Royal Summer Paradise (12D/11N)", "Adventure Seekers (8D/7N)", "Custom Package Needed"], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Enquire Now"],
-  cars: ["Pickup Location", ["Srinagar Airport", "Srinagar City", "Gulmarg", "Pahalgam"], "Pickup Date", "2026-09-20", "Drop Date", "2026-09-26", "Car Type", ["Sedan", "MUV", "SUV", "Tempo Traveller", "Bus", "Force Urbania"], "Search Cars"],
+  kashmir: ["Select Package", ["Choose a package..", ...packages.map((item) => item.name), "Custom Package Needed"], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Enquire Now"],
+  cars: ["Pickup Location", ["Srinagar Airport", "Srinagar City", "Gulmarg", "Pahalgam"], "Pickup Date", "2026-09-20", "Drop Date", "2026-09-26", "Car Type", ["Choose a vehicle type..", ...new Set(rentalVehicles.map((item) => item.category))], "Search Cars"],
   umrah: ["Package Type", ["Premium Umrah", "Economy Umrah", "VIP Umrah", "Ramadan Umrah"], "Duration", ["15 Days", "21 Days", "28 Days", "Custom"], "Travel Month", ["Ramadan 2027", "Shawwal 2027", "Rajab 2027", "Any Month"], "Travelers", "Family of 4", "View Packages"],
   tickets: ["From", ["Srinagar (SXR)", "Delhi (DEL)", "Mumbai (BOM)", "Dubai (DXB)", "Jeddah (JED)"], "To", ["Delhi (DEL)", "Srinagar (SXR)", "Dubai (DXB)", "Jeddah (JED)", "Mumbai (BOM)"], "Travel Date", "2026-09-20", "Travelers", "2 Adults", "Search Flights"],
   visa: ["Country", ["Saudi Arabia", "UAE", "Oman", "Qatar", "Kuwait", "Malaysia", "Thailand"], "Nationality", ["Indian", "Foreign National"], "Travel Date", "2026-09-20", "Visa Type", ["Umrah Visa", "Tourist Visa", "Business Visa", "Transit Visa"], "Enquire Now"],
@@ -30,11 +32,19 @@ export function SearchWidget() {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const details = formDetails(event.currentTarget);
-    void sendEnquiryThenOpenWhatsApp({
+    const travellers = splitTravellers(details.Travelers);
+    const valuesByTab: Record<TabKey, Record<string, string>> = {
+      kashmir: { Package: details["Select Package"], "Travel Date": details["Check-in"], "Return Date": details["Check-out"], Adults: travellers.Adults, Children: travellers.Children, Infants: travellers.Infants },
+      cars: { "Pickup Location": details["Pickup Location"], "Pickup Date": details["Pickup Date"], "Drop Date": details["Drop Date"], Vehicle: "Let the team recommend", "Vehicle Category": details["Car Type"] },
+      umrah: { Package: details["Package Type"], Duration: details.Duration, "Travel Month": details["Travel Month"], "Travel Date": "", Travellers: travellers.Travellers },
+      tickets: { From: details.From, To: details.To, "Travel Date": details["Travel Date"], Travellers: travellers.Travellers },
+      visa: { Country: details.Country, Nationality: details.Nationality, "Travel Date": details["Travel Date"], "Visa Type": details["Visa Type"] },
+      gondola: { Phase: details.Phase, "Travel Date": details.Date, "Time Slot": details["Time Slot"], Travellers: travellers.Travellers },
+    };
+    openBookingEnquiry({
+      kind: active === "kashmir" ? "package" : active === "cars" ? "car" : active === "tickets" ? "flight" : active,
       source: `Hero ${active} enquiry`,
-      enquiryType: `${active === "kashmir" ? "Kashmir package" : active === "cars" ? "Car rental" : active === "umrah" ? "Hajj and Umrah" : active === "tickets" ? "Flight booking" : active === "visa" ? "Visa" : "Gondola booking"} enquiry`,
-      request: `I would like help with the selected ${active === "kashmir" ? "Kashmir package" : active === "cars" ? "car rental" : active === "umrah" ? "Hajj or Umrah package" : active === "tickets" ? "flight" : active === "visa" ? "visa service" : "Gondola tickets"}.`,
-      details,
+      values: valuesByTab[active],
     });
   }
 
@@ -162,4 +172,9 @@ function Counter({ label, sub, value, onChange, min }: any) {
       </div>
     </div>
   );
+}
+
+function splitTravellers(value = "") {
+  const count = (label: string, fallback: string) => value.match(new RegExp(`(\\d+) ${label}`, "i"))?.[1] || fallback;
+  return { Adults: count("Adults?", "1"), Children: count("Children", "0"), Infants: count("Infants?", "0"), Travellers: String((value.match(/\d+/g) || ["1"]).reduce((total, item) => total + Number(item), 0)) };
 }

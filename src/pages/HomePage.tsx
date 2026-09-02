@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SearchWidget } from "../components/SearchWidget";
 import { DestinationModal } from "../components/DestinationModal";
 import type { Destination } from "../data/site";
-import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
+import { openBookingEnquiry } from "../lib/booking";
 
 export function HomePage() {
   const today = new Date().toISOString().split('T')[0];
@@ -249,21 +249,12 @@ export function HomePage() {
                          </div>
                       </div>
 
-                      <a className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit gap-3 bg-black text-white hover:bg-slate-800" href={whatsappLink(formatEnquiryMessage({
-                        enquiryType: "Car rental booking",
-                        request: `I would like to book the ${vehicle.name}.`,
-                        details: {
-                          Vehicle: vehicle.name,
-                          Category: vehicle.category,
-                          Seating: String(vehicle.seats),
-                          "Price Per Day": `₹${vehicle.pricePerDay.toLocaleString()}`,
-                        },
-                      }))} target="_blank" rel="noreferrer">
+                      <button className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit gap-3 bg-black text-white hover:bg-slate-800" onClick={() => openBookingEnquiry({ kind: "car", source: "Homepage car Book Now", values: { Vehicle: vehicle.name, "Vehicle Category": vehicle.category } })} type="button">
                         Book Now
                         <div className="w-7 h-7 rounded-full flex items-center justify-center bg-[#f59e0b] text-white">
                           <ArrowRight className="w-3 h-3" />
                         </div>
-                      </a>
+                      </button>
                     </div>
 
                     <div className="py-1 sm:ml-auto sm:border-l sm:border-slate-100 sm:pl-6">

@@ -20,4 +20,16 @@ assert.match(message, /- Package: Classic Kashmir/);
 assert.doesNotMatch(message, /Notes:/);
 assert.equal(new URL(whatsappLink(message)).searchParams.get("text"), message);
 
-console.log("Enquiry message formatting check passed.");
+const bookingSource = fs.readFileSync("src/lib/booking.ts", "utf8");
+const bookingCode = ts.transpileModule(bookingSource, {
+  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 },
+}).outputText;
+const bookingModuleUrl = `data:text/javascript;base64,${Buffer.from(bookingCode).toString("base64")}`;
+const { BOOKING_ENQUIRY_EVENT, openBookingEnquiry } = await import(bookingModuleUrl);
+let dispatchedEvent;
+globalThis.window = { dispatchEvent: (event) => { dispatchedEvent = event; } };
+openBookingEnquiry({ kind: "package", source: "Book Now", values: { Package: "Classic Kashmir" } });
+assert.equal(dispatchedEvent.type, BOOKING_ENQUIRY_EVENT);
+assert.equal(dispatchedEvent.detail.values.Package, "Classic Kashmir");
+
+console.log("Enquiry message and booking context checks passed.");

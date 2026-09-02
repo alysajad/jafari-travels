@@ -1,6 +1,6 @@
 import { ArrowRight, CheckCircle2, ChevronDown, Landmark, Star, MapPin } from "lucide-react";
 import { umrahPackages } from "../data/site";
-import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
+import { openBookingEnquiry } from "../lib/booking";
 
 const hajjFaqs = [
   { q: "When will Hajj 2027 packages be officially announced?", a: "The official quotas and package details are typically announced by the Ministry of Hajj and Umrah a few months before the season. Pre-registering ensures you get the updates immediately." },
@@ -105,13 +105,9 @@ export function HajjUmrahPage() {
                   ))}
                 </ul>
                 
-                <a href={whatsappLink(formatEnquiryMessage({
-                  enquiryType: "Hajj seat reservation",
-                  request: "I would like to reserve a seat for the Hajj 2027 Shifting Package.",
-                  details: { Package: "Hajj 2027 Shifting Package" },
-                }))} target="_blank" rel="noreferrer" className="flex items-center justify-center w-full py-4 rounded-xl font-black text-sm uppercase tracking-wider transition-colors duration-200 bg-[#854d0e] text-white hover:bg-[#713f12]">
+                <button onClick={() => openBookingEnquiry({ kind: "hajj", source: "Hajj seat reservation", values: { Package: "Hajj 2027 Shifting Package" } })} type="button" className="flex items-center justify-center w-full py-4 rounded-xl font-black text-sm uppercase tracking-wider transition-colors duration-200 bg-[#854d0e] text-white hover:bg-[#713f12]">
                   Reserve Hajj Seat
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -166,20 +162,12 @@ export function HajjUmrahPage() {
               <p className="text-xs leading-relaxed mb-8 text-slate-600">
                 A carefully guided spiritual journey with all essential arrangements for a peaceful and meaningful Umrah experience.
               </p>
-              <a className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit mb-8 gap-3 bg-black text-white hover:bg-slate-800" href={whatsappLink(formatEnquiryMessage({
-                enquiryType: "Umrah package enquiry",
-                request: `I would like more information about the ${pkg.tier}.`,
-                details: {
-                  Package: pkg.tier,
-                  Duration: pkg.duration,
-                  Price: pkg.price,
-                },
-              }))} target="_blank" rel="noreferrer">
+              <button className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit mb-8 gap-3 bg-black text-white hover:bg-slate-800" onClick={() => openBookingEnquiry({ kind: "umrah", source: "Umrah package selection", values: { Package: pkg.tier, Duration: pkg.duration } })} type="button">
                 Select
                 <div className="w-7 h-7 rounded-full flex items-center justify-center bg-[#f59e0b] text-white">
                   <ArrowRight className="w-3 h-3" />
                 </div>
-              </a>
+              </button>
               <div className="mt-auto pt-8 border-t border-slate-200">
                 <p className="text-xs font-bold mb-4 uppercase tracking-wider text-slate-500">Includes:</p>
                 <ul className="space-y-3">

@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { rentalVehicles } from "../data/site";
-import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
+import { openBookingEnquiry } from "../lib/booking";
 
 export function CarRentalPage() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -107,21 +107,12 @@ export function CarRentalPage() {
                          </div>
                       </div>
 
-                      <a className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit gap-3 bg-black text-white hover:bg-slate-800" href={whatsappLink(formatEnquiryMessage({
-                        enquiryType: "Car rental booking",
-                        request: `I would like to book the ${vehicle.name}.`,
-                        details: {
-                          Vehicle: vehicle.name,
-                          Category: vehicle.category,
-                          Seating: String(vehicle.seats),
-                          "Price Per Day": `₹${vehicle.pricePerDay.toLocaleString()}`,
-                        },
-                      }))} target="_blank" rel="noreferrer">
+                      <button className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit gap-3 bg-black text-white hover:bg-slate-800" onClick={() => openBookingEnquiry({ kind: "car", source: "Car rental Book Now", values: { Vehicle: vehicle.name, "Vehicle Category": vehicle.category } })} type="button">
                         Book Now
                         <div className="w-7 h-7 rounded-full flex items-center justify-center bg-[#f59e0b] text-white">
                           <ArrowRight className="w-3 h-3" />
                         </div>
-                      </a>
+                      </button>
                     </div>
 
                     <div className="sm:pl-6 sm:border-l border-slate-100 py-1 sm:ml-auto">
@@ -189,17 +180,13 @@ export function CarRentalPage() {
             <p className="text-blue-100 opacity-90 text-lg">For corporate events, large groups, or long-term rentals, get in touch with our team for special rates.</p>
           </div>
           <div className="w-full md:w-auto relative z-10">
-            <a 
-              href={whatsappLink(formatEnquiryMessage({
-                enquiryType: "Custom fleet enquiry",
-                request: "I would like a custom fleet or corporate rental quote.",
-              }))}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              onClick={() => openBookingEnquiry({ kind: "car", source: "Custom fleet enquiry", values: { Vehicle: "Let the team recommend" } })}
+              type="button"
               className="bg-white text-primary px-8 py-4 rounded-xl font-bold uppercase tracking-wider block text-center hover:scale-105 transition-transform shadow-xl"
             >
               Contact Sales Team
-            </a>
+            </button>
           </div>
           <div className="absolute -right-20 -bottom-20 opacity-10">
             <span className="material-icons-outlined text-[300px] text-white">directions_car</span>

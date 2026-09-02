@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
 import { socialLinks } from "../data/site";
+import { openBookingEnquiry } from "../lib/booking";
 
 export function Footer() {
   const generalEnquiryMessage = formatEnquiryMessage({
@@ -46,7 +47,7 @@ export function Footer() {
       <li><Link className="hover:text-primary transition-colors" to="/car-rental">Car Rental</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/ticketing">Air Ticketing</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/visa-services">Global Visa Services</Link></li>
-      <li><a className="hover:text-primary transition-colors" href={whatsappLink(formatEnquiryMessage({ enquiryType: "Hotel reservation enquiry", request: "I would like to make a hotel reservation." }))} target="_blank" rel="noreferrer">Hotel Reservations</a></li>
+      <li><button className="hover:text-primary transition-colors" onClick={() => openBookingEnquiry({ kind: "hotel", source: "Footer hotel reservation" })} type="button">Hotel Reservations</button></li>
       </ul>
       </div>
       <div>

@@ -1,7 +1,7 @@
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { packages } from "../data/site";
-import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
+import { openBookingEnquiry } from "../lib/booking";
 
 type Package = (typeof packages)[number];
 
@@ -32,24 +32,14 @@ export function PackageCard({ pkg, compact = false }: { pkg: Package; compact?: 
             View Details
             <ArrowRight className="h-4 w-4" />
           </Link>
-          <a
+          <button
             className="focus-ring inline-flex items-center justify-center gap-2 rounded-[10px] bg-kashmir-green px-4 py-2 text-sm font-black text-white"
-            href={whatsappLink(formatEnquiryMessage({
-              enquiryType: "Package enquiry",
-              request: `I would like more information about the ${pkg.name} package.`,
-              details: {
-                Package: pkg.name,
-                Duration: pkg.duration,
-                Destinations: pkg.destinations,
-                "Starting Price": pkg.price,
-              },
-            }))}
-            rel="noreferrer"
-            target="_blank"
+            onClick={() => openBookingEnquiry({ kind: "package", source: "Package card", values: { Package: pkg.name } })}
+            type="button"
           >
             <MessageCircle className="h-4 w-4" />
-            WhatsApp
-          </a>
+            Enquire
+          </button>
         </div>
       </div>
     </article>

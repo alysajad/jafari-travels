@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { packages } from "../data/site";
-import { formDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
+import { openBookingEnquiry } from "../lib/booking";
+import { formDetails } from "../lib/whatsapp";
 
 export function PackageDetailPage() {
   const { slug } = useParams();
@@ -195,11 +196,10 @@ export function PackageDetailPage() {
                     Package: pkg.name,
                     ...formDetails(event.currentTarget),
                   };
-                  void sendEnquiryThenOpenWhatsApp({
+                  openBookingEnquiry({
+                    kind: "package",
                     source: "Package availability form",
-                    enquiryType: "Package availability enquiry",
-                    request: `I would like to check availability for the ${pkg.name} package.`,
-                    details,
+                    values: details,
                   });
                 }}
               >
@@ -221,7 +221,7 @@ export function PackageDetailPage() {
                   </div>
                 </div>
                 <button type="submit" className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/25 mt-4 flex justify-center items-center">
-                    Enquire on WhatsApp
+                    Continue Booking
                 </button>
               </form>
               <p className="text-center text-xs text-slate-500 mt-4 font-medium flex items-center justify-center gap-1">

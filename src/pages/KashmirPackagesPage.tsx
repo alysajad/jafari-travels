@@ -2,6 +2,7 @@ import { Bed, CalendarCheck, CheckCircle2, ChevronRight, Clock, Headphones, Lock
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
+import { openBookingEnquiry } from "../lib/booking";
 import { packages } from "../data/site";
 
 export function KashmirPackagesPage() {
@@ -213,18 +214,9 @@ export function KashmirPackagesPage() {
                       <Link to={`/kashmir-packages/${pkg.slug}`} className="flex-1 flex items-center justify-center gap-1 py-3 bg-white text-black border border-black text-[11px] font-bold uppercase tracking-wider rounded-lg hover:bg-black hover:text-white transition-colors">
                         View Details <span className="text-[14px] leading-none">→</span>
                       </Link>
-                      <a href={whatsappLink(formatEnquiryMessage({
-                        enquiryType: "Package booking enquiry",
-                        request: `I would like to book the ${pkg.name} package.`,
-                        details: {
-                          Package: pkg.name,
-                          Duration: pkg.duration,
-                          Destinations: pkg.destinations,
-                          "Starting Price": pkg.price,
-                        },
-                      }))} target="_blank" rel="noreferrer" className="flex-1 flex items-center justify-center py-3 bg-black text-white border border-black text-[11px] font-bold uppercase tracking-wider rounded-lg hover:bg-slate-800 transition-colors">
+                      <button onClick={() => openBookingEnquiry({ kind: "package", source: "Package listing Book Now", values: { Package: pkg.name } })} type="button" className="flex-1 flex items-center justify-center py-3 bg-black text-white border border-black text-[11px] font-bold uppercase tracking-wider rounded-lg hover:bg-slate-800 transition-colors">
                         Book Now
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
