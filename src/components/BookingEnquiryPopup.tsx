@@ -152,9 +152,8 @@ export function BookingEnquiryPopup() {
         </label>
 
         <button className="focus-ring mt-1 inline-flex min-h-12 items-center justify-center rounded-xl bg-kashmir-bright px-5 text-sm font-black text-white shadow-[0_12px_30px_rgba(15,95,215,0.24)] transition hover:bg-kashmir-blue disabled:cursor-wait disabled:opacity-65 sm:col-span-2" disabled={submitting} type="submit">
-          {submitting ? "Sending enquiry..." : "Send enquiry and continue to WhatsApp"}
+          {submitting ? "Sending enquiry..." : "Send enquiry"}
         </button>
-        <p className="text-center text-[11px] leading-4 text-kashmir-slate sm:col-span-2">We email your booking details securely, then open WhatsApp so you can continue with our travel team.</p>
       </form>
     </EnquiryModalShell>
   );
