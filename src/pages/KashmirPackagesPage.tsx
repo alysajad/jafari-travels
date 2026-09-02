@@ -1,7 +1,7 @@
 import { Bed, CalendarCheck, CheckCircle2, ChevronRight, Clock, Headphones, Lock, MapPin, ShieldCheck, Star, ArrowRight, Camera, Mountain, Coffee, Plane } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { whatsappLink } from "../lib/whatsapp";
+import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
 import { packages } from "../data/site";
 
 export function KashmirPackagesPage() {
@@ -153,7 +153,7 @@ export function KashmirPackagesPage() {
               <ShieldCheck className="w-10 h-10 mb-4 opacity-50" />
               <h4 className="text-xl font-bold mb-2">Book with Confidence</h4>
               <p className="text-xs opacity-90 leading-relaxed mb-4">Get 100% refund on cancellations before 72 hours of departure.</p>
-              <a href={whatsappLink("I am interested in Kashmir packages and want to learn more about the booking process.")} target="_blank" rel="noreferrer" className="block text-center w-full py-2 bg-white text-primary font-bold rounded-lg text-sm hover:bg-slate-50 transition-colors">Learn More</a>
+              <a href={whatsappLink(formatEnquiryMessage({ enquiryType: "Kashmir package enquiry", request: "I would like to learn more about the Kashmir package booking process." }))} target="_blank" rel="noreferrer" className="block text-center w-full py-2 bg-white text-primary font-bold rounded-lg text-sm hover:bg-slate-50 transition-colors">Learn More</a>
             </div>
           </aside>
           
@@ -213,7 +213,16 @@ export function KashmirPackagesPage() {
                       <Link to={`/kashmir-packages/${pkg.slug}`} className="flex-1 flex items-center justify-center gap-1 py-3 bg-white text-black border border-black text-[11px] font-bold uppercase tracking-wider rounded-lg hover:bg-black hover:text-white transition-colors">
                         View Details <span className="text-[14px] leading-none">→</span>
                       </Link>
-                      <a href={whatsappLink(`Hi, I am interested in the ${pkg.name} package.`)} target="_blank" rel="noreferrer" className="flex-1 flex items-center justify-center py-3 bg-black text-white border border-black text-[11px] font-bold uppercase tracking-wider rounded-lg hover:bg-slate-800 transition-colors">
+                      <a href={whatsappLink(formatEnquiryMessage({
+                        enquiryType: "Package booking enquiry",
+                        request: `I would like to book the ${pkg.name} package.`,
+                        details: {
+                          Package: pkg.name,
+                          Duration: pkg.duration,
+                          Destinations: pkg.destinations,
+                          "Starting Price": pkg.price,
+                        },
+                      }))} target="_blank" rel="noreferrer" className="flex-1 flex items-center justify-center py-3 bg-black text-white border border-black text-[11px] font-bold uppercase tracking-wider rounded-lg hover:bg-slate-800 transition-colors">
                         Book Now
                       </a>
                     </div>

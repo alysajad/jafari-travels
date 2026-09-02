@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
-import { whatsappLink } from "../lib/whatsapp";
+import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
 import { socialLinks } from "../data/site";
 
 export function Footer() {
+  const generalEnquiryMessage = formatEnquiryMessage({
+    enquiryType: "General travel enquiry",
+    request: "I would like help planning my trip.",
+  });
+
   return (
     <>
       <footer className="bg-white text-black pt-12 md:pt-20 pb-10 border-t border-slate-200">
@@ -28,7 +33,7 @@ export function Footer() {
       <h4 className="font-extrabold text-black mb-6">Company</h4>
       <ul className="space-y-4 text-slate-500 text-sm font-medium">
       <li><Link className="hover:text-primary transition-colors" to="/aboutus">About Us</Link></li>
-      <li><a className="hover:text-primary transition-colors" href={whatsappLink("Hello! I have a general inquiry.")} target="_blank" rel="noreferrer">Contact Us</a></li>
+      <li><a className="hover:text-primary transition-colors" href={whatsappLink(generalEnquiryMessage)} target="_blank" rel="noreferrer">Contact Us</a></li>
       <li><Link className="hover:text-primary transition-colors" to="/privacy-policy">Privacy Policy</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/terms-and-conditions">Terms & Conditions</Link></li>
       </ul>
@@ -41,7 +46,7 @@ export function Footer() {
       <li><Link className="hover:text-primary transition-colors" to="/car-rental">Car Rental</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/ticketing">Air Ticketing</Link></li>
       <li><Link className="hover:text-primary transition-colors" to="/visa-services">Global Visa Services</Link></li>
-      <li><a className="hover:text-primary transition-colors" href={whatsappLink("I would like to make a hotel reservation.")} target="_blank" rel="noreferrer">Hotel Reservations</a></li>
+      <li><a className="hover:text-primary transition-colors" href={whatsappLink(formatEnquiryMessage({ enquiryType: "Hotel reservation enquiry", request: "I would like to make a hotel reservation." }))} target="_blank" rel="noreferrer">Hotel Reservations</a></li>
       </ul>
       </div>
       <div>

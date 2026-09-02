@@ -1,6 +1,6 @@
 import { CalendarDays, Mail, MessageSquareText, Phone, Plane, UserRound, UsersRound, X } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
+import { formDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 export function EnquiryPopup() {
   const [open, setOpen] = useState(false);
@@ -38,8 +38,9 @@ export function EnquiryPopup() {
     const details = formDetails(event.currentTarget);
     void sendEnquiryThenOpenWhatsApp({
       source: "Travel planning popup",
+      enquiryType: "General travel enquiry",
+      request: "I would like help planning my trip.",
       details,
-      message: `Assalamualaikum Jaffari Sky Travels, I would like help planning my trip.\n\nDetails:\n${formatDetails(details)}`,
     });
     dismiss();
   }

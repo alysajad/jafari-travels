@@ -1,4 +1,4 @@
-import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
+import { formDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 export function HajjRegistrationPage() {
   return (
@@ -143,39 +143,40 @@ export function HajjRegistrationPage() {
                 const details = formDetails(event.currentTarget);
                 void sendEnquiryThenOpenWhatsApp({
                   source: "Hajj pre-registration form",
+                  enquiryType: "Hajj pre-registration",
+                  request: "I would like to pre-register for Hajj 2027.",
                   details,
-                  message: `I want to pre-register for Hajj 2027.\n\nDetails:\n${formatDetails(details)}`,
                 });
               }}
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium text-on-surface mb-1">Full Name *</label>
-                  <input type="text" id="fullName" name="fullName" required className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" />
+                  <input type="text" id="fullName" name="Full Name" required className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" />
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-on-surface mb-1">Phone / WhatsApp *</label>
-                  <input type="tel" id="phone" name="phone" required className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" />
+                  <input type="tel" id="phone" name="Phone / WhatsApp" required className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" />
                 </div>
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-on-surface mb-1">Email Address *</label>
-                <input type="email" id="email" name="email" required className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" />
+                <input type="email" id="email" name="Email Address" required className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" />
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="tier" className="block text-sm font-medium text-on-surface mb-1">Preferred Package Tier</label>
-                  <select id="tier" name="tier" className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow">
-                    <option value="economy">Economy Shifting</option>
-                    <option value="standard" defaultValue="standard">Standard Shifting</option>
-                    <option value="premium">Premium Non-Shifting</option>
+                  <select id="tier" name="Preferred Package Tier" defaultValue="Standard Shifting" className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow">
+                    <option>Economy Shifting</option>
+                    <option>Standard Shifting</option>
+                    <option>Premium Non-Shifting</option>
                   </select>
                 </div>
                 <div>
                   <label htmlFor="groupSize" className="block text-sm font-medium text-on-surface mb-1">Group Size</label>
-                  <input type="number" id="groupSize" name="groupSize" min="1" defaultValue="1" className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" />
+                  <input type="number" id="groupSize" name="Group Size" min="1" defaultValue="1" className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" />
                 </div>
               </div>
               
@@ -183,11 +184,11 @@ export function HajjRegistrationPage() {
                 <span className="block text-sm font-medium text-on-surface mb-2">Previous Hajj Experience?</span>
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-6">
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="experience" value="yes" className="text-primary focus:ring-primary h-4 w-4" />
+                    <input type="radio" name="Previous Hajj Experience" value="Yes" className="text-primary focus:ring-primary h-4 w-4" />
                     <span className="text-on-surface-variant">Yes</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="experience" value="no" defaultChecked className="text-primary focus:ring-primary h-4 w-4" />
+                    <input type="radio" name="Previous Hajj Experience" value="No (First Timer)" defaultChecked className="text-primary focus:ring-primary h-4 w-4" />
                     <span className="text-on-surface-variant">No (First Timer)</span>
                   </label>
                 </div>
@@ -195,7 +196,7 @@ export function HajjRegistrationPage() {
               
               <div>
                 <label htmlFor="requirements" className="block text-sm font-medium text-on-surface mb-1">Special Requirements (Medical, Wheelchair, etc.)</label>
-                <textarea id="requirements" name="requirements" rows={3} className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow resize-none"></textarea>
+                <textarea id="requirements" name="Special Requirements" rows={3} className="w-full rounded-lg border-outline-variant bg-surface px-4 py-2 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow resize-none"></textarea>
               </div>
               
               <button type="submit" className="w-full h-12 rounded-lg bg-primary text-on-primary font-bold hover:bg-primary-fixed-variant transition-colors flex items-center justify-center gap-2">

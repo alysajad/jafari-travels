@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { packages } from "../data/site";
-import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
+import { formDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 export function PackageDetailPage() {
   const { slug } = useParams();
@@ -197,8 +197,9 @@ export function PackageDetailPage() {
                   };
                   void sendEnquiryThenOpenWhatsApp({
                     source: "Package availability form",
+                    enquiryType: "Package availability enquiry",
+                    request: `I would like to check availability for the ${pkg.name} package.`,
                     details,
-                    message: `Hi, I am interested in ${pkg.name}.\n\nDetails:\n${formatDetails(details)}`,
                   });
                 }}
               >

@@ -13,7 +13,9 @@ export default async function handler(req, res) {
 
   const body = await readBody(req);
   const source = clean(body.source || "Website enquiry", 140);
-  const message = clean(body.message || "", 4000);
+  const enquiryType = clean(body.enquiryType || "General enquiry", 140);
+  const request = cleanMultiline(body.request || body.message || "", 1000);
+  const message = cleanMultiline(body.message || "", 4000);
   const details = cleanDetails(body.details);
   const submittedAt = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
   const page = clean(body.page || "", 500);
@@ -24,17 +26,20 @@ export default async function handler(req, res) {
   }
 
   const text = [
-    "New website enquiry",
+    `New ${enquiryType}`,
     `Source: ${source}`,
     `Submitted: ${submittedAt}`,
-    page ? `Page: ${page}` : "",
+    page ? `Page: ${page}` : null,
     "",
-    rows.length ? "Details:" : "",
+    "Customer request:",
+    request,
+    "",
+    rows.length ? "Enquiry details:" : null,
     ...rows.map(([key, value]) => `${key}: ${value}`),
     "",
     "WhatsApp message:",
     message,
-  ].filter(Boolean).join("\n");
+  ].filter((line) => line !== null).join("\n");
 
   const htmlRows = rows.map(([key, value]) => `
     <tr>
@@ -53,15 +58,18 @@ export default async function handler(req, res) {
     body: JSON.stringify({
       from: fromEmail,
       to: [toEmail],
-      subject: `New enquiry: ${source}`,
+      subject: `New ${enquiryType}: ${source}`,
       text,
       html: `
         <div style="font-family:Arial,sans-serif;color:#0f172a;line-height:1.5;">
-          <h2 style="margin:0 0 12px;">New website enquiry</h2>
-          <p><strong>Source:</strong> ${escapeHtml(source)}<br />
+          <h2 style="margin:0 0 12px;">New ${escapeHtml(enquiryType)}</h2>
+          <p><strong>Enquiry type:</strong> ${escapeHtml(enquiryType)}<br />
+          <strong>Source:</strong> ${escapeHtml(source)}<br />
           <strong>Submitted:</strong> ${escapeHtml(submittedAt)}${page ? `<br /><strong>Page:</strong> ${escapeHtml(page)}` : ""}</p>
-          ${htmlRows ? `<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;max-width:680px;border:1px solid #e5e7eb;">${htmlRows}</table>` : ""}
-          <h3 style="margin:24px 0 8px;">WhatsApp message</h3>
+          <h3 style="margin:24px 0 8px;">Customer request</h3>
+          <p style="margin:0;white-space:pre-wrap;">${escapeHtml(request)}</p>
+          ${htmlRows ? `<h3 style="margin:24px 0 8px;">Enquiry details</h3><table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;max-width:680px;border:1px solid #e5e7eb;">${htmlRows}</table>` : ""}
+          <h3 style="margin:24px 0 8px;">WhatsApp message preview</h3>
           <pre style="white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;padding:12px;border-radius:8px;">${escapeHtml(message)}</pre>
         </div>
       `,
@@ -86,6 +94,10 @@ async function readBody(req) {
 
 function clean(value, max) {
   return String(value).replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, max);
+}
+
+function cleanMultiline(value, max) {
+  return String(value).replace(/\r\n?/g, "\n").replace(/[\u0000-\u0009\u000b\u000c\u000e-\u001f\u007f]/g, " ").trim().slice(0, max);
 }
 
 function cleanDetails(details) {

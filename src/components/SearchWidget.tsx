@@ -1,7 +1,7 @@
 import { ArrowRight, CalendarDays, FileText, Landmark, MapPin, Mountain, Plane, UsersRound, Ticket, Car } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
+import { formDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 const tabs = {
   kashmir: ["Select Package", ["Choose a package..", "Budget Explorer (5D/4N)", "Classic Delight (10D/9N)", "Royal Summer Paradise (12D/11N)", "Adventure Seekers (8D/7N)", "Custom Package Needed"], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Enquire Now"],
@@ -32,8 +32,9 @@ export function SearchWidget() {
     const details = formDetails(event.currentTarget);
     void sendEnquiryThenOpenWhatsApp({
       source: `Hero ${active} enquiry`,
+      enquiryType: `${active === "kashmir" ? "Kashmir package" : active === "cars" ? "Car rental" : active === "umrah" ? "Hajj and Umrah" : active === "tickets" ? "Flight booking" : active === "visa" ? "Visa" : "Gondola booking"} enquiry`,
+      request: `I would like help with the selected ${active === "kashmir" ? "Kashmir package" : active === "cars" ? "car rental" : active === "umrah" ? "Hajj or Umrah package" : active === "tickets" ? "flight" : active === "visa" ? "visa service" : "Gondola tickets"}.`,
       details,
-      message: `I want to enquire about ${active} services with Jaffari Sky Travels.\n\nDetails:\n${formatDetails(details)}`,
     });
   }
 
@@ -101,7 +102,7 @@ function SearchField({ icon, label, value }: { icon: ReactNode; label: string; v
         {isArray ? (
           <select name={label} className="w-full bg-transparent text-sm font-semibold outline-none cursor-pointer">
             {(value as readonly string[]).map((opt) => (
-              <option key={opt} value={opt}>{opt}</option>
+              <option disabled={opt.startsWith("Choose ")} key={opt} value={opt.startsWith("Choose ") ? "" : opt}>{opt}</option>
             ))}
           </select>
         ) : (

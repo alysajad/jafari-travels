@@ -1,4 +1,4 @@
-import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
+import { formDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 const visaTypes = [
   { name: "Tourist visa", icon: "travel_explore", desc: "For leisure travel and family visits" },
@@ -106,8 +106,9 @@ export function VisaServicesPage() {
               const details = formDetails(event.currentTarget);
               void sendEnquiryThenOpenWhatsApp({
                 source: "Visa enquiry form",
+                enquiryType: "Visa assistance enquiry",
+                request: "I would like help with my visa application.",
                 details,
-                message: `I need visa assistance.\n\nDetails:\n${formatDetails(details)}`,
               });
             }}
           >

@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { whatsappLink } from "../lib/whatsapp";
+import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
+
+const generalEnquiryMessage = formatEnquiryMessage({
+  enquiryType: "General travel enquiry",
+  request: "I would like help planning my trip.",
+});
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,7 +35,7 @@ export function Header() {
               <Link className="hover:text-primary transition-colors" to="/visa-services">Visas</Link>
               <Link className="hover:text-primary transition-colors" to="/aboutus">About Us</Link>
             </nav>
-            <a href={whatsappLink("Hello! I have a general inquiry.")} target="_blank" rel="noreferrer" className="bg-primary text-white px-8 py-3 text-sm font-semibold hover:shadow-lg hover:opacity-90 transition-all uppercase tracking-wider hidden xl:block">
+            <a href={whatsappLink(generalEnquiryMessage)} target="_blank" rel="noreferrer" className="bg-primary text-white px-8 py-3 text-sm font-semibold hover:shadow-lg hover:opacity-90 transition-all uppercase tracking-wider hidden xl:block">
               Contact Us
             </a>
           </div>
@@ -60,7 +65,7 @@ export function Header() {
             <Link onClick={() => setIsMobileMenuOpen(false)} className="hover:text-primary border-b border-slate-100 pb-4" to="/aboutus">About Us</Link>
           </nav>
           <div className="mt-auto pt-8">
-            <a onClick={() => setIsMobileMenuOpen(false)} href={whatsappLink("Hello! I have a general inquiry.")} target="_blank" rel="noreferrer" className="bg-primary text-white px-8 py-4 text-center rounded-xl font-bold uppercase tracking-wider block w-full shadow-lg">
+            <a onClick={() => setIsMobileMenuOpen(false)} href={whatsappLink(generalEnquiryMessage)} target="_blank" rel="noreferrer" className="bg-primary text-white px-8 py-4 text-center rounded-xl font-bold uppercase tracking-wider block w-full shadow-lg">
               Contact Us
             </a>
           </div>

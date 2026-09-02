@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { rentalVehicles } from "../data/site";
-import { whatsappLink } from "../lib/whatsapp";
+import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
 
 export function CarRentalPage() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -107,7 +107,16 @@ export function CarRentalPage() {
                          </div>
                       </div>
 
-                      <a className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit gap-3 bg-black text-white hover:bg-slate-800" href={whatsappLink(`Hi, I want to rent the ${vehicle.name} (${vehicle.category}) for ₹${vehicle.pricePerDay}/day.`)} target="_blank" rel="noreferrer">
+                      <a className="inline-flex items-center justify-between pl-4 pr-1 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider transition-colors duration-200 w-fit gap-3 bg-black text-white hover:bg-slate-800" href={whatsappLink(formatEnquiryMessage({
+                        enquiryType: "Car rental booking",
+                        request: `I would like to book the ${vehicle.name}.`,
+                        details: {
+                          Vehicle: vehicle.name,
+                          Category: vehicle.category,
+                          Seating: String(vehicle.seats),
+                          "Price Per Day": `₹${vehicle.pricePerDay.toLocaleString()}`,
+                        },
+                      }))} target="_blank" rel="noreferrer">
                         Book Now
                         <div className="w-7 h-7 rounded-full flex items-center justify-center bg-[#f59e0b] text-white">
                           <ArrowRight className="w-3 h-3" />
@@ -181,7 +190,10 @@ export function CarRentalPage() {
           </div>
           <div className="w-full md:w-auto relative z-10">
             <a 
-              href={whatsappLink("Hi, I'm looking for a custom fleet/corporate rental quote.")}
+              href={whatsappLink(formatEnquiryMessage({
+                enquiryType: "Custom fleet enquiry",
+                request: "I would like a custom fleet or corporate rental quote.",
+              }))}
               target="_blank"
               rel="noreferrer"
               className="bg-white text-primary px-8 py-4 rounded-xl font-bold uppercase tracking-wider block text-center hover:scale-105 transition-transform shadow-xl"

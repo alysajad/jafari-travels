@@ -1,5 +1,5 @@
 import { routeHighlights } from "../data/site";
-import { formDetails, formatDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
+import { formDetails, sendEnquiryThenOpenWhatsApp } from "../lib/whatsapp";
 
 export function TicketingPage() {
   const steps = [
@@ -97,8 +97,9 @@ export function TicketingPage() {
               const details = formDetails(event.currentTarget);
               void sendEnquiryThenOpenWhatsApp({
                 source: "Flight enquiry form",
+                enquiryType: "Flight booking enquiry",
+                request: "I would like help booking a flight ticket.",
                 details,
-                message: `I need help booking a flight ticket.\n\nDetails:\n${formatDetails(details)}`,
               });
             }}
           >

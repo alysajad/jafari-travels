@@ -2,9 +2,12 @@ const phone = "917051693767";
 
 type EnquiryPayload = {
   source: string;
-  message: string;
+  enquiryType: string;
+  request: string;
   details?: Record<string, string>;
 };
+
+type EnquiryContent = Omit<EnquiryPayload, "source">;
 
 let whatsappEmailBridgeInstalled = false;
 
@@ -14,24 +17,39 @@ export function whatsappLink(message: string) {
 
 export function formDetails(form: HTMLFormElement) {
   return Object.fromEntries(
-    Array.from(new FormData(form)).map(([key, value]) => [key, String(value)])
+    Array.from(new FormData(form)).map(([key, value]) => [readableLabel(key), String(value)])
   );
 }
 
 export function formatDetails(details: Record<string, string>) {
   return Object.entries(details)
     .filter(([, value]) => value.trim())
-    .map(([key, value]) => `${key}: ${value}`)
+    .map(([key, value]) => `- ${readableLabel(key)}: ${value.trim()}`)
     .join("\n");
 }
 
+export function formatEnquiryMessage({ enquiryType, request, details = {} }: EnquiryContent) {
+  const formattedDetails = formatDetails(details);
+
+  return [
+    "Hi Jaffari Sky Travels,",
+    "",
+    `Enquiry Type: ${enquiryType}`,
+    `Request: ${request}`,
+    formattedDetails ? "" : null,
+    formattedDetails ? "Enquiry Details:" : null,
+    formattedDetails || null,
+  ].filter((line) => line !== null).join("\n");
+}
+
 export async function sendEnquiryThenOpenWhatsApp(payload: EnquiryPayload) {
-  const whatsappUrl = whatsappLink(payload.message);
+  const message = formatEnquiryMessage(payload);
+  const whatsappUrl = whatsappLink(message);
   const popup = window.open("", "_blank");
 
   try {
     const response = await fetch("/api/enquiry", {
-      body: JSON.stringify({ ...payload, page: window.location.href }),
+      body: JSON.stringify({ ...payload, message, page: window.location.href }),
       headers: { "Content-Type": "application/json" },
       method: "POST",
     });
@@ -62,9 +80,31 @@ export function installWhatsAppEmailBridge() {
     event.preventDefault();
 
     const message = new URL(anchor.href).searchParams.get("text") || "WhatsApp enquiry";
+    const content = parseEnquiryMessage(message);
     void sendEnquiryThenOpenWhatsApp({
       source: anchor.textContent?.trim() || "WhatsApp CTA",
-      message,
+      ...content,
     });
   });
+}
+
+function readableLabel(label: string) {
+  return label.replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[_-]+/g, " ").trim();
+}
+
+function parseEnquiryMessage(message: string): EnquiryContent {
+  const lines = message.split("\n");
+  const enquiryType = lines.find((line) => line.startsWith("Enquiry Type: "))?.slice(14).trim();
+  const request = lines.find((line) => line.startsWith("Request: "))?.slice(9).trim();
+  const details = Object.fromEntries(lines.flatMap((line) => {
+    if (!line.startsWith("- ")) return [];
+    const separator = line.indexOf(": ", 2);
+    return separator < 0 ? [] : [[line.slice(2, separator), line.slice(separator + 2)]];
+  }));
+
+  return {
+    enquiryType: enquiryType || "General enquiry",
+    request: request || message,
+    details,
+  };
 }
