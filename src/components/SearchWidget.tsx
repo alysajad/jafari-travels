@@ -1,13 +1,12 @@
 import { ArrowRight, CalendarDays, FileText, Landmark, MapPin, Mountain, Plane, UsersRound, Ticket, Car } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import { getSeasonPackages, rentalVehicles } from "../data/site";
-import { useSeason } from "./SeasonToggle";
+import { packages, rentalVehicles } from "../data/site";
 import { openBookingEnquiry } from "../lib/booking";
 import { formDetails } from "../lib/whatsapp";
 
 const tabs = {
-  kashmir: ["Select Package", ["Choose a package.."], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Enquire Now"],
+  kashmir: ["Select Package", ["Choose a package..", ...packages.map((item) => item.name), "Custom Package Needed"], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Enquire Now"],
   cars: ["Pickup Location", ["Srinagar Airport", "Srinagar City", "Gulmarg", "Pahalgam"], "Pickup Date", "2026-09-20", "Drop Date", "2026-09-26", "Car Type", ["Choose a vehicle type..", ...new Set(rentalVehicles.map((item) => item.category))], "Search Cars"],
   umrah: ["Package Type", ["Premium Umrah", "Economy Umrah", "VIP Umrah", "Ramadan Umrah"], "Duration", ["15 Days", "21 Days", "28 Days", "Custom"], "Travel Month", ["Ramadan 2027", "Shawwal 2027", "Rajab 2027", "Any Month"], "Travelers", "Family of 4", "View Packages"],
   tickets: ["From", ["Srinagar (SXR)", "Delhi (DEL)", "Mumbai (BOM)", "Dubai (DXB)", "Jeddah (JED)"], "To", ["Delhi (DEL)", "Srinagar (SXR)", "Dubai (DXB)", "Jeddah (JED)", "Mumbai (BOM)"], "Travel Date", "2026-09-20", "Travelers", "2 Adults", "Search Flights"],
@@ -27,20 +26,15 @@ const popularItems: Record<TabKey, readonly string[]> = {
 };
 
 export function SearchWidget() {
-  const { season } = useSeason();
   const [active, setActive] = useState<TabKey>("kashmir");
-  const fields = tabs[active];
-  const packageOptions = ["Choose a package..", ...getSeasonPackages(season).map((item) => item.name), "Custom Package Needed"];
-  const popular = active === "kashmir" && season === "winter"
-    ? ["Gulmarg Snow", "Gondola Ride", "Pahalgam Pines", "Dal Lake", "Kashmiri Kahwa"]
-    : popularItems[active];
+  const fields = useMemo(() => tabs[active], [active]);
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const details = formDetails(event.currentTarget);
     const travellers = splitTravellers(details.Travelers);
     const valuesByTab: Record<TabKey, Record<string, string>> = {
-      kashmir: { Package: details["Select Package"] || "Custom Package Needed", Season: season, "Travel Date": details["Check in"], "Return Date": details["Check out"], Adults: travellers.Adults, Children: travellers.Children, Infants: travellers.Infants },
+      kashmir: { Package: details["Select Package"] || "Custom Package Needed", "Travel Date": details["Check in"], "Return Date": details["Check out"], Adults: travellers.Adults, Children: travellers.Children, Infants: travellers.Infants },
       cars: { "Pickup Location": details["Pickup Location"], "Pickup Date": details["Pickup Date"], "Drop Date": details["Drop Date"], Vehicle: "Let the team recommend", "Vehicle Category": details["Car Type"] },
       umrah: { Package: details["Package Type"], Duration: details.Duration, "Travel Month": details["Travel Month"], "Travel Date": "", Travellers: travellers.Travellers },
       tickets: { From: details.From, To: details.To, "Travel Date": details["Travel Date"], Travellers: travellers.Travellers },
@@ -55,7 +49,7 @@ export function SearchWidget() {
   }
 
   return (
-    <section className="relative z-20 mx-auto mt-4 w-[min(1400px,calc(100%_-_20px))] max-w-[calc(100vw_-_20px)] rounded-xl border border-kashmir-blue/10 bg-white p-3 shadow-travel sm:w-[min(1400px,calc(100%_-_32px))] sm:max-w-none sm:p-4 md:w-[min(1400px,calc(100%_-_44px))] md:rounded-[22px] md:p-8 lg:p-10">
+    <section className="relative z-20 mx-auto -mt-14 w-[min(1400px,calc(100%_-_20px))] max-w-[calc(100vw_-_20px)] rounded-xl border border-kashmir-blue/10 bg-white p-3 shadow-travel sm:w-[min(1400px,calc(100%_-_32px))] sm:max-w-none sm:p-4 md:-mt-20 md:w-[min(1400px,calc(100%_-_44px))] md:rounded-[22px] md:p-8 lg:p-10">
       <div className="grid grid-cols-2 gap-2 border-b border-slate-200 pb-4 sm:grid-cols-3 lg:flex lg:gap-7 lg:overflow-x-auto">
         {Object.keys(tabs).map((key) => (
           <button
@@ -78,7 +72,7 @@ export function SearchWidget() {
       </div>
 
       <form className="grid grid-cols-1 gap-3 pt-5 min-[420px]:grid-cols-2 md:pt-6 lg:grid-cols-[repeat(4,minmax(0,1fr))_180px]" onSubmit={submit}>
-        <SearchField key={`f1-${active}-${season}`} icon={<MapPin />} label={fields[0] as string} value={active === "kashmir" ? packageOptions : fields[1]} />
+        <SearchField key={`f1-${active}`} icon={<MapPin />} label={fields[0] as string} value={fields[1]} />
         <SearchField key={`f2-${active}`} icon={<CalendarDays />} label={fields[2] as string} value={fields[3]} />
         <SearchField key={`f3-${active}`} icon={<CalendarDays />} label={fields[4] as string} value={fields[5]} />
         {fields[6] === "Travelers" ? (
@@ -94,7 +88,7 @@ export function SearchWidget() {
 
       <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-slate-200 pt-4">
         <span className="mr-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-kashmir-slate">Popular:</span>
-        {popular.map((item) => (
+        {popularItems[active].map((item) => (
           <span key={item} className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-kashmir-slate shadow-sm sm:text-[13px]">
             {item}
           </span>
@@ -116,7 +110,7 @@ function SearchField({ icon, label, value }: { icon: ReactNode; label: string; v
       <span className="min-w-0 flex-1 flex flex-col justify-center">
         <span className="mb-1 block text-[10px] font-bold text-kashmir-slate sm:text-[11px]">{label}</span>
         {isArray ? (
-          <select name={label} defaultValue={value[0].startsWith("Choose ") ? "" : value[0]} className="w-full bg-transparent text-sm font-semibold outline-none cursor-pointer">
+          <select name={label} className="w-full bg-transparent text-sm font-semibold outline-none cursor-pointer">
             {(value as readonly string[]).map((opt) => (
               <option disabled={opt.startsWith("Choose ")} key={opt} value={opt.startsWith("Choose ") ? "" : opt}>{opt}</option>
             ))}
@@ -131,7 +125,7 @@ function SearchField({ icon, label, value }: { icon: ReactNode; label: string; v
 
 function TravelerField({ icon, label }: { icon: ReactNode; label: string }) {
   const [open, setOpen] = useState(false);
-  const [adults, setAdults] = useState(2);
+  const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [infants, setInfants] = useState(0);
 

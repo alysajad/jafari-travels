@@ -1,102 +1,153 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Snowflake } from "lucide-react";
-import { destinations, getSeasonPackages, rentalVehicles } from "../data/site";
+import { ArrowRight } from "lucide-react";
+import { destinations, rentalVehicles } from "../data/site";
+import { winterPackages, winterPricingNote, honeymoonPriceNote } from "../data/winter";
 import { useState } from "react";
-import { SeasonToggle, useSeason } from "../components/SeasonToggle";
-import { PackageCard } from "../components/PackageCard";
-import { WinterPackageNotes } from "../components/WinterPackageNotes";
 import { SearchWidget } from "../components/SearchWidget";
 import { DestinationModal } from "../components/DestinationModal";
 import type { Destination } from "../data/site";
 import { openBookingEnquiry } from "../lib/booking";
 
 export function HomePage() {
-  const { season } = useSeason();
-  const isWinter = season === "winter";
-  const seasonalPackages = getSeasonPackages(season);
-  const experiences = isWinter
-    ? ["Gulmarg Snow", "Gondola Views", "Skiing Lessons", "Pahalgam Pines", "Kashmiri Kahwa", "Winter Photography", "Cosy Stays", "Dal Lake Views"]
-    : ["Wazwan Dining", "Garden Walks", "Photography Tours", "Shikara Rides", "Mughal Gardens", "Houseboat Stay", "Valley Trekking", "Gondola Ride"];
-  const winterDestinationDetails = [
-    { image: "/images/winter-special.webp", subtitle: "A QUIETER SIDE OF DAL LAKE", description: "Winter brings quieter lakefront walks, mountain views and time to explore Srinagar's crafts markets. Shikara rides depend on lake and weather conditions. Gardens have bare terraces rather than spring flowers.", attractions: ["Dal Lake boulevard", "Hazratbal", "Lal Chowk markets", "Optional Shikara ride, conditions permitting"] },
-    { image: "/images/winter-adventure.webp", subtitle: "KASHMIR'S SNOW COUNTRY", description: "Plan a day among Gulmarg's snow-covered fir trees. Gondola rides, ski lessons and sledging are optional activities, subject to tickets, snow conditions and operator clearance. Your team will advise on road access and any snow-chain transfers.", attractions: ["Gulmarg snow views", "Optional Gondola ride", "Optional beginner ski lessons", "Tangmarg scenic drive"] },
-    { image: "/images/winter-family.webp", subtitle: "PINE FORESTS & WINTER DAYS", description: "Take your time in Pahalgam, with snowy pine slopes and views of the Lidder River. Explore accessible areas close to town; visits to Aru or Betaab Valley depend on road access and require a local taxi at additional cost.", attractions: ["Lidder River viewpoints", "Pine forest scenery", "Pahalgam market", "Optional valley visits when roads permit"] },
-  ];
-  const seasonalDestinations = isWinter
-    ? destinations.slice(0, 3).map((destination, index) => ({ ...destination, ...winterDestinationDetails[index], time: "Travel time varies with winter road conditions" }))
-    : destinations;
   const today = new Date().toISOString().split('T')[0];
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
   
   return (
     <main>
-      <section className={`season-hero ${isWinter ? "season-hero-winter" : "season-hero-summer"}`} aria-label={`${season} holidays in Kashmir`}>
-        <img key={season} alt={isWinter ? "Snow-covered fir forests and Himalayan mountains in Gulmarg, Kashmir" : "Shikara boats on Dal Lake with green hills in summer"} className="season-hero-image" src={isWinter ? "/images/hero-winter.webp" : "/images/dal_lake_destination.jpg"} fetchPriority="high" />
-        <div className="season-hero-shade" />
-        <div className="container relative z-10 mx-auto px-4 text-center text-white">
-          <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.28em] text-white/90 sm:text-xs sm:tracking-[0.4em]">Jaffari Sky Travels · Kashmir, with local care</p>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-bold backdrop-blur-sm">
-            {isWinter && <Snowflake size={14} aria-hidden="true" />}{isWinter ? "Your winter escape starts here" : "A summer in the valley"}
-          </p>
-          <h1 className="season-hero-title font-varien">
-            <span className="block text-secondary">Kashmir</span>
-            <span className="block">in {isWinter ? "winter." : "summer."}</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/95 sm:text-lg">
-            {isWinter ? "Snow-dusted pines, slow days in the mountains and a warm cup of kahwa. Find your kind of winter with us." : "Lakeside mornings, green valleys and long days outdoors. Explore Kashmir at your own pace."}
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="#season-packages" className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-bold text-slate-900 transition hover:bg-amber-300 sm:px-8">
-              View {isWinter ? "Winter" : "Summer"} Tours <ArrowRight size={17} aria-hidden="true" />
-            </a>
-            <a href="#season-destinations" className="focus-ring inline-flex min-h-12 items-center justify-center rounded-full border border-white/60 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/20">Explore Destinations</a>
-          </div>
-          {isWinter && <p className="mt-5 text-xs font-semibold tracking-wide text-white/85">6 winter holidays · From ₹12,999 per person</p>}
+      <section className="relative flex min-h-[520px] items-center overflow-hidden pb-24 pt-8 sm:min-h-[620px] lg:min-h-[750px] lg:pb-32 lg:pt-16">
+        <div className="absolute inset-0 z-0">
+          <img alt="Beautiful Kashmir Landscape" className="h-full w-full object-cover object-[62%_center] sm:object-[75%_center]" src="/images/hero.jpeg"/>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         </div>
-        <svg className="season-snowline" viewBox="0 0 1440 75" preserveAspectRatio="none" aria-hidden="true"><path d="M0 44C85 62 118 13 211 35S362 74 462 43S617 11 730 40S871 71 982 36S1110 37 1220 48S1360 15 1440 37V75H0Z" fill="currentColor" /></svg>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="mx-auto max-w-4xl overflow-hidden px-1 text-center">
+            <div className="mb-4 mt-14 flex w-full flex-col items-center text-center sm:mb-6 sm:mt-16">
+              <div className="mb-3 flex max-w-full items-center justify-center overflow-hidden rounded bg-white/95 p-3 shadow-lg ring-1 ring-white/70">
+                <div className="h-[57px] w-[82px] overflow-hidden sm:h-[74px] sm:w-[105px]">
+                  <img
+                    src="/logo.png"
+                    alt="Jaffari Sky Travels & Tours"
+                    className="-ml-[33px] -mt-[28px] h-28 w-auto max-w-none object-contain sm:-ml-[43px] sm:-mt-[36px] sm:h-36"
+                  />
+                </div>
+              </div>
+              <div className="max-w-full text-xs font-medium text-white sm:text-sm">
+                Trusted by 50,000+ Happy Travelers
+              </div>
+            </div>
+            <h1 className="mb-4 flex max-w-full flex-col font-varien leading-none tracking-wide text-white sm:mb-6">
+              <span className="fluid-title font-extrabold opacity-90">Explore</span>
+              <span className="fluid-display relative z-10 font-normal text-secondary drop-shadow-2xl md:-mt-4 lg:-mt-6">Kashmir.</span>
+            </h1>
+            <p className="mx-auto mb-6 max-w-xl text-sm leading-6 text-slate-100 opacity-90 sm:text-base md:mb-8 md:text-xl">
+              Your trusted travel partner for boutique Kashmir tours, breathtaking mountain adventures, and unforgettable scenic getaways.
+            </p>
+            <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
+              <Link to="/kashmir-packages" className="flex w-full max-w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-4 text-center font-bold text-white transition-all hover:bg-blue-700 sm:w-auto sm:px-8">
+                  Explore Destinations <span className="material-icons-outlined">arrow_forward</span>
+              </Link>
+            </div>
+
+          </div>
+        </div>
       </section>
 
-      <div className="season-switch-dock"><SeasonToggle /></div>
       <SearchWidget />
 
-      <div className="relative mt-8 flex w-full items-center overflow-hidden border-y border-slate-200 bg-white py-4 sm:py-5" aria-label={`${season} experiences`}>
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-white to-transparent sm:w-24" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-white to-transparent sm:w-24" />
-        <div className="flex min-w-max animate-ticker items-center whitespace-nowrap">
-          {[...experiences, ...experiences].map((item, i) => (
-            <div key={`${season}-${i}`} aria-hidden={i >= experiences.length ? true : undefined} className="mx-5 flex items-center gap-5">
-              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
-              <span className="text-sm font-bold text-slate-700">{item}</span>
+      {/* Ticker Slider */}
+      <div data-aos="fade-up" className="relative mt-10 flex w-full items-center overflow-hidden border-y border-slate-100 bg-white py-4 shadow-sm sm:mt-12 sm:py-5">
+        {/* Gradient fades for smooth edges */}
+        <div className="absolute bottom-0 left-0 top-0 z-10 w-10 bg-gradient-to-r from-white to-transparent pointer-events-none sm:w-24"></div>
+        <div className="absolute bottom-0 right-0 top-0 z-10 w-10 bg-gradient-to-l from-white to-transparent pointer-events-none sm:w-24"></div>
+
+        <div className="flex animate-ticker whitespace-nowrap min-w-max items-center">
+          {[
+            "Wazwan Dining", "Tulip Garden", "Photography Tours", "Shikara Rides",
+            "Mughal Gardens", "Houseboat Stay", "Valley Trekking", "Gondola Ride",
+            "Pahalgam River Walk", "Sonamarg Trek",
+            // Duplicated to ensure seamless loop
+            "Wazwan Dining", "Tulip Garden", "Photography Tours", "Shikara Rides",
+            "Mughal Gardens", "Houseboat Stay", "Valley Trekking", "Gondola Ride",
+            "Pahalgam River Walk", "Sonamarg Trek"
+          ].map((item, i) => (
+            <div key={i} className="flex items-center gap-8 mx-4">
+              <div className="flex items-center gap-3 group cursor-pointer hover:text-primary transition-colors">
+                <div className="w-8 h-8 rounded-full bg-orange-50 text-secondary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                  <span className="material-icons-outlined text-sm">location_on</span>
+                </div>
+                <span className="text-sm font-bold text-slate-700 tracking-wide">{item}</span>
+              </div>
+              <span className="w-1.5 h-1.5 bg-slate-200 rounded-full"></span>
             </div>
           ))}
         </div>
       </div>
 
-      <section id="season-packages" className={`scroll-mt-48 py-16 sm:py-20 ${isWinter ? "bg-slate-50" : "bg-kashmir-cream"}`}>
+      <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4">
-          <div className="mx-auto mb-10 max-w-3xl text-center" aria-live="polite">
-            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.3em] text-primary">{isWinter ? "Snow days, your way" : "Out into the valley"}</p>
-            <h2 className="mb-4 font-varien text-3xl uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">{isWinter ? "Winter Tour Packages" : "Summer Tour Packages"}</h2>
-            <div className="mx-auto mb-5 h-0.5 w-12 bg-secondary" />
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-500">{isWinter ? "A snow adventure with friends, a holiday for two or time away with family. Choose your trip and explore the full day-by-day plan." : "Discover lakes, gardens and mountain valleys with our Kashmir tours. Choose your package for the full itinerary."}</p>
+          <div data-aos="fade-up" className="mx-auto mb-10 max-w-3xl text-center">
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Winter Packages</p>
+            <h2 className="mb-4 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Explore Winter Packages</h2>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-500">Every itinerary is crafted around your pace - from budget explorers to ultra-luxury seekers. Tap any package for the full day-by-day plan.</p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {seasonalPackages.slice(0, 6).map((pkg) => <PackageCard key={pkg.slug} pkg={pkg} />)}
-          </div>
-          {isWinter && <WinterPackageNotes />}
-          <div className="mt-8 text-center"><Link to="/kashmir-packages" className="focus-ring inline-flex items-center gap-2 rounded-full border border-primary px-6 py-3 text-sm font-bold text-primary transition hover:bg-primary hover:text-white">Browse all {season} packages <ArrowRight size={16} /></Link></div>
+          <div data-aos="fade-up" className="flex flex-col gap-8 lg:flex-row lg:gap-12">
+            <div className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-primary p-6 text-white sm:p-10 lg:w-1/3">
+              <div className="relative z-10">
+                <h2 className="mb-4 text-3xl font-extrabold leading-tight sm:text-4xl">Top Packages This Season</h2>
+                <p className="text-blue-100 opacity-80 mb-8">Exclusive hand-crafted experiences designed just for you.</p>
+                <Link to="/kashmir-packages" className="inline-flex max-w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-center font-bold text-primary transition-all hover:bg-slate-100 sm:px-8">
+                  View All Offers <span className="material-icons-outlined">east</span>
+                </Link>
+              </div>
+              <div className="absolute -right-10 -bottom-10 opacity-20 transform -rotate-12">
+                <span className="material-icons-outlined text-[200px]">luggage</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:w-2/3 lg:gap-8">
+              {winterPackages.slice(0, 2).map((pkg) => (
+                <div key={pkg.slug} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all flex flex-col">
+                  <div className="relative h-48">
+                    <img alt={pkg.name} className="w-full h-full object-cover" src={pkg.image} loading="lazy"/>
+                    {pkg.badge && (
+                      <span className={`absolute top-4 left-4 text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full ${pkg.badge === 'Hot Deal' ? 'bg-red-500' : 'bg-primary'}`}>
+                        {pkg.badge}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="mb-2 flex flex-col items-start gap-1 sm:flex-row sm:justify-between sm:gap-2">
+                      <h3 className="text-xl font-bold">{pkg.name}</h3>
+                      <p className="text-xs font-bold uppercase text-slate-400 sm:shrink-0 sm:text-right">{pkg.duration.replace('/', ' / ').replace('N', ' Nights').replace('D', ' Days').replace('4 Nights / 5 Days', '5 Days / 4 Nights').replace('5 Nights / 6 Days', '6 Days / 5 Nights')}</p>
+                    </div>
+                    <p className="text-slate-500 text-sm mb-4 line-clamp-2 flex-1">{pkg.destinations}</p>
+                    <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-slate-400 text-xs">Starting from</span>
+                        <span className="text-2xl font-extrabold text-primary">{pkg.price}</span>
+                        <span className="text-xs text-slate-500">/{pkg.priceUnit}{pkg.priceUnit === "couple" ? "*" : ""}</span>
+                      </div>
+                      <Link to={`/kashmir-packages/${pkg.slug}`} className="text-primary font-bold flex items-center gap-1 text-sm hover:translate-x-1 transition-transform">
+                        View Details <span className="material-icons-outlined text-sm">arrow_forward</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              </div>
+            </div>
+          <p className="mt-6 text-xs leading-relaxed text-slate-500">{winterPricingNote} {honeymoonPriceNote}</p>
         </div>
       </section>
 
-      <section id="season-destinations" className="scroll-mt-48 py-16 bg-white text-black">
+      <section className="py-16 bg-white text-black">
         <div className="container mx-auto px-4">
           <div data-aos="fade-up" className="mx-auto mb-10 max-w-3xl text-center">
-            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Explore in {isWinter ? "Winter" : "Summer"}</p>
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Explore in Summer</p>
             <h2 className="mb-4 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Popular Destinations</h2>
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-500">{isWinter ? "Snow-covered mountains, pine valleys and peaceful lakefronts. We plan each outing around the weather and road conditions." : "Discover Kashmir in bloom - lush meadows, garden terraces, and shimmering lakes."}</p>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-500">Discover Kashmir in bloom - lush meadows, garden terraces, and shimmering lakes.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {seasonalDestinations.map((dest, i) => (
+            {destinations.map((dest, i) => (
               <button 
                 key={i} 
                 data-aos="fade-up"

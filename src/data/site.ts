@@ -13,8 +13,6 @@ import {
 } from "lucide-react";
 import { winterPackages } from "./winter";
 
-export type Season = "winter" | "summer";
-
 export interface TourPackage {
   slug: string;
   name: string;
@@ -27,7 +25,7 @@ export interface TourPackage {
   image: string;
   inclusions: string[];
   itinerary: { day: number; title: string; details: string }[];
-  season?: Season;
+  season?: "winter" | "summer";
   priceUnit?: "person" | "couple";
   audience?: string;
   overview?: string;
@@ -485,9 +483,7 @@ const existingPackages: TourPackage[] = [
   }
 ];
 
-export const summerPackages = existingPackages.filter((pkg) => pkg.season !== "winter");
 export const packages: TourPackage[] = [...winterPackages, ...existingPackages];
-export const getSeasonPackages = (season: Season) => season === "winter" ? winterPackages : summerPackages;
 
 export const serviceCards = [
   { icon: MapPinned, title: "Kashmir Packages", text: "Family, honeymoon, group and winter tours with local planning.", href: "/kashmir-packages" },

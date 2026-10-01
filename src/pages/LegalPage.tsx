@@ -1,5 +1,4 @@
 import { PageHero } from "../components/PageHero";
-import { winterTerms } from "../data/winter";
 
 const PRIVACY_TEXT = [
   "This privacy policy will help you understand how your personal information is collected, used and protected by Jaffari Sky Travels. By personal information we mean any information you provide to us - including your name, age, address, contact number, email address, card / payment information and, where relevant, the date of birth of children travelling with you, or any other such detail you choose to share.",
@@ -55,10 +54,6 @@ export function LegalPage({ title }: { title: string }) {
               </p>
             ))}
           </div>
-          {!isPrivacy && <section className="mt-10 border-t border-slate-200 pt-8">
-            <h2 className="mb-6 text-2xl font-bold text-kashmir-blue">Winter package conditions</h2>
-            <div className="space-y-6">{winterTerms.map((term) => <div key={term.title}><h3 className="mb-2 font-bold text-kashmir-blue">{term.title}</h3><p className="leading-relaxed text-kashmir-slate">{term.text}</p></div>)}</div>
-          </section>}
         </article>
       </section>
     </main>

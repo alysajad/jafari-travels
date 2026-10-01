@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { contact, getSeasonPackages, packages, type TourPackage } from "../data/site";
+import { contact, packages, type TourPackage } from "../data/site";
 import { honeymoonPriceNote, winterExclusions, winterPricingNote, winterTerms } from "../data/winter";
-import { PackageCard } from "../components/PackageCard";
-import { useSeason } from "../components/SeasonToggle";
 import { NotFoundPage } from "./NotFoundPage";
 import { openBookingEnquiry } from "../lib/booking";
 import { formDetails } from "../lib/whatsapp";
@@ -15,11 +13,9 @@ export function PackageDetailPage() {
 }
 
 function PackageDetails({ pkg }: { pkg: TourPackage }) {
-  const { setSeason } = useSeason();
   const isWinter = pkg.season === "winter";
-  const similar = getSeasonPackages(pkg.season || "summer").filter((item) => item.slug !== pkg.slug).slice(0, 3);
+  const similar = packages.filter((item) => item.slug !== pkg.slug && (item.season || "summer") === (pkg.season || "summer")).slice(0, 3);
   const exclusions = isWinter ? winterExclusions : ["Airfare / Train fare to/from Srinagar", "Gondola ride tickets (Gulmarg)", "Personal expenses like tips, laundry, etc."];
-  useEffect(() => { setSeason(pkg.season || "summer"); }, [pkg.season, setSeason]);
   
   const [expandedDays, setExpandedDays] = useState<number[]>([]);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -272,7 +268,21 @@ function PackageDetails({ pkg }: { pkg: TourPackage }) {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {similar.map(item => <PackageCard key={item.slug} pkg={item} />)}
+            {similar.map(item => (
+              <div key={item.slug} className="bg-white border border-black rounded-3xl overflow-hidden shadow-sm group">
+                <div className="relative h-64 overflow-hidden">
+                  <img alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={item.image} loading="lazy"/>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2">{item.name}</h3>
+                  <p className="text-slate-500 text-sm mb-4">{item.duration}</p>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="font-bold text-lg">{item.price} <span className="text-slate-400 text-sm font-normal">/{item.priceUnit || "person"}{item.priceUnit === "couple" ? "*" : ""}</span></p>
+                    <Link to={`/kashmir-packages/${item.slug}`} className="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">View Details <i className="material-icons-outlined text-sm">arrow_forward</i></Link>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
