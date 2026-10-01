@@ -242,7 +242,7 @@ function initialValues(enquiry: BookingEnquiry) {
 function selectedItemDetails(kind: BookingKind, values: Record<string, string>): Record<string, string> {
   if (kind === "package") {
     const item = packages.find((pkg) => pkg.name === values.Package);
-    return item ? { Duration: item.duration, Destinations: item.destinations, "Starting Price": item.price } : {};
+    return item ? { Duration: item.duration, Destinations: item.destinations, "Starting Price": `${item.price}/${item.priceUnit || "person"}${item.priceUnit === "couple" ? " (two adults sharing one room)" : ""}` } : {};
   }
   if (kind === "car") {
     const item = rentalVehicles.find((vehicle) => vehicle.name === values.Vehicle);

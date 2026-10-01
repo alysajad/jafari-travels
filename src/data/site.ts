@@ -11,6 +11,29 @@ import {
   Stamp,
   UsersRound,
 } from "lucide-react";
+import { winterPackages } from "./winter";
+
+export type Season = "winter" | "summer";
+
+export interface TourPackage {
+  slug: string;
+  name: string;
+  duration: string;
+  destinations: string;
+  price: string;
+  originalPrice?: string;
+  badge: string;
+  type: string;
+  image: string;
+  inclusions: string[];
+  itinerary: { day: number; title: string; details: string }[];
+  season?: Season;
+  priceUnit?: "person" | "couple";
+  audience?: string;
+  overview?: string;
+  highlights?: string[];
+  stayPlan?: string;
+}
 
 export const contact = {
   phone: "+91 7051693767",
@@ -196,7 +219,7 @@ export const destinations: Destination[] = [
   }
 ];
 
-export const packages = [
+const existingPackages: TourPackage[] = [
   {
     slug: "classic-kashmir",
     name: "Classic Kashmir",
@@ -259,6 +282,7 @@ export const packages = [
   },
   {
     slug: "winter-wonderland-kashmir",
+    season: "winter",
     name: "Winter Wonderland Kashmir",
     duration: "5N/6D",
     destinations: "Srinagar, Gulmarg skiing, Pahalgam",
@@ -460,6 +484,10 @@ export const packages = [
     ]
   }
 ];
+
+export const summerPackages = existingPackages.filter((pkg) => pkg.season !== "winter");
+export const packages: TourPackage[] = [...winterPackages, ...existingPackages];
+export const getSeasonPackages = (season: Season) => season === "winter" ? winterPackages : summerPackages;
 
 export const serviceCards = [
   { icon: MapPinned, title: "Kashmir Packages", text: "Family, honeymoon, group and winter tours with local planning.", href: "/kashmir-packages" },

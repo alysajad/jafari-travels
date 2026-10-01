@@ -1,0 +1,40 @@
+{
+  "tool": "Built-in image_gen",
+  "assets": [
+    {
+      "name": "hero-winter",
+      "prompt": "Use case: photorealistic-natural. Asset type: travel website photography. Create one realistic landscape photograph, wide 16:9 composition, refined natural travel editorial photography in Kashmir, India in deep winter, realistic Himalayan geography and local Kashmiri architecture, natural color, crisp snow textures. No text, no logos, no watermarks, no collage. Expansive Gulmarg meadow buried in fresh snow, layers of tall snow-laden fir trees on both sides, magnificent snow-covered Pir Panjal mountain range in the distance. Soft morning light and pale blue sky, mist in valley. Cinematic wide view, mountain ridge in upper third, uncluttered center for a large white website headline. No people. A welcoming sense of a Kashmir winter escape.",
+      "output": "public/images/hero-winter.webp"
+    },
+    {
+      "name": "winter-special",
+      "prompt": "Use case: photorealistic-natural. Asset type: travel website photography. Create one realistic landscape photograph, wide 16:9 composition, refined natural travel editorial photography in Kashmir, India in deep winter, realistic Himalayan geography and local Kashmiri architecture, natural color, crisp snow textures. No text, no logos, no watermarks, no collage. A traditional Kashmiri wooden houseboat moored on still, unfrozen Dal Lake in winter, snow on the carved roof and lake banks, a colorful empty shikara at the jetty, distant snow-covered Zabarwan mountains. Soft morning light and reflections. Wide view showing the boat and snowy landscape. A family winter sightseeing holiday in Srinagar.",
+      "output": "public/images/winter-special.webp"
+    },
+    {
+      "name": "winter-honeymoon",
+      "prompt": "Use case: photorealistic-natural. Asset type: travel website photography. Create one realistic landscape photograph, wide 16:9 composition, refined natural travel editorial photography in Kashmir, India in deep winter, realistic Himalayan geography and local Kashmiri architecture, natural color, crisp snow textures. No text, no logos, no watermarks, no collage. An adult South Asian honeymoon couple in tasteful winter coats and scarves viewed from behind, strolling together holding hands on a snowy path among towering snow-laden fir trees in Gulmarg. A small traditional Kashmiri timber chalet far in background, soft golden winter light. Couple relatively small in landscape, romantic but candid travel photograph.",
+      "output": "public/images/winter-honeymoon.webp"
+    },
+    {
+      "name": "winter-adventure",
+      "prompt": "Use case: photorealistic-natural. Asset type: travel website photography. Create one realistic landscape photograph, wide 16:9 composition, refined natural travel editorial photography in Kashmir, India in deep winter, realistic Himalayan geography and local Kashmiri architecture, natural color, crisp snow textures. No text, no logos, no watermarks, no collage. A single adult skier wearing a helmet and goggles skiing on a gentle groomed snow slope in Gulmarg, Kashmir, with a red gondola cabin suspended correctly from cables in the middle distance and vast snow-covered Himalayan mountains beyond. Dynamic natural travel photograph, bright cold blue sky, skier relatively small within the landscape, no dangerous cliff or avalanche.",
+      "output": "public/images/winter-adventure.webp"
+    },
+    {
+      "name": "winter-premium",
+      "prompt": "Use case: photorealistic-natural. Asset type: travel website photography. Create one realistic landscape photograph, wide 16:9 composition, refined natural travel editorial photography in Kashmir, India in deep winter, realistic Himalayan geography and local Kashmiri architecture, natural color, crisp snow textures. No text, no logos, no watermarks, no collage. A premium Kashmir winter retreat: covered terrace of a refined Kashmiri timber mountain lodge, carved wooden pillars, two comfortable empty armchairs and a small table with a traditional brass samovar, beyond them a peaceful snow-covered fir forest and Himalayan peaks. Warm afternoon sunlight, luxurious yet authentic and understated. No signage or claim of an identifiable hotel.",
+      "output": "public/images/winter-premium.webp"
+    },
+    {
+      "name": "winter-festive",
+      "prompt": "Use case: photorealistic-natural. Asset type: travel website photography. Create one realistic landscape photograph, wide 16:9 composition, refined natural travel editorial photography in Kashmir, India in deep winter, realistic Himalayan geography and local Kashmiri architecture, natural color, crisp snow textures. No text, no logos, no watermarks, no collage. An intimate festive winter evening at a small Kashmiri wooden mountain chalet among snow-covered fir trees, warm amber windows, tasteful strings of tiny warm white lights along roof, a modest decorated outdoor evergreen. Blue hour, light snowfall, deep white snow, inviting holiday atmosphere for Christmas and New Year in Kashmir. No Santa, no oversized ornaments, no fireworks, no writing.",
+      "output": "public/images/winter-festive.webp"
+    },
+    {
+      "name": "winter-family",
+      "prompt": "Use case: photorealistic-natural. Asset type: travel website photography. Create one realistic landscape photograph, wide 16:9 composition, refined natural travel editorial photography in Kashmir, India in deep winter, realistic Himalayan geography and local Kashmiri architecture, natural color, crisp snow textures. No text, no logos, no watermarks, no collage. A South Asian family of two adults and two school-age children bundled in colorful practical winter jackets, gloves and hats making a small snowman together in a safe snow-covered meadow in Pahalgam, Kashmir. Tall snow-dusted pine trees, snowy mountains and a small timber cabin in background, warm daylight, candid joyful family travel photograph. Wide landscape, family in middle ground, realistic anatomy.",
+      "output": "public/images/winter-family.webp"
+    }
+  ]
+}
