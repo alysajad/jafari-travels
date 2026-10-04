@@ -5,6 +5,7 @@ import { honeymoonPriceNote, winterExclusions, winterPricingNote, winterTerms } 
 import { NotFoundPage } from "./NotFoundPage";
 import { openBookingEnquiry } from "../lib/booking";
 import { formDetails } from "../lib/whatsapp";
+import { useSeason } from "../components/SeasonToggle";
 
 export function PackageDetailPage() {
   const { slug } = useParams();
@@ -13,6 +14,7 @@ export function PackageDetailPage() {
 }
 
 function PackageDetails({ pkg }: { pkg: TourPackage }) {
+  const { setSeason } = useSeason();
   const isWinter = pkg.season === "winter";
   const similar = packages.filter((item) => item.slug !== pkg.slug && (item.season || "summer") === (pkg.season || "summer")).slice(0, 3);
   const exclusions = isWinter ? winterExclusions : ["Airfare / Train fare to/from Srinagar", "Gondola ride tickets (Gulmarg)", "Personal expenses like tips, laundry, etc."];
@@ -56,7 +58,7 @@ function PackageDetails({ pkg }: { pkg: TourPackage }) {
       <section className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-6">
           <nav className="mb-2 flex flex-wrap gap-2 text-sm text-slate-500">
-            <Link to="/">Home</Link> <span>/</span> <Link to="/kashmir-packages">{isWinter ? "Winter Packages" : "Summer Packages"}</Link> <span>/</span> <span className="text-primary font-medium">{pkg.name}</span>
+            <Link to="/">Home</Link> <span>/</span> <Link to="/kashmir-packages" onClick={() => setSeason(isWinter ? "winter" : "summer")}>{isWinter ? "Winter Packages" : "Summer Packages"}</Link> <span>/</span> <span className="text-primary font-medium">{pkg.name}</span>
           </nav>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>

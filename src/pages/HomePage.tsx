@@ -1,22 +1,28 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { destinations, rentalVehicles } from "../data/site";
-import { winterPackages, winterPricingNote, honeymoonPriceNote } from "../data/winter";
+import { winterPricingNote, honeymoonPriceNote } from "../data/winter";
 import { useState } from "react";
 import { SearchWidget } from "../components/SearchWidget";
 import { DestinationModal } from "../components/DestinationModal";
 import type { Destination } from "../data/site";
 import { openBookingEnquiry } from "../lib/booking";
+import { SeasonToggle, useSeason } from "../components/SeasonToggle";
 
 export function HomePage() {
   const today = new Date().toISOString().split('T')[0];
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+  const { isWinter, seasonLabel, seasonPackages } = useSeason();
+  const experiences = isWinter
+    ? ["Gulmarg Skiing", "Gondola Ride", "Snow Photography", "Kashmiri Kahwa", "Pahalgam Winter Views", "Snow Play", "Cosy Mountain Stays", "Srinagar Markets", "Wazwan Dining", "Pine Forest Walks"]
+    : ["Wazwan Dining", "Tulip Garden", "Photography Tours", "Shikara Rides", "Mughal Gardens", "Houseboat Stay", "Valley Trekking", "Gondola Ride", "Pahalgam River Walk", "Sonamarg Trek"];
   
   return (
-    <main>
-      <section className="relative flex min-h-[520px] items-center overflow-hidden pb-24 pt-8 sm:min-h-[620px] lg:min-h-[750px] lg:pb-32 lg:pt-16">
+    <main className={`transition-colors duration-500 motion-reduce:transition-none ${isWinter ? "bg-slate-50" : "bg-kashmir-cream"}`}>
+      <section className="relative flex min-h-[520px] items-center overflow-hidden pb-44 pt-8 sm:min-h-[620px] lg:min-h-[750px] lg:pb-48 lg:pt-16">
         <div className="absolute inset-0 z-0">
-          <img alt="Beautiful Kashmir Landscape" className="h-full w-full object-cover object-[62%_center] sm:object-[75%_center]" src="/images/hero.jpeg"/>
+          <img alt="Shikaras on Dal Lake in summer" className="absolute inset-0 h-full w-full object-cover object-[62%_center] sm:object-[75%_center]" src="/images/dal_lake_destination.jpg" aria-hidden={isWinter} />
+          <img alt="Snow-covered mountains and pine forests in Kashmir" className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 motion-reduce:transition-none ${isWinter ? "opacity-100" : "opacity-0"}`} src="/images/hero-winter.webp" aria-hidden={!isWinter} />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
@@ -35,12 +41,13 @@ export function HomePage() {
                 Trusted by 50,000+ Happy Travelers
               </div>
             </div>
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.3em] text-secondary">Kashmir in {seasonLabel}</p>
             <h1 className="mb-4 flex max-w-full flex-col font-varien leading-none tracking-wide text-white sm:mb-6">
               <span className="fluid-title font-extrabold opacity-90">Explore</span>
               <span className="fluid-display relative z-10 font-normal text-secondary drop-shadow-2xl md:-mt-4 lg:-mt-6">Kashmir.</span>
             </h1>
             <p className="mx-auto mb-6 max-w-xl text-sm leading-6 text-slate-100 opacity-90 sm:text-base md:mb-8 md:text-xl">
-              Your trusted travel partner for boutique Kashmir tours, breathtaking mountain adventures, and unforgettable scenic getaways.
+              {isWinter ? "Snow-covered valleys, cosy mountain stays, and unforgettable winter adventures with your trusted Kashmir travel partner." : "Your trusted travel partner for boutique Kashmir tours, breathtaking mountain adventures, and unforgettable scenic getaways."}
             </p>
             <div className="flex w-full flex-col justify-center gap-4 sm:w-auto sm:flex-row">
               <Link to="/kashmir-packages" className="flex w-full max-w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-4 text-center font-bold text-white transition-all hover:bg-blue-700 sm:w-auto sm:px-8">
@@ -49,6 +56,9 @@ export function HomePage() {
             </div>
 
           </div>
+        </div>
+        <div className="absolute inset-x-0 bottom-20 z-10 flex justify-center px-4 md:bottom-28">
+          <SeasonToggle />
         </div>
       </section>
 
@@ -61,15 +71,7 @@ export function HomePage() {
         <div className="absolute bottom-0 right-0 top-0 z-10 w-10 bg-gradient-to-l from-white to-transparent pointer-events-none sm:w-24"></div>
 
         <div className="flex animate-ticker whitespace-nowrap min-w-max items-center">
-          {[
-            "Wazwan Dining", "Tulip Garden", "Photography Tours", "Shikara Rides",
-            "Mughal Gardens", "Houseboat Stay", "Valley Trekking", "Gondola Ride",
-            "Pahalgam River Walk", "Sonamarg Trek",
-            // Duplicated to ensure seamless loop
-            "Wazwan Dining", "Tulip Garden", "Photography Tours", "Shikara Rides",
-            "Mughal Gardens", "Houseboat Stay", "Valley Trekking", "Gondola Ride",
-            "Pahalgam River Walk", "Sonamarg Trek"
-          ].map((item, i) => (
+          {[...experiences, ...experiences].map((item, i) => (
             <div key={i} className="flex items-center gap-8 mx-4">
               <div className="flex items-center gap-3 group cursor-pointer hover:text-primary transition-colors">
                 <div className="w-8 h-8 rounded-full bg-orange-50 text-secondary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
@@ -86,8 +88,8 @@ export function HomePage() {
       <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4">
           <div data-aos="fade-up" className="mx-auto mb-10 max-w-3xl text-center">
-            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Winter Packages</p>
-            <h2 className="mb-4 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Explore Winter Packages</h2>
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">{seasonLabel} Packages</p>
+            <h2 className="mb-4 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Explore {seasonLabel} Packages</h2>
             <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-500">Every itinerary is crafted around your pace - from budget explorers to ultra-luxury seekers. Tap any package for the full day-by-day plan.</p>
           </div>
           <div data-aos="fade-up" className="flex flex-col gap-8 lg:flex-row lg:gap-12">
@@ -104,7 +106,7 @@ export function HomePage() {
               </div>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:w-2/3 lg:gap-8">
-              {winterPackages.slice(0, 2).map((pkg) => (
+              {seasonPackages.slice(0, 2).map((pkg) => (
                 <div key={pkg.slug} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all flex flex-col">
                   <div className="relative h-48">
                     <img alt={pkg.name} className="w-full h-full object-cover" src={pkg.image} loading="lazy"/>
@@ -124,7 +126,7 @@ export function HomePage() {
                       <div className="flex flex-col">
                         <span className="text-slate-400 text-xs">Starting from</span>
                         <span className="text-2xl font-extrabold text-primary">{pkg.price}</span>
-                        <span className="text-xs text-slate-500">/{pkg.priceUnit}{pkg.priceUnit === "couple" ? "*" : ""}</span>
+                        <span className="text-xs text-slate-500">/{pkg.priceUnit || "person"}{pkg.priceUnit === "couple" ? "*" : ""}</span>
                       </div>
                       <Link to={`/kashmir-packages/${pkg.slug}`} className="text-primary font-bold flex items-center gap-1 text-sm hover:translate-x-1 transition-transform">
                         View Details <span className="material-icons-outlined text-sm">arrow_forward</span>
@@ -135,16 +137,16 @@ export function HomePage() {
               ))}
               </div>
             </div>
-          <p className="mt-6 text-xs leading-relaxed text-slate-500">{winterPricingNote} {honeymoonPriceNote}</p>
+          {isWinter && <p className="mt-6 text-xs leading-relaxed text-slate-500">{winterPricingNote} {honeymoonPriceNote}</p>}
         </div>
       </section>
 
       <section className="py-16 bg-white text-black">
         <div className="container mx-auto px-4">
           <div data-aos="fade-up" className="mx-auto mb-10 max-w-3xl text-center">
-            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Explore in Summer</p>
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.35em] text-secondary">Explore in {seasonLabel}</p>
             <h2 className="mb-4 font-varien text-3xl font-extrabold uppercase leading-tight tracking-wide text-slate-900 sm:text-4xl md:text-5xl">Popular Destinations</h2>
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-500">Discover Kashmir in bloom - lush meadows, garden terraces, and shimmering lakes.</p>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-500">{isWinter ? "Explore Kashmir's mountain towns and lakeside views. Our team will help plan each visit around winter road and weather conditions." : "Discover Kashmir in bloom - lush meadows, garden terraces, and shimmering lakes."}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((dest, i) => (

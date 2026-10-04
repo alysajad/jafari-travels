@@ -1,12 +1,13 @@
 import { ArrowRight, CalendarDays, FileText, Landmark, MapPin, Mountain, Plane, UsersRound, Ticket, Car } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import { packages, rentalVehicles } from "../data/site";
+import { rentalVehicles } from "../data/site";
 import { openBookingEnquiry } from "../lib/booking";
 import { formDetails } from "../lib/whatsapp";
+import { useSeason } from "./SeasonToggle";
 
 const tabs = {
-  kashmir: ["Select Package", ["Choose a package..", ...packages.map((item) => item.name), "Custom Package Needed"], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Enquire Now"],
+  kashmir: ["Select Package", ["Choose a package..", "Custom Package Needed"], "Check-in", "2026-09-20", "Check-out", "2026-09-26", "Travelers", "2 Adults, 1 Child", "Enquire Now"],
   cars: ["Pickup Location", ["Srinagar Airport", "Srinagar City", "Gulmarg", "Pahalgam"], "Pickup Date", "2026-09-20", "Drop Date", "2026-09-26", "Car Type", ["Choose a vehicle type..", ...new Set(rentalVehicles.map((item) => item.category))], "Search Cars"],
   umrah: ["Package Type", ["Premium Umrah", "Economy Umrah", "VIP Umrah", "Ramadan Umrah"], "Duration", ["15 Days", "21 Days", "28 Days", "Custom"], "Travel Month", ["Ramadan 2027", "Shawwal 2027", "Rajab 2027", "Any Month"], "Travelers", "Family of 4", "View Packages"],
   tickets: ["From", ["Srinagar (SXR)", "Delhi (DEL)", "Mumbai (BOM)", "Dubai (DXB)", "Jeddah (JED)"], "To", ["Delhi (DEL)", "Srinagar (SXR)", "Dubai (DXB)", "Jeddah (JED)", "Mumbai (BOM)"], "Travel Date", "2026-09-20", "Travelers", "2 Adults", "Search Flights"],
@@ -26,8 +27,13 @@ const popularItems: Record<TabKey, readonly string[]> = {
 };
 
 export function SearchWidget() {
+  const { season, isWinter, seasonPackages } = useSeason();
   const [active, setActive] = useState<TabKey>("kashmir");
   const fields = useMemo(() => tabs[active], [active]);
+  const packageOptions = ["Choose a package..", ...seasonPackages.map((pkg) => pkg.name), "Custom Package Needed"];
+  const popular = active === "kashmir" && isWinter
+    ? ["Gulmarg Skiing", "Gondola Ride", "Snow Holidays", "Pahalgam", "Kashmiri Kahwa"]
+    : popularItems[active];
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -72,7 +78,7 @@ export function SearchWidget() {
       </div>
 
       <form className="grid grid-cols-1 gap-3 pt-5 min-[420px]:grid-cols-2 md:pt-6 lg:grid-cols-[repeat(4,minmax(0,1fr))_180px]" onSubmit={submit}>
-        <SearchField key={`f1-${active}`} icon={<MapPin />} label={fields[0] as string} value={fields[1]} />
+        <SearchField key={`f1-${active}-${active === "kashmir" ? season : ""}`} icon={<MapPin />} label={fields[0] as string} value={active === "kashmir" ? packageOptions : fields[1]} />
         <SearchField key={`f2-${active}`} icon={<CalendarDays />} label={fields[2] as string} value={fields[3]} />
         <SearchField key={`f3-${active}`} icon={<CalendarDays />} label={fields[4] as string} value={fields[5]} />
         {fields[6] === "Travelers" ? (
@@ -88,7 +94,7 @@ export function SearchWidget() {
 
       <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-slate-200 pt-4">
         <span className="mr-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-kashmir-slate">Popular:</span>
-        {popularItems[active].map((item) => (
+        {popular.map((item) => (
           <span key={item} className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-kashmir-slate shadow-sm sm:text-[13px]">
             {item}
           </span>
@@ -110,7 +116,7 @@ function SearchField({ icon, label, value }: { icon: ReactNode; label: string; v
       <span className="min-w-0 flex-1 flex flex-col justify-center">
         <span className="mb-1 block text-[10px] font-bold text-kashmir-slate sm:text-[11px]">{label}</span>
         {isArray ? (
-          <select name={label} className="w-full bg-transparent text-sm font-semibold outline-none cursor-pointer">
+          <select name={label} defaultValue={(value as readonly string[])[0].startsWith("Choose ") ? "" : undefined} className="w-full bg-transparent text-sm font-semibold outline-none cursor-pointer">
             {(value as readonly string[]).map((opt) => (
               <option disabled={opt.startsWith("Choose ")} key={opt} value={opt.startsWith("Choose ") ? "" : opt}>{opt}</option>
             ))}

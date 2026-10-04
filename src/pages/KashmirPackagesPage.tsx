@@ -3,10 +3,11 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { formatEnquiryMessage, whatsappLink } from "../lib/whatsapp";
 import { openBookingEnquiry } from "../lib/booking";
-import { packages } from "../data/site";
 import { WinterPackageNotes } from "../components/WinterPackageNotes";
+import { SeasonToggle, useSeason } from "../components/SeasonToggle";
 
 export function KashmirPackagesPage() {
+  const { isWinter, seasonLabel, seasonPackages } = useSeason();
   const [filters, setFilters] = useState({
     duration: { '1-3': false, '4-6': false, '7+': false } as Record<string, boolean>,
     type: { 'Family': false, 'Honeymoon': false, 'Adventure': false, 'Luxury': false, 'Holiday': false, 'Group': false } as Record<string, boolean>,
@@ -35,7 +36,7 @@ export function KashmirPackagesPage() {
   };
 
   const processedPackages = useMemo(() => {
-    let result = packages.filter(pkg => {
+    let result = seasonPackages.filter(pkg => {
       // Duration check
       let matchesDuration = true;
       const hasDurationFilter = Object.values(filters.duration).some(Boolean);
@@ -74,12 +75,12 @@ export function KashmirPackagesPage() {
     }
 
     return result;
-  }, [filters, sortBy]);
+  }, [filters, sortBy, seasonPackages]);
 
   return (
     <main className="bg-slate-50 text-slate-800 transition-colors duration-300">
       <section className="relative flex min-h-[360px] items-center overflow-hidden py-16 sm:min-h-[400px]">
-        <img alt="Kashmir Landscape" className="absolute inset-0 w-full h-full object-cover" src="/images/naweedey-XHG0uFAlEGM-unsplash.jpg"/>
+        <img alt={`Kashmir in ${seasonLabel.toLowerCase()}`} className="absolute inset-0 w-full h-full object-cover" src={isWinter ? "/images/hero-winter.webp" : "/images/naweedey-XHG0uFAlEGM-unsplash.jpg"}/>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
         <div className="relative mx-auto w-full px-4 text-white lg:px-8 xl:px-12">
           <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm opacity-90">
@@ -95,6 +96,9 @@ export function KashmirPackagesPage() {
       </section>
 
       <div className="w-full px-4 lg:px-8 xl:px-12 mx-auto py-12">
+        <div className="mb-8 flex justify-center">
+          <SeasonToggle onChange={handleReset} />
+        </div>
         <div className="flex flex-col lg:flex-row gap-8">
           <aside className="w-full lg:w-72 space-y-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
@@ -162,7 +166,7 @@ export function KashmirPackagesPage() {
           
           <div className="flex-1">
               <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-2xl font-bold">{processedPackages.length} Kashmir Packages Found</h3>
+                <h3 className="text-2xl font-bold" aria-live="polite">{processedPackages.length} {seasonLabel} Packages Found</h3>
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-sm font-medium opacity-60">Sort by:</span>
                 <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="text-sm border-none bg-transparent font-bold text-primary focus:ring-0 cursor-pointer">
@@ -234,7 +238,7 @@ export function KashmirPackagesPage() {
                 <button onClick={() => setVisibleCount(v => v + 6)} className="px-8 py-3 border-2 border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-white transition-all">Load More Packages</button>
               </div>
             )}
-            <WinterPackageNotes />
+            {isWinter && <WinterPackageNotes />}
           </div>
         </div>
       </div>
